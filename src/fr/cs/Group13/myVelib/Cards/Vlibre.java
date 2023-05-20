@@ -7,7 +7,7 @@ public class Vlibre implements Card{
     private int id;
     private double CreditBalance;
     private static int count;
-    private synchronized int generateUniqueId() {
+    private synchronized int generateCardId() {
         return count++;
     }
     @Override

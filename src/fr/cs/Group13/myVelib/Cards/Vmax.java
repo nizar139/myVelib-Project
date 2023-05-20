@@ -15,13 +15,12 @@ public class Vmax implements Card, PricingVisitor {
     }
 
     @Override
-    public double visit(ElectricalBicycle bicycle) {
-        return 1;
+    public double[] visit(ElectricalBicycle bicycle) {
+        return new double[]{0,1};
     }
-
     @Override
-    public double visit(MechanicalBicycle bicycle) {
-        return 1;
+    public double[] visit(MechanicalBicycle bicycle) {
+        return new double[]{0,1};
     }
     @Override
     public double computeCharge(Bicycle b, int start, int end) {

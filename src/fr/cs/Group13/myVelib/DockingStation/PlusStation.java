@@ -1,8 +1,9 @@
 package fr.cs.Group13.myVelib.DockingStation;
 
+
 import java.util.ArrayList;
 
-public class PlusStation {
+public class PlusStation implements DockingStation {
     private int id;
     private double [] gpsCord;
     private StationStatus status;

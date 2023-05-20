@@ -8,7 +8,7 @@ public class User {
     private int id;
     private String firstName;
     private String lastName;
-    private double[] gpsCoord;
+    private double[] gpsCord;
     private Card card;
     private CreditCard myCard;
     private double totalCharges;
@@ -46,12 +46,12 @@ public class User {
         this.lastName = lastName;
     }
 
-    public double[] getGpsCoord() {
-        return gpsCoord;
+    public double[] getGpsCord() {
+        return gpsCord;
     }
 
-    public void setGpsCoord(double[] gpsCoord) {
-        this.gpsCoord = gpsCoord;
+    public void setGpsCord(double[] gpsCord) {
+        this.gpsCord = gpsCord;
     }
 
     public Card getCard() {

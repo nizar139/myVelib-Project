@@ -1,6 +1,7 @@
 package fr.cs.Group13.myVelib.User;
 
 import fr.cs.Group13.myVelib.Cards.*;
+import fr.cs.Group13.myVelib.Planing.RideType;
 import fr.cs.Group13.myVelib.Planing.RidesPlaning;
 
 public class User {
@@ -110,7 +111,9 @@ public class User {
 
     public String planYourRide(String strategy){
         //factory call
-        return "";
+        RideType ride = new RideType();
+        RidesPlaning plan = ride.getYourStrat(strategy);
+        return plan.getYourPlan();
     }
 
 }

@@ -18,8 +18,10 @@ public class NoCard implements Card, PricingVisitor {
     }
 
     @Override
-    public double computeCharge(Bicycle b, int start, int end) {
-        return 0;
+    public double computeCharge(Bicycle b, int start, int end, double duration) {
+        double[] priceHour = b.accept(this);
+        double price = priceHour[0]*duration/60;
+        return price;
     }
 
     @Override

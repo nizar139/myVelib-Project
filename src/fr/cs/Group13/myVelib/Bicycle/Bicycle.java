@@ -1,2 +1,4 @@
-package fr.cs.Group13.myVelib.Bicycle;public class Bicycle {
+package fr.cs.Group13.myVelib.Bicycle;
+
+public interface Bicycle{
 }

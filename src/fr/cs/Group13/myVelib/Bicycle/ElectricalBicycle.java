@@ -2,22 +2,9 @@ package fr.cs.Group13.myVelib.Bicycle;
 
 import fr.cs.Group13.myVelib.Cards.PricingVisitor;
 
-public class ElectricalBicycle implements Bicycle{
-    private int id;
-    private double gpsCord[];
-    private double rentTime;
-    private int fromAStation;
-
-    public int getfromAStation() {
-        return fromAStation;
-    }
-    public void setFromAStation(int fromAStation) {
-        this.fromAStation = fromAStation;
-    }
-
+public class ElectricalBicycle extends Bicycle{
     public ElectricalBicycle() {
-        BicycleIdGenerator instance = BicycleIdGenerator.getInstance();
-        this.id = instance.getNextBicycleID();
+        super();
     }
 
     @Override

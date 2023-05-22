@@ -1,11 +1,13 @@
 package fr.cs.Group13.myVelib.Bicycle;
 
 import fr.cs.Group13.myVelib.Cards.PricingVisitor;
+import fr.cs.Group13.myVelib.DockingStation.ParkingSlot;
 
 public abstract class Bicycle{
     private int id;
     private double gpsCord[];
     private int fromAStation = 1;
+    private ParkingSlot slot;
     public Bicycle() {
         BicycleIdGenerator instance = BicycleIdGenerator.getInstance();
         this.id = instance.getNextBicycleID();
@@ -16,5 +18,17 @@ public abstract class Bicycle{
     public void setFromAStation(int fromAStation) {
         this.fromAStation = fromAStation;
     }
+
+    public ParkingSlot getSlot() {
+        return slot;
+    }
+
+    public void addToSlot(ParkingSlot slot) {
+        this.slot = slot;
+    }
+    public void removeFromSlot() {
+        this.slot = null;
+    }
+
     public abstract double[] accept(PricingVisitor visitor);
 }

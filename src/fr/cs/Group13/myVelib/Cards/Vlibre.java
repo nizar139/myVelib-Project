@@ -16,7 +16,7 @@ public class Vlibre implements Card, PricingVisitor {
 
     @Override
     public double[] visit(ElectricalBicycle bicycle) {
-        return new double[]{1,2}
+        return new double[]{1,2};
     }
 
     @Override

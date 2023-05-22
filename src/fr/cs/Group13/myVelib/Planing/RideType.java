@@ -5,5 +5,6 @@ public class RideType {
         if (strategy.equalsIgnoreCase("CLASSIC")){
             return new Classic();
         }
+        return null;
     }
 }

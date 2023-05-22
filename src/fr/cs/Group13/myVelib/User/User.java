@@ -1,8 +1,12 @@
 package fr.cs.Group13.myVelib.User;
 
+import fr.cs.Group13.myVelib.Bicycle.Bicycle;
 import fr.cs.Group13.myVelib.Cards.*;
+import fr.cs.Group13.myVelib.DockingStation.DockingStation;
 import fr.cs.Group13.myVelib.Planing.RideType;
 import fr.cs.Group13.myVelib.Planing.RidesPlaning;
+import java.time.Duration;
+import java.time.Instant;
 
 public class User {
     private int id;
@@ -16,6 +20,8 @@ public class User {
     private double totalTime;
     private double totalTimeCredit;
     private static int count;
+    private Instant startTime;
+    private Instant endTime;
 
     public User(int id, String firstName, String lastName, Card card, CreditCard myCard) {
         User.count ++;
@@ -102,13 +108,31 @@ public class User {
         this.totalTimeCredit = totalTimeCredit;
     }
 
-    public void returnBicycle(){
-        //time and charge, update totaltimecredit, totaltime, numberofrides, totalcharges
-    }
     public void rentBicycle(){
         //type of bicycle, station or not,
+        this.startTime = Instant.now();
     }
 
+    public void returnBicycle(Bicycle b, DockingStation s){
+        //time and charge, update totaltimecredit, totaltime, numberofrides, totalcharges
+        this.endTime = Instant.now();
+        if (this.startTime == null || this.endTime == null) {
+            throw new IllegalStateException("Rental has not started and stopped correctly.");
+        }
+        double duration = Duration.between(startTime, endTime).getSeconds()/60;
+
+    }
+    public void returnBicycle(Bicycle b){
+        //time and charge, update totaltimecredit, totaltime, numberofrides, totalcharges
+        this.endTime = Instant.now();
+        if (this.startTime == null || this.endTime == null) {
+            throw new IllegalStateException("Rental has not started and stopped correctly.");
+        }
+        double duration = Duration.between(startTime, endTime).getSeconds()/60;
+
+        
+
+    }
     public String planYourRide(String strategy){
         //factory call
         RideType ride = new RideType();

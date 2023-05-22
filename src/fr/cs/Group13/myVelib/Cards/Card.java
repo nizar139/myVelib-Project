@@ -4,6 +4,6 @@ import fr.cs.Group13.myVelib.Bicycle.Bicycle;
 import fr.cs.Group13.myVelib.DockingStation.DockingStation;
 
 public interface Card {
-    double computeCharge(Bicycle b, int start, int end, double duration);
-    void updateBalance(DockingStation station) ;
+    double computeCharge(Bicycle b, int endingIsStation, double duration);
+    void updateBalance(DockingStation station);
 }

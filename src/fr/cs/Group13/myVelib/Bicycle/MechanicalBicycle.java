@@ -6,6 +6,14 @@ public class MechanicalBicycle implements Bicycle{
     private int id;
     private double gpsCord [];
     private double rentTime;
+    private int fromAStation;
+
+    public int getFromAStation() {
+        return fromAStation;
+    }
+    public void setFromAStation(int fromAStation) {
+        this.fromAStation = fromAStation;
+    }
 
     public MechanicalBicycle() {
         BicycleIdGenerator instance = BicycleIdGenerator.getInstance();

@@ -6,6 +6,14 @@ public class ElectricalBicycle implements Bicycle{
     private int id;
     private double gpsCord[];
     private double rentTime;
+    private int fromAStation;
+
+    public int getfromAStation() {
+        return fromAStation;
+    }
+    public void setFromAStation(int fromAStation) {
+        this.fromAStation = fromAStation;
+    }
 
     public ElectricalBicycle() {
         BicycleIdGenerator instance = BicycleIdGenerator.getInstance();

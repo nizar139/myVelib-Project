@@ -15,6 +15,7 @@ public class User {
     private double[] gpsCord;
     private Card card;
     private CreditCard myCard;
+    private Bicycle currentBicycle = null;
     private double totalCharges;
     private int numberOfRides;
     private double totalTime;
@@ -108,29 +109,45 @@ public class User {
         this.totalTimeCredit = totalTimeCredit;
     }
 
-    public void rentBicycle(){
+    public void rentBicycle(Bicycle b){
         //type of bicycle, station or not,
-        this.startTime = Instant.now();
+        if (this.currentBicycle == null) {
+            this.startTime = Instant.now();
+            this.currentBicycle = b;
+        }else{
+            throw new IllegalStateException("You cannot rent more than one bicycle!");
+        }
     }
 
-    public void returnBicycle(Bicycle b, DockingStation s){
+    public void returnBicycle(){
         //time and charge, update totaltimecredit, totaltime, numberofrides, totalcharges
-        this.endTime = Instant.now();
-        if (this.startTime == null || this.endTime == null) {
-            throw new IllegalStateException("Rental has not started and stopped correctly.");
-        }
-        double duration = Duration.between(startTime, endTime).getSeconds()/60;
+        if (this.currentBicycle == null) {
+            throw new IllegalStateException("you don't have a bicycle!");
+        }else{
+            this.endTime = Instant.now();
+            double duration = Duration.between(startTime, endTime).getSeconds() / 60;
+            double charge = card.computeCharge(this.currentBicycle, 0, duration);
 
+            this.startTime = null;
+            this.endTime = null;
+            this.currentBicycle = null;
+        }
     }
-    public void returnBicycle(Bicycle b){
-        //time and charge, update totaltimecredit, totaltime, numberofrides, totalcharges
-        this.endTime = Instant.now();
-        if (this.startTime == null || this.endTime == null) {
-            throw new IllegalStateException("Rental has not started and stopped correctly.");
+    public void returnBicycle(DockingStation station){
+        // update totaltimecredit, bicycle state
+        if (this.currentBicycle == null) {
+            throw new IllegalStateException("you don't have a bicycle!");
+        }else{
+            this.endTime = Instant.now();
+            double duration = Duration.between(startTime, endTime).getSeconds() / 60;
+            double charge = card.computeCharge(this.currentBicycle, 1, duration);
+            this.totalTime += duration;
+            this.totalCharges += charge;
+            this.numberOfRides ++;
+            this.startTime = null;
+            this.endTime = null;
+            this.currentBicycle = null;
         }
-        double duration = Duration.between(startTime, endTime).getSeconds()/60;
-
-        
 
     }
     public String planYourRide(String strategy){

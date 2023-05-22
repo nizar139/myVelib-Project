@@ -5,7 +5,7 @@ import fr.cs.Group13.myVelib.Cards.PricingVisitor;
 public abstract class Bicycle{
     private int id;
     private double gpsCord[];
-    private int fromAStation;
+    private int fromAStation = 1;
     public Bicycle() {
         BicycleIdGenerator instance = BicycleIdGenerator.getInstance();
         this.id = instance.getNextBicycleID();

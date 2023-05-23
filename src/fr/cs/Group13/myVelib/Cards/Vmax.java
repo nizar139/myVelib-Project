@@ -6,10 +6,12 @@ import fr.cs.Group13.myVelib.Bicycle.MechanicalBicycle;
 import fr.cs.Group13.myVelib.DockingStation.DockingStation;
 import fr.cs.Group13.myVelib.DockingStation.PlusStation;
 import fr.cs.Group13.myVelib.DockingStation.RegularStation;
+import fr.cs.Group13.myVelib.User.User;
 
 public class Vmax implements Card, PricingVisitor {
+    private User owner;
     private final int id;
-    private double CreditBalance;
+    private double creditBalance;
     public Vmax() {
         CardIdGenerator instance = CardIdGenerator.getInstance();
         this.id = instance.getNextCardId();
@@ -19,11 +21,11 @@ public class Vmax implements Card, PricingVisitor {
     }
 
     public double getCreditBalance() {
-        return CreditBalance;
+        return creditBalance;
     }
 
     public void setCreditBalance(double creditBalance) {
-        CreditBalance = creditBalance;
+        creditBalance = creditBalance;
     }
 
     @Override
@@ -49,8 +51,10 @@ public class Vmax implements Card, PricingVisitor {
     }
 
     @Override
-    public void updateBalance(DockingStation station) {
-
+    public void applyBonus(DockingStation station) {
+        double bonus = station.accept(this);
+        this.creditBalance = this.creditBalance + bonus;
+        this.owner.setTotalTimeCredit(this.owner.getTotalTimeCredit()+bonus);
     }
 
 }

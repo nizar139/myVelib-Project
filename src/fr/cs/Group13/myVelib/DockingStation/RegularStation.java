@@ -1,5 +1,7 @@
 package fr.cs.Group13.myVelib.DockingStation;
 
+import fr.cs.Group13.myVelib.Cards.PricingVisitor;
+
 import java.util.ArrayList;
 
 public class RegularStation implements DockingStation{
@@ -13,5 +15,8 @@ public class RegularStation implements DockingStation{
     public RegularStation() {
         StationIdGenerator instance = StationIdGenerator.getInstance();
         this.id = instance.getNextStationID();
+    }
+    public double accept(PricingVisitor visitor){
+        return visitor.visit(this);
     }
 }

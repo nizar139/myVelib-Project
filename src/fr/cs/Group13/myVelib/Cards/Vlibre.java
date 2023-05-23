@@ -6,8 +6,10 @@ import fr.cs.Group13.myVelib.Bicycle.MechanicalBicycle;
 import fr.cs.Group13.myVelib.DockingStation.DockingStation;
 import fr.cs.Group13.myVelib.DockingStation.PlusStation;
 import fr.cs.Group13.myVelib.DockingStation.RegularStation;
+import fr.cs.Group13.myVelib.User.User;
 
 public class Vlibre implements Card, PricingVisitor {
+    private User owner;
     private final int id;
     private double creditBalance;
 
@@ -55,8 +57,10 @@ public class Vlibre implements Card, PricingVisitor {
     }
 
     @Override
-    public void updateBalance(DockingStation station) {
-
+    public void applyBonus(DockingStation station) {
+        double bonus = station.accept(this);
+        this.creditBalance = this.creditBalance + bonus;
+        this.owner.setTotalTimeCredit(this.owner.getTotalTimeCredit()+bonus);
     }
 
 }

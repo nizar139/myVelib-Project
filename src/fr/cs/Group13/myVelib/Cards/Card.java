@@ -5,5 +5,5 @@ import fr.cs.Group13.myVelib.DockingStation.DockingStation;
 
 public interface Card {
     double computeCharge(Bicycle b, int endingIsStation, double duration);
-    void updateBalance(DockingStation station);
+    void applyBonus(DockingStation station);
 }

@@ -1,6 +1,7 @@
 package fr.cs.Group13.myVelib.Bicycle;
 
 import fr.cs.Group13.myVelib.Cards.PricingVisitor;
+import fr.cs.Group13.myVelib.DockingStation.ParkingSlot;
 
 public abstract class Bicycle{
     private int id;
@@ -17,4 +18,6 @@ public abstract class Bicycle{
         this.fromAStation = fromAStation;
     }
     public abstract double[] accept(PricingVisitor visitor);
+    public abstract void setBikeCountFree(ParkingSlot slot);
+    public abstract void setBikeCountFill(ParkingSlot slot);
 }

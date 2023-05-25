@@ -23,6 +23,7 @@ public class ParkingSlot {
 
     public void freeSlot(){
         this.bicycle.setBikeCountFree(this);
+        this.bicycle.removeFromSlot();
         this.occupied = false;
         this.bicycle = null;
     }
@@ -31,6 +32,7 @@ public class ParkingSlot {
             throw new IllegalStateException("Slot is already occupied");
         }
         else {
+            b.addToSlot(this);
             b.setBikeCountFill(this);
             this.occupied = true;
             this.bicycle = b;

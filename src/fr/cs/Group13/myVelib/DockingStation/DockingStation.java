@@ -49,11 +49,13 @@ public abstract class DockingStation {
         for (int i = 0; i<numberOfElectricalBikes; i++) {
             ElectricalBicycle b = new ElectricalBicycle(gpsCord);
             ParkingSlot slot = new ParkingSlot(this, b);
+            b.addToSlot(slot);
             this.parkingSlotArraylist.add(slot);
         }
         for (int i = 0; i< this.getNumberOfMechanicalBikes(); i++) {
             ElectricalBicycle b = new ElectricalBicycle(gpsCord);
             ParkingSlot slot = new ParkingSlot(this, b);
+            b.addToSlot(slot);
             this.parkingSlotArraylist.add(slot);
         }
         for (int i = 0; i<numberOfVacantSlots; i++) {

@@ -2,10 +2,11 @@ package fr.cs.Group13.myVelib.User;
 
 import fr.cs.Group13.myVelib.Bicycle.Bicycle;
 import fr.cs.Group13.myVelib.Cards.*;
-import fr.cs.Group13.myVelib.DockingStation.DockingStation;
 import fr.cs.Group13.myVelib.DockingStation.ParkingSlot;
 import fr.cs.Group13.myVelib.Planing.RideType;
 import fr.cs.Group13.myVelib.Planing.RidesPlaning;
+import fr.cs.Group13.myVelib.System.VlibSystem;
+
 import java.time.Duration;
 import java.time.Instant;
 
@@ -20,7 +21,7 @@ public class User {
     private String lastName; // user's last name
     private double[] gpsCord; // user's GPS coordinates
     private Card card; // user's bike rental card
-    private CreditCard myCard; // user's credit card
+    private CreditCard creditCard; // user's credit card
     private Bicycle currentBicycle; // the bike currently rented by the user
     private double totalCharges; // total amount charged to the user
     private int numberOfRides; // total number of bike rides by the user
@@ -32,20 +33,25 @@ public class User {
 
     /**
      * Constructor for User.
-     * @param id the user's id
      * @param firstName the user's first name
      * @param lastName the user's last name
      * @param card the user's rental card
-     * @param myCard the user's credit card
+     * @param creditCard the user's credit card
      */
-    public User(int id, String firstName, String lastName, Card card, CreditCard myCard) {
+    public User(String firstName, String lastName, Card card, CreditCard creditCard) {
         User.count ++;
         this.id = User.count;
         this.firstName = firstName;
         this.lastName = lastName;
         this.card = card;
-        this.myCard = myCard;
+        this.creditCard = creditCard;
     }
+    public User(double[] gpsCord) {
+        User.count ++;
+        this.gpsCord = gpsCord;
+        this.id = User.count;
+    }
+
 
     public int getId() {
         return id;
@@ -83,12 +89,12 @@ public class User {
         this.card = card;
     }
 
-    public CreditCard getMyCard() {
-        return myCard;
+    public CreditCard getCreditCard() {
+        return creditCard;
     }
 
-    public void setMyCard(CreditCard myCard) {
-        this.myCard = myCard;
+    public void setCreditCard(CreditCard creditCard) {
+        this.creditCard = creditCard;
     }
 
     public double getTotalCharges() {
@@ -130,10 +136,12 @@ public class User {
     public void rentBicycle(Bicycle b){
 
         if (this.currentBicycle == null) {
+            VlibSystem instance = VlibSystem.getInstance();
+            instance.removeStreetBike(b);
             this.startTime = Instant.now();
             this.currentBicycle = b;
             this.currentBicycle.getSlot().freeSlot();
-            this.currentBicycle.removeFromSlot();
+//            this.currentBicycle.removeFromSlot();
         }else{
             throw new IllegalStateException("You cannot rent more than one bicycle!");
         }
@@ -147,6 +155,9 @@ public class User {
         if (this.currentBicycle == null) {
             throw new IllegalStateException("you don't have a bicycle!");
         }else {
+            VlibSystem instance = VlibSystem.getInstance();
+            this.currentBicycle.setGpsCord(this.gpsCord);
+            instance.addStreetBike(this.currentBicycle);
             this.endTime = Instant.now();
             double duration = Duration.between(startTime, endTime).getSeconds() / 60;
             double charge = card.computeCharge(this.currentBicycle, 0, duration);
@@ -176,8 +187,7 @@ public class User {
             this.totalTime += duration;
             this.totalCharges += charge;
             this.numberOfRides ++;
-            this.currentBicycle.setFromAStation(1);
-            this.currentBicycle.addToSlot(slot);
+//            this.currentBicycle.addToSlot(slot);
             this.startTime = null;
             this.endTime = null;
             this.currentBicycle = null;

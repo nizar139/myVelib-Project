@@ -13,9 +13,10 @@ public class Vlibre implements Card, PricingVisitor {
     private final int id;
     private double creditBalance;
 
-    public Vlibre() {
+    public Vlibre(User owner) {
         CardIdGenerator instance = CardIdGenerator.getInstance();
         this.id = instance.getNextCardId();
+        this.owner = owner;
     }
 
     public int getId() {

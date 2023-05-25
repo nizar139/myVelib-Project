@@ -20,6 +20,10 @@ public class NoCard implements Card, PricingVisitor {
     @Override
     public double visit(PlusStation station) {return 0;}
 
+    public NoCard(User owner) {
+        this.owner = owner;
+    }
+
     @Override
     public double computeCharge(Bicycle b, int endingIsStation, double duration) {
         double[] priceHour = b.accept(this);

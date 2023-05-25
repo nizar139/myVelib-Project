@@ -23,6 +23,11 @@ public abstract class Bicycle{
     public void setFromAStation(int fromAStation) {
         this.fromAStation = fromAStation;
     }
+    public double[] getGpsCord(){return this.gpsCord;}
+
+    public void setGpsCord(double[] gpsCord) {
+        this.gpsCord = gpsCord;
+    }
 
     public ParkingSlot getSlot() {
         return slot;
@@ -30,6 +35,8 @@ public abstract class Bicycle{
 
     public void addToSlot(ParkingSlot slot) {
         this.slot = slot;
+        this.fromAStation = 1;
+        this.gpsCord = slot.getStation().getGpsCord();
     }
     public void removeFromSlot() {
         this.slot = null;

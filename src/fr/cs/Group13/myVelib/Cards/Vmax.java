@@ -12,9 +12,10 @@ public class Vmax implements Card, PricingVisitor {
     private User owner;
     private final int id;
     private double creditBalance;
-    public Vmax() {
+    public Vmax(User owner) {
         CardIdGenerator instance = CardIdGenerator.getInstance();
         this.id = instance.getNextCardId();
+        this.owner = owner;
     }
     public int getId() {
         return id;

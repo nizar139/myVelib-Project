@@ -2,19 +2,10 @@ package fr.cs.Group13.myVelib.DockingStation;
 
 import fr.cs.Group13.myVelib.Cards.PricingVisitor;
 
-import java.util.ArrayList;
-
-public class RegularStation implements DockingStation{
-    private int id;
-    private double [] gpsCord;
-    private StationStatus status;
-    private ArrayList<ParkingSlot> parkingSlotArraylist;
-    private int numberOfSlots;
-    private int numberOfVacantSlots;
-
-    public RegularStation() {
-        StationIdGenerator instance = StationIdGenerator.getInstance();
-        this.id = instance.getNextStationID();
+public class RegularStation extends DockingStation{
+    public RegularStation() {super();}
+    public RegularStation(double[] gpsCord, int numberOfSlots, int numberOfVacantSlots) {
+        super(gpsCord, numberOfSlots, numberOfVacantSlots);
     }
     public double accept(PricingVisitor visitor){
         return visitor.visit(this);

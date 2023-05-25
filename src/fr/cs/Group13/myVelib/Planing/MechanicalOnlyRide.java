@@ -19,7 +19,7 @@ public class MechanicalOnlyRide extends RidesPlaning {
      * @param startingGPS The starting GPS coordinates of the ride.
      * @param endingGPS The ending GPS coordinates of the ride.
      * @return A string representing the ride plan. It includes the nearest starting station with a mechanical bike
-     * and the nearest ending station.
+     * and the nearest ending station with at least one free slot.
      */
     @Override
     public String getYourPlan(ArrayList<DockingStation> stations, double[] startingGPS, double[] endingGPS) {
@@ -37,10 +37,12 @@ public class MechanicalOnlyRide extends RidesPlaning {
                         nearestStartingStation = station;
                     }
                 }
-                double endDistance = computeDistance(endingGPS, station.getGpsCord());
-                if (endDistance < minEndingDistance) {
-                    minEndingDistance = endDistance;
-                    nearestEndingStation = station;
+                if (station.getNumberOfVacantSlots() > 0) {
+                    double endDistance = computeDistance(endingGPS, station.getGpsCord());
+                    if (endDistance < minEndingDistance) {
+                        minEndingDistance = endDistance;
+                        nearestEndingStation = station;
+                    }
                 }
             }
         }

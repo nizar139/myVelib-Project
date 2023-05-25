@@ -31,4 +31,6 @@ public abstract class Bicycle{
     }
 
     public abstract double[] accept(PricingVisitor visitor);
+    public abstract void setBikeCountFree(ParkingSlot slot);
+    public abstract void setBikeCountFill(ParkingSlot slot);
 }

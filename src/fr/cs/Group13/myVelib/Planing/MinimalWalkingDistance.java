@@ -1,5 +1,5 @@
 /**
- * ClassicRide is a subclass of RidesPlaning.
+ * MinimalWalkingDistance is a subclass of RidesPlaning.
  * It represents a classic planning strategy where all stations are considered.
  */
 package fr.cs.Group13.myVelib.Planing;
@@ -9,7 +9,7 @@ import fr.cs.Group13.myVelib.DockingStation.StationStatus;
 
 import java.util.ArrayList;
 
-public class ClassicRide extends RidesPlaning{
+public class MinimalWalkingDistance extends RidesPlaning{
     /**
      * This method generates a plan for the ride considering all stations.
      * It finds the nearest DockingStation for starting and for ending.
@@ -31,16 +31,18 @@ public class ClassicRide extends RidesPlaning{
         for (DockingStation station : stations) {
             if (station.getStatus() == StationStatus.ONSERVICE) {
                 double startDistance = computeDistance(startingGPS, station.getGpsCord());
-                double endDistance = computeDistance(endingGPS, station.getGpsCord());
 
                 if (startDistance < minStartingDistance) {
                     minStartingDistance = startDistance;
                     nearestStartingStation = station;
                 }
 
-                if (endDistance < minEndingDistance) {
-                    minEndingDistance = endDistance;
-                    nearestEndingStation = station;
+                if (station.getNumberOfVacantSlots() > 0) {
+                    double endDistance = computeDistance(endingGPS, station.getGpsCord());
+                    if (endDistance < minEndingDistance) {
+                        minEndingDistance = endDistance;
+                        nearestEndingStation = station;
+                    }
                 }
             }
         }

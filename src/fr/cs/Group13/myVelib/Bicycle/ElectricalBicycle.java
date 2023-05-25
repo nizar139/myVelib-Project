@@ -9,6 +9,10 @@ public class ElectricalBicycle extends Bicycle{
         super();
     }
 
+    public ElectricalBicycle(double[] gpsCord) {
+        super(gpsCord);
+    }
+
     @Override
     public double[] accept(PricingVisitor visitor) {
         return visitor.visit(this);

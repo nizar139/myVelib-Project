@@ -8,6 +8,10 @@ public class MechanicalBicycle extends Bicycle{
         super();
     }
 
+    public MechanicalBicycle(double[] gpsCord) {
+        super(gpsCord);
+    }
+
     public double[] accept(PricingVisitor visitor) {
         return visitor.visit(this);
     }

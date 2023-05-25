@@ -5,12 +5,17 @@ import fr.cs.Group13.myVelib.DockingStation.ParkingSlot;
 
 public abstract class Bicycle{
     private int id;
-    private double gpsCord[];
+    private double[] gpsCord;
     private int fromAStation = 1;
     private ParkingSlot slot;
     public Bicycle() {
         BicycleIdGenerator instance = BicycleIdGenerator.getInstance();
         this.id = instance.getNextBicycleID();
+    }
+    public Bicycle(double[] gpsCord) {
+        BicycleIdGenerator instance = BicycleIdGenerator.getInstance();
+        this.id = instance.getNextBicycleID();
+        this.gpsCord = gpsCord;
     }
     public int getfromAStation() {
         return fromAStation;

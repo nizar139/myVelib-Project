@@ -4,6 +4,7 @@
  */
 package fr.cs.Group13.myVelib.Planing;
 
+import fr.cs.Group13.myVelib.Bicycle.Bicycle;
 import fr.cs.Group13.myVelib.DockingStation.DockingStation;
 import fr.cs.Group13.myVelib.DockingStation.StationStatus;
 
@@ -22,7 +23,7 @@ public class MinimalWalkingDistance extends RidesPlaning{
      */
     @Override
     // a reverifier les parametres!
-    public String getYourPlan(ArrayList<DockingStation> stations, double[] startingGPS, double[] endingGPS) {
+    public String getYourPlan(ArrayList<DockingStation> stations, ArrayList<Bicycle> bikes, double[] startingGPS, double[] endingGPS) {
         DockingStation nearestStartingStation = null;
         DockingStation nearestEndingStation = null;
         double minStartingDistance = Double.MAX_VALUE;

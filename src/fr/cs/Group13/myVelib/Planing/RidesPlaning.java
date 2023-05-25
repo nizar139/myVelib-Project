@@ -5,6 +5,7 @@
  */
 package fr.cs.Group13.myVelib.Planing;
 
+import fr.cs.Group13.myVelib.Bicycle.Bicycle;
 import fr.cs.Group13.myVelib.DockingStation.DockingStation;
 
 import java.util.ArrayList;
@@ -31,5 +32,5 @@ public abstract class RidesPlaning {
      * @param endingGPS The ending GPS coordinates of the ride.
      * @return A string representing the ride plan.
      */
-    public abstract String getYourPlan(ArrayList<DockingStation> stations, double[] startingGPS, double[] endingGPS);
+    public abstract String getYourPlan(ArrayList<DockingStation> stations, ArrayList<Bicycle> bikes, double[] startingGPS, double[] endingGPS);
 }

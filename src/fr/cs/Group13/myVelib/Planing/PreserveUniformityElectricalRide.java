@@ -1,7 +1,7 @@
 /**
- * This class extends the RidesPlaning abstract class. It is designed to help a user plan a ride
- * that aims at preserving the uniformity of distribution of both types of bikes (mechanical and electrical) across stations.
- * This strategy attempts to balance the number of bikes and vacant slots across different stations.
+ * This class extends RidesPlaning abstract class. It is designed to help a user plan a ride
+ * that is aimed at preserving the uniformity of distribution of electrical bikes across stations.
+ * This strategy attempts to balance the number of electrical bikes and vacant slots across different stations.
  */
 package fr.cs.Group13.myVelib.Planing;
 
@@ -11,17 +11,17 @@ import fr.cs.Group13.myVelib.DockingStation.StationStatus;
 
 import java.util.ArrayList;
 
-public class PreserveUniformityRide extends RidesPlaning{
+public class PreserveUniformityElectricalRide extends RidesPlaning{
     /**
-     * The method plans a ride considering the uniformity of both types of bikes (mechanical and electrical) across stations.
-     * It first finds the nearest station with available bikes of any type and a station with vacant slots.
+     * The method plans a ride considering the uniformity of electrical bikes across stations.
+     * It first finds the nearest station with available electrical bikes and a station with vacant slots.
      * Then it checks for other stations within 105% of the distance of the previously found stations
-     * that have a better number of bikes or vacant slots and picks those as starting and ending stations.
+     * that have a better number of electrical bikes or vacant slots and picks those as starting and ending stations.
      *
      * @param stations ArrayList of DockingStation objects representing all available stations.
      * @param startingGPS A double array representing the GPS coordinates where the user starts.
      * @param endingGPS A double array representing the GPS coordinates where the user wants to end.
-     * @return A string describing the best starting station with at least one bike of any type and the best ending station.
+     * @return A string describing the best starting station with at least one electrical bike and the best ending station.
      */
     @Override
     public String getYourPlan(ArrayList<DockingStation> stations, ArrayList<Bicycle> bikes, double[] startingGPS, double[] endingGPS) {
@@ -34,13 +34,13 @@ public class PreserveUniformityRide extends RidesPlaning{
 
         for (DockingStation station : stations) {
             if (station.getStatus() == StationStatus.ONSERVICE) {
-                double startDistance = computeDistance(startingGPS, station.getGpsCord());
-
-                if (startDistance < minStartingDistance) {
-                    minStartingDistance = startDistance;
-                    nearestStartingStation = station;
+                if (station.getNumberOfElectricalBikes() > 0) {
+                    double startDistance = computeDistance(startingGPS, station.getGpsCord());
+                    if (startDistance < minStartingDistance) {
+                        minStartingDistance = startDistance;
+                        nearestStartingStation = station;
+                    }
                 }
-
                 if (station.getNumberOfVacantSlots() > 0) {
                     double endDistance = computeDistance(endingGPS, station.getGpsCord());
                     if (endDistance < minEndingDistance) {
@@ -55,9 +55,8 @@ public class PreserveUniformityRide extends RidesPlaning{
                 double startDistance = computeDistance(startingGPS, station.getGpsCord());
                 double endDistance = computeDistance(endingGPS, station.getGpsCord());
 
-                if (startDistance < 1.05 * minStartingDistance && (station.getNumberOfSlots() -
-                        station.getNumberOfVacantSlots() > nearestStartingStation.getNumberOfSlots() -
-                        nearestEndingStation.getNumberOfVacantSlots())) {
+                if (startDistance < 1.05 * minStartingDistance && (station.getNumberOfElectricalBikes()
+                        > nearestStartingStation.getNumberOfElectricalBikes())) {
                     bestStartingStation = station;
                 }
 
@@ -68,6 +67,6 @@ public class PreserveUniformityRide extends RidesPlaning{
             }
         }
 
-        return "Nearest starting station: " + bestStartingStation + ", Nearest ending station: " + bestEndingStation;
+        return "Nearest starting station with at least one Electrical Bike: " + bestStartingStation + ", Nearest ending station: " + bestEndingStation;
     }
 }

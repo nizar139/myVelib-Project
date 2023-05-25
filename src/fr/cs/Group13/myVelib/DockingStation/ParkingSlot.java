@@ -7,7 +7,7 @@ public class ParkingSlot {
     private Bicycle bicycle = null;
     private DockingStation station;
 
-    public ParkingSlot(Bicycle bicycle, DockingStation station) {
+    public ParkingSlot(DockingStation station, Bicycle bicycle) {
         this.bicycle = bicycle;
         this.station = station;
         this.occupied = true;

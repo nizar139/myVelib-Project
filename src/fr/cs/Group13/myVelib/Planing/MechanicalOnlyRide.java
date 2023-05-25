@@ -30,7 +30,7 @@ public class MechanicalOnlyRide extends RidesPlaning {
 
         for (DockingStation station : stations) {
             if (station.getStatus() == StationStatus.ONSERVICE) {
-                if (station.getNumberOfSlots()-station.getNumberOfVacantSlots()-station.getnumberOfElectricalBikes() > 0) {
+                if (station.getNumberOfSlots()-station.getNumberOfVacantSlots()-station.getNumberOfElectricalBikes() > 0) {
                     double startDistance = computeDistance(startingGPS, station.getGpsCord());
                     if (startDistance < minStartingDistance) {
                         minStartingDistance = startDistance;

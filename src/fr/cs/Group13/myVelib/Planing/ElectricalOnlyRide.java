@@ -30,7 +30,7 @@ public class ElectricalOnlyRide extends RidesPlaning{
 
         for (DockingStation station : stations) {
             if (station.getStatus() == StationStatus.ONSERVICE) {
-                if (station.getnumberOfElectricalBikes() > 0) {
+                if (station.getNumberOfElectricalBikes() > 0) {
                     double startDistance = computeDistance(startingGPS, station.getGpsCord());
                     if (startDistance < minStartingDistance) {
                         minStartingDistance = startDistance;

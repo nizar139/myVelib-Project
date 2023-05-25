@@ -193,7 +193,7 @@ public class User {
         //factory call
         RideType ride = new RideType();
         RidesPlaning plan = ride.getYourStrat(strategy);
-        return plan.getYourPlan();
+        return "";
     }
 
 }

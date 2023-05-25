@@ -38,4 +38,17 @@ public abstract class DockingStation {
         this.id = instance.getNextStationID();
     }
     public abstract double accept(PricingVisitor visitor);
+
+    public StationStatus getStatus() {
+        return status;
+    }
+
+    public int getNumberOfSlots() {
+        return numberOfSlots;
+    }
+
+    public double[] getGpsCord() {
+        return gpsCord;
+    }
+
 }

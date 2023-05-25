@@ -10,7 +10,7 @@ import fr.cs.Group13.myVelib.DockingStation.StationStatus;
 
 import java.util.ArrayList;
 
-public class PreferPlusStation {
+public class PreferPlusStation extends RidesPlaning{
     /**
      * This overridden method gets the plan for a ride based on the given parameters.
      * The algorithm will seek the nearest starting station and the nearest non-PlusStation ending station that has available slots.

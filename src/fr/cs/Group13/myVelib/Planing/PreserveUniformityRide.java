@@ -41,16 +41,16 @@ public class PreserveUniformityRide extends RidesPlaning{
 
                 if (startDistance < 1.05 * minStartingDistance && (station.getNumberOfSlots() - station.getNumberOfVacantSlots()
                         > nearestStartingStation.getNumberOfSlots() - nearestEndingStation.getNumberOfVacantSlots())) {
-                    nearestStartingStation = station;
+                    bestStartingStation = station;
                 }
 
                 if (endDistance < 1.05 * minEndingDistance && (station.getNumberOfVacantSlots() >
                         nearestEndingStation.getNumberOfVacantSlots())) {
-                    nearestEndingStation = station;
+                    bestEndingStation = station;
                 }
             }
         }
 
-        return "Nearest starting station: " + nearestStartingStation + ", Nearest ending station: " + nearestEndingStation;
+        return "Nearest starting station: " + bestStartingStation + ", Nearest ending station: " + bestEndingStation;
     }
 }

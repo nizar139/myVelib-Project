@@ -94,7 +94,7 @@ public class Vlibre implements Card, PricingVisitor {
         double effectiveDuration = Math.max(0, duration-this.getCreditBalance());
         this.setCreditBalance(Math.max(0, this.getCreditBalance()-duration));
         double basePrice = priceHour[0]*Math.min(effectiveDuration, 60) + priceHour[1]*Math.max(effectiveDuration-60, 0);
-        double finalPrice = basePrice*(1-0.1*((double)endingIsStation -1));
+        double finalPrice = basePrice*(1-0.1*(endingIsStation -b.getFromAStation()));
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
         finalPrice = Double.parseDouble(decimalFormat.format(finalPrice));
         return finalPrice/60;

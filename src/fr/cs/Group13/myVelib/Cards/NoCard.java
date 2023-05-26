@@ -14,6 +14,8 @@ import fr.cs.Group13.myVelib.DockingStation.PlusStation;
 import fr.cs.Group13.myVelib.DockingStation.RegularStation;
 import fr.cs.Group13.myVelib.User.User;
 
+import java.text.DecimalFormat;
+
 public class NoCard implements Card, PricingVisitor {
 
     private User owner;
@@ -69,7 +71,9 @@ public class NoCard implements Card, PricingVisitor {
     public double computeCharge(Bicycle b, int endingIsStation, double duration) {
         double[] priceHour = b.accept(this);
         double basePrice = priceHour[0]*duration;
-        double finalPrice = basePrice*(1-0.1*(endingIsStation -1));
+        double finalPrice = basePrice*(1-0.1*(endingIsStation -b.getFromAStation()));
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+        finalPrice = Double.parseDouble(decimalFormat.format(finalPrice));
         return finalPrice/60;
     }
 

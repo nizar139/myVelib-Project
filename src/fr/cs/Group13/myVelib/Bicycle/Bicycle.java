@@ -61,7 +61,7 @@ public abstract class Bicycle{
      * @return the gps coordinate.
      */
     public double[] getGpsCord() {
-        return gpsCord;
+        return this.gpsCord;
     }
 
     /**

@@ -14,6 +14,7 @@ class RegularStationTest {
         PricingVisitor pricingVisitor = new TestPricingVisitor();
 
         double result = regularStation.accept(pricingVisitor);
+        regularStation.getBalance();
 
         assertEquals(0, result);
     }

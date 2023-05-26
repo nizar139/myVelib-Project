@@ -11,6 +11,7 @@ import fr.cs.Group13.myVelib.Bicycle.ElectricalBicycle;
 import fr.cs.Group13.myVelib.Cards.PricingVisitor;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public abstract class DockingStation {
     private int id;
@@ -155,6 +156,11 @@ public abstract class DockingStation {
         return gpsCord;
     }
     public void getBalance() {
-        System.out.println("Station " + this.id +": \r\n\t total number of rent operations :"+this.totalRents+" \r\n\t total number of returns"+this.totalReturns);
+        System.out.println("Station " + this.id +": \r\n\t total number of rent operations : "+this.totalRents+" \r\n\t total number of return operation : "+this.totalReturns);
+    }
+
+    @Override
+    public String toString() {
+        return "Station " + id + ", situated" + Arrays.toString(gpsCord);
     }
 }

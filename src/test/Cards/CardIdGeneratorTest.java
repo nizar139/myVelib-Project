@@ -2,7 +2,7 @@ package test.Cards;
 
 import fr.cs.Group13.myVelib.Cards.CardIdGenerator;
 import org.junit.jupiter.api.Test;
-import static org.testng.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 class CardIdGeneratorTest {
 

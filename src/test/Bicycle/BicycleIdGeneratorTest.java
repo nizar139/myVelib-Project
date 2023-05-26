@@ -2,7 +2,7 @@ package test.Bicycle;
 
 import fr.cs.Group13.myVelib.Bicycle.BicycleIdGenerator;
 import org.junit.jupiter.api.Test;
-import static org.testng.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BicycleIdGeneratorTest {
     @Test

@@ -41,4 +41,26 @@ class ElectricalBicycleTest {
         assertEquals(-1, station.getNumberOfVacantSlots());
         assertEquals(1, station.getNumberOfElectricalBikes());
     }
+
+    @Test
+    void testRemoveFromSlot(){
+        DockingStation station = new RegularStation();
+        ElectricalBicycle bicycle = new ElectricalBicycle();
+        ParkingSlot slot = new ParkingSlot(station, bicycle);
+        bicycle.removeFromSlot();
+
+        assertEquals(null, bicycle.getSlot());
+    }
+
+    @Test
+    void testAddToSlot(){
+        DockingStation station = new RegularStation();
+        ElectricalBicycle bicycle = new ElectricalBicycle();
+        ParkingSlot slot = new ParkingSlot(station);
+        bicycle.addToSlot(slot);
+
+        assertEquals(slot, bicycle.getSlot());
+        assertEquals(1, bicycle.getFromAStation());
+        assertEquals(station.getGpsCord(), bicycle.getGpsCord());
+    }
 }

@@ -1,18 +1,38 @@
+/**
+ * The StationIdGenerator class is a singleton that generates unique IDs for each Docking station object.
+ * It ensures that each Docking station in the system has a unique identifier.
+ *
+ * @author Oussama and Nizar
+ */
 package fr.cs.Group13.myVelib.DockingStation;
 
 public class StationIdGenerator {
     private static StationIdGenerator instance = null;
     private int num;
-    // private constructor: returns the unique SerialNumberGenerator object
+
+    /**
+     * Private constructor to prevent instantiation from outside.
+     */
     private StationIdGenerator(){}
-    // public getInstance method
+
+    /**
+     * Method to retrieve the singleton instance of StationIdGenerator.
+     * If it does not exist, a new instance is created.
+     *
+     * @return The singleton instance of StationIdGenerator.
+     */
     public static StationIdGenerator getInstance() {
         if (instance==null) {
             instance = new StationIdGenerator();
         }
         return instance;
     }
-    // public method to obtain next unique serialNumber
+
+    /**
+     * Public method to obtain the next unique Docking station ID.
+     *
+     * @return The next unique Docking station ID.
+     */
     public int getNextStationID(){
         return num++;
     }

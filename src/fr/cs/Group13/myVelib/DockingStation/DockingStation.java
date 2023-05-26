@@ -1,3 +1,10 @@
+/**
+ * The DockingStation class represents a docking station in the system.
+ * It manages parking slots and bicycles.
+ * Concrete subclasses must implement the accept() method to accept a PricingVisitor.
+ *
+ * @author Oussama and Nizar
+ */
 package fr.cs.Group13.myVelib.DockingStation;
 
 import fr.cs.Group13.myVelib.Bicycle.ElectricalBicycle;
@@ -23,29 +30,69 @@ public abstract class DockingStation {
         this.totalReturns ++;
     }
 
+
+    /**
+     * Returns the number of electrical bikes in the docking station.
+     *
+     * @return The number of electrical bikes.
+     */
     public int getNumberOfElectricalBikes() {
         return numberOfElectricalBikes;
     }
+
+    /**
+     * Sets the number of electrical bikes in the docking station.
+     *
+     * @param numberOfElectricalBikes The number of electrical bikes.
+     */
     public void setNumberOfElectricalBikes(int numberOfElectricalBikes) {
         this.numberOfElectricalBikes = numberOfElectricalBikes;
     }
 
+    /**
+     * Returns the number of vacant slots in the docking station.
+     *
+     * @return The number of vacant slots.
+     */
     public int getNumberOfVacantSlots() {
         return numberOfVacantSlots;
     }
 
+    /**
+     * Sets the number of vacant slots in the docking station.
+     *
+     * @param numberOfVacantSlots The number of vacant slots.
+     */
     public void setNumberOfVacantSlots(int numberOfVacantSlots) {
         this.numberOfVacantSlots = numberOfVacantSlots;
     }
+
+    /**
+     * Returns the number of mechanical bikes in the docking station.
+     *
+     * @return The number of mechanical bikes.
+     */
     public int getNumberOfMechanicalBikes(){
         int i = this.numberOfSlots - this.numberOfVacantSlots -this.numberOfElectricalBikes;
         return i;
     }
 
+    /**
+     * Constructs a DockingStation object with a unique ID.
+     */
     public DockingStation() {
         StationIdGenerator instance = StationIdGenerator.getInstance();
         this.id = instance.getNextStationID();
     }
+
+    /**
+     * Constructs a DockingStation object with the specified parameters.
+     *
+     * @param gpsCord                The GPS coordinates of the docking station.
+     * @param numberOfSlots          The total number of slots in the docking station.
+     * @param numberOfVacantSlots    The number of initially vacant slots in the docking station.
+     * @param numberOfElectricalBikes The number of initially available electrical bikes in the docking station.
+     */
     public DockingStation(double[] gpsCord, int numberOfSlots, int numberOfVacantSlots, int numberOfElectricalBikes) {
         //create station, generate slots, and bikes
         StationIdGenerator instance = StationIdGenerator.getInstance();
@@ -72,16 +119,38 @@ public abstract class DockingStation {
             this.parkingSlotArraylist.add(slot);
         }
     }
+
+    /**
+     * Method to be implemented by concrete subclasses to accept a PricingVisitor.
+     *
+     * @param visitor The PricingVisitor object.
+     * @return a double.
+     */
     public abstract double accept(PricingVisitor visitor);
 
+    /**
+     * Returns the status of the docking station.
+     *
+     * @return The status of the docking station.
+     */
     public StationStatus getStatus() {
         return status;
     }
 
+    /**
+     * Returns the number of slots in the docking station.
+     *
+     * @return The number of slots.
+     */
     public int getNumberOfSlots() {
         return numberOfSlots;
     }
 
+    /**
+     * Returns the GPS coordinates of the docking station.
+     *
+     * @return The GPS coordinates.
+     */
     public double[] getGpsCord() {
         return gpsCord;
     }

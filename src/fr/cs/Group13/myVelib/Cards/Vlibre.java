@@ -47,7 +47,7 @@ public class Vlibre implements Card, PricingVisitor {
     /**
      * Method to provide the cost parameters for visiting an ElectricalBicycle.
      * @param bicycle the ElectricalBicycle being visited.
-     * @return an array of double values representing the base and the cost per hour.
+     * @return an array of double values representing the base cost and the cost per hour.
      */
     @Override
     public double[] visit(ElectricalBicycle bicycle) {
@@ -57,7 +57,7 @@ public class Vlibre implements Card, PricingVisitor {
     /**
      * Method to provide the cost parameters for visiting an MechanicalBicycle.
      * @param bicycle the MechanicalBicycle being visited.
-     * @return an array of double values representing the base and the cost per hour.
+     * @return an array of double values representing the base cost and the cost per hour.
      */
     @Override
     public double[] visit(MechanicalBicycle bicycle) {

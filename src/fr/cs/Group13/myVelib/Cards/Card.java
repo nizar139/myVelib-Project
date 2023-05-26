@@ -26,6 +26,7 @@ public interface Card {
      * This method applies the bonus of this card to a specified DockingStation.
      *
      * @param station The DockingStation object to which the bonus is to be applied.
+     * @return The bonus granted.
      */
     void applyBonus(DockingStation station);
 }

@@ -28,7 +28,7 @@ public class NoCard implements Card, PricingVisitor {
     public double computeCharge(Bicycle b, int endingIsStation, double duration) {
         double[] priceHour = b.accept(this);
         double basePrice = priceHour[0]*duration;
-        double finalPrice = basePrice*(1-0.1*(endingIsStation -1));
+        double finalPrice = basePrice*(1-0.1*(endingIsStation -b.getfromAStation()));
         return finalPrice/60;
     }
 

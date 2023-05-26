@@ -47,7 +47,7 @@ public class Vmax implements Card, PricingVisitor {
         double effectiveDuration = Math.min(0, duration-this.getCreditBalance());
         this.setCreditBalance(Math.min(0, this.getCreditBalance()-duration));
         double basePrice = priceHour[0]*Math.min(effectiveDuration, 60) + priceHour[1]*Math.max(effectiveDuration-60, 0);
-        double finalPrice = basePrice*(1-0.1*(endingIsStation -1));
+        double finalPrice = basePrice*(1-0.1*(endingIsStation -b.getfromAStation()));
         return finalPrice/60;
     }
 

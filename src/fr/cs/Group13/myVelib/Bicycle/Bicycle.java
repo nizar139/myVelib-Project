@@ -49,7 +49,6 @@ public abstract class Bicycle{
     public void setFromAStation(int fromAStation) {
         this.fromAStation = fromAStation;
     }
-    public double[] getGpsCord(){return this.gpsCord;}
 
     public void setGpsCord(double[] gpsCord) {
         this.gpsCord = gpsCord;
@@ -60,7 +59,7 @@ public abstract class Bicycle{
      * @return the gps coordinate.
      */
     public double[] getGpsCord() {
-        return gpsCord;
+        return this.gpsCord;
     }
 
     /**

@@ -100,4 +100,5 @@ public class VlibSystem {
     public void removeStreetBike (Bicycle b){
         instance.listOfStreetBikes.remove(b);
     }
+
 }

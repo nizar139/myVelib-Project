@@ -143,7 +143,9 @@ public class User {
             instance.removeStreetBike(b);
             this.startTime = Instant.now();
             this.currentBicycle = b;
-            this.currentBicycle.getSlot().freeSlot();
+            if (this.currentBicycle.getSlot()!=null)
+            {this.currentBicycle.getSlot().getStation().incrementRents();
+            this.currentBicycle.getSlot().freeSlot();}
 //            this.currentBicycle.removeFromSlot();
         }else{
             throw new IllegalStateException("You cannot rent more than one bicycle!");
@@ -184,6 +186,7 @@ public class User {
             throw new IllegalStateException("you don't have a bicycle!");
         }else{
             slot.putBicycle(this.currentBicycle);
+            slot.getStation().incrementReturns();
             this.endTime = Instant.now();
             double duration = Duration.between(startTime, endTime).getSeconds() / 60;
             double charge = card.computeCharge(this.currentBicycle, 1, duration);

@@ -13,6 +13,15 @@ public abstract class DockingStation {
     private int numberOfSlots;
     private int numberOfElectricalBikes;
     private int numberOfVacantSlots;
+    private int totalRents;
+    private int totalReturns;
+
+    public void incrementRents(){
+        this.totalRents ++;
+    }
+    public void incrementReturns(){
+        this.totalReturns ++;
+    }
 
     public int getNumberOfElectricalBikes() {
         return numberOfElectricalBikes;
@@ -76,5 +85,7 @@ public abstract class DockingStation {
     public double[] getGpsCord() {
         return gpsCord;
     }
-
+    public void getBalance() {
+        System.out.println("Station " + this.id +": \r\n\t total number of rent operations :"+this.totalRents+" \r\n\t total number of returns"+this.totalReturns);
+    }
 }

@@ -15,6 +15,8 @@ import fr.cs.Group13.myVelib.DockingStation.PlusStation;
 import fr.cs.Group13.myVelib.DockingStation.RegularStation;
 import fr.cs.Group13.myVelib.User.User;
 
+import java.text.DecimalFormat;
+
 public class Vmax implements Card, PricingVisitor {
     private User owner;
     private final int id;
@@ -43,7 +45,7 @@ public class Vmax implements Card, PricingVisitor {
     /**
      * Method to provide the cost parameters for visiting an ElectricalBicycle.
      * @param bicycle the ElectricalBicycle being visited.
-     * @return an array of double values representing the cost of visit.
+     * @return an array of double values representing the base and the cost per hour.
      */
     @Override
     public double[] visit(ElectricalBicycle bicycle) {
@@ -53,7 +55,7 @@ public class Vmax implements Card, PricingVisitor {
     /**
      * Method to provide the cost parameters for visiting an MechanicalBicycle.
      * @param bicycle the MechanicalBicycle being visited.
-     * @return an array of double values representing the cost of visit.
+     * @return an array of double values representing the base and the cost per hour.
      */
     @Override
     public double[] visit(MechanicalBicycle bicycle) {
@@ -86,10 +88,12 @@ public class Vmax implements Card, PricingVisitor {
     @Override
     public double computeCharge(Bicycle b, int endingIsStation, double duration) {
         double[] priceHour = b.accept(this);
-        double effectiveDuration = Math.min(0, duration-this.getCreditBalance());
-        this.setCreditBalance(Math.min(0, this.getCreditBalance()-duration));
+        double effectiveDuration = Math.max(0, duration-this.getCreditBalance());
+        this.setCreditBalance(Math.max(0, this.getCreditBalance()-duration));
         double basePrice = priceHour[0]*Math.min(effectiveDuration, 60) + priceHour[1]*Math.max(effectiveDuration-60, 0);
         double finalPrice = basePrice*(1-0.1*(endingIsStation -1));
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+        finalPrice = Double.parseDouble(decimalFormat.format(finalPrice));
         return finalPrice/60;
     }
 

@@ -28,7 +28,7 @@ public class NoCard implements Card, PricingVisitor {
     /**
      * Method to provide the cost parameters for visiting an ElectricalBicycle.
      * @param bicycle the ElectricalBicycle being visited.
-     * @return an array of double values representing the cost per hour and the base cost.
+     * @return an array of double values representing the base and the cost per hour.
      */
     @Override
     public double[] visit(ElectricalBicycle bicycle) {return new double[]{2,2};}
@@ -36,7 +36,7 @@ public class NoCard implements Card, PricingVisitor {
     /**
      * ethod to provide the cost parameters for visiting a MechanicalBicycle.
      * @param bicycle the MechanicalBicycle being visited.
-     * @return an array of double values representing the cost per hour and the base cost.
+     * @return an array of double values representing the base and the cost per hour.
      */
     @Override
     public double[] visit(MechanicalBicycle bicycle) {return new double[]{1,1};}

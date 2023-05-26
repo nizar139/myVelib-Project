@@ -52,6 +52,9 @@ public class User {
         this.id = User.count;
     }
 
+    public User(String firstName) {
+        this.firstName = firstName;
+    }
 
     public int getId() {
         return id;

@@ -1,6 +1,8 @@
 /**
  * The BicycleIdGenerator class is a singleton that generates unique IDs for each Bicycle object.
  * It ensures that each Bicycle in the system has a unique identifier.
+ *
+ * @author Oussama and Nizar
  */
 package fr.cs.Group13.myVelib.Bicycle;
 

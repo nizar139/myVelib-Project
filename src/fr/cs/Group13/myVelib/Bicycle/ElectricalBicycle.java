@@ -1,6 +1,8 @@
 /**
  * The ElectricalBicycle class extends the Bicycle class, representing an electrical bicycle in the system.
  * It provides methods to modify the bicycle count at docking stations as well as accepting visitor for pricing.
+ *
+ * @author Oussama and Nizar
  */
 package fr.cs.Group13.myVelib.Bicycle;
 

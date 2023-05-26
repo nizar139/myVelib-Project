@@ -4,6 +4,8 @@
  * A bicycle can be in a parking slot at a docking station or on the street.
  *
  * The "fromAStation" attribute indicates if a bicycle is from a docking station (1) or from the street (0).
+ *
+ * @author Oussama and Nizar
  */
 package fr.cs.Group13.myVelib.Bicycle;
 
@@ -38,7 +40,7 @@ public abstract class Bicycle{
      * Gets the fromAStation attribute.
      * @return the value of fromAStation.
      */
-    public int getfromAStation() {
+    public int getFromAStation() {
         return fromAStation;
     }
 
@@ -96,14 +98,16 @@ public abstract class Bicycle{
     public abstract double[] accept(PricingVisitor visitor);
 
     /**
-     * Method to be implemented by concrete subclasses to set the bike count free.
-     * @param slot the parking slot.
+     * This method adjusts the necessary attributes when a bicycle is removed from a parking slot.
+     * The exact changes depend on the specific subclass of bicycle, hence this method is meant to be overridden.
+     * @param slot The ParkingSlot from which the bicycle is being removed.
      */
     public abstract void setBikeCountFree(ParkingSlot slot);
 
     /**
-     * Method to be implemented by concrete subclasses to set the bike count fill.
-     * @param slot the parking slot.
+     * This method adjusts the necessary attributes when a bicycle is added to a parking slot.
+     * The exact changes depend on the specific subclass of bicycle, hence this method is meant to be overridden.
+     * @param slot The ParkingSlot to which the bicycle is being added.
      */
     public abstract void setBikeCountFill(ParkingSlot slot);
 }

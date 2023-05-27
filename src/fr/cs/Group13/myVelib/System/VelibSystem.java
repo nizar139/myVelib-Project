@@ -10,19 +10,49 @@ import fr.cs.Group13.myVelib.DockingStation.PlusStation;
 import fr.cs.Group13.myVelib.DockingStation.RegularStation;
 import fr.cs.Group13.myVelib.User.User;
 
+import javax.print.Doc;
 import java.util.ArrayList;
 import java.util.Random;
-public class VlibSystem {
+public class VelibSystem {
+    private int id;
+    private static int count = 0;
+    private String name;
     private ArrayList<DockingStation> listOfStations;
     private ArrayList<Bicycle> listOfStreetBikes;
     private ArrayList<User> listOfUsers;
+    private static int getNextId(){
+        count++;
+        return count;
+    }
 
-    private VlibSystem() {}
+    public VelibSystem() {
+        this.id = getNextId();
+    }
+    public VelibSystem(String name) {
+        this.id = getNextId();
+        this.name = name;
+    }
 
-    public VlibSystem(ArrayList<DockingStation> listOfStations, ArrayList<Bicycle> listOfStreetBikes, ArrayList<User> listOfUsers) {
+    public VelibSystem(ArrayList<DockingStation> listOfStations, ArrayList<Bicycle> listOfStreetBikes, ArrayList<User> listOfUsers) {
+        this.id = getNextId();
         this.listOfStations = listOfStations;
         this.listOfStreetBikes = listOfStreetBikes;
         this.listOfUsers = listOfUsers;
+    }
+    public VelibSystem(String name, ArrayList<DockingStation> listOfStations, ArrayList<Bicycle> listOfStreetBikes, ArrayList<User> listOfUsers) {
+        this.id = getNextId();
+        this.name = name;
+        this.listOfStations = listOfStations;
+        this.listOfStreetBikes = listOfStreetBikes;
+        this.listOfUsers = listOfUsers;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void resetSystem(){
@@ -44,6 +74,12 @@ public class VlibSystem {
         PlusStation station = new PlusStation(this, gpsCord, nSlots,(int) v,(int) w);
         this.listOfStations.add(station);
     }
+    public void addStation(DockingStation station){
+        this.listOfStations.add(station);
+    }
+    public void addUser(User user){
+        this.listOfUsers.add(user);
+    }
     public void addNonSub(double[] gpsCord){
         User user = new User(this, gpsCord);
         NoCard card = new NoCard(user);
@@ -62,7 +98,7 @@ public class VlibSystem {
         user.setCard(card);
         this.listOfUsers.add(user);
     }
-    public double[] getRandomCord(double maxX, double maxY){
+    public static double[] getRandomCord(double maxX, double maxY){
         Random random = new Random();
         double x = random.nextDouble()*maxX;
         double y = random.nextDouble()*maxY;
@@ -100,8 +136,8 @@ public class VlibSystem {
     public void removeStreetBike (Bicycle b){
         this.listOfStreetBikes.remove(b);
     }
-    public static VlibSystem createUseCaseSys(){
-        VlibSystem vlibSys = new VlibSystem();
+    public static VelibSystem createUseCaseSys(){
+        VelibSystem vlibSys = new VelibSystem();
         vlibSys.generateStationMap(10, 10,10,0.4,0.3,10,10);
         vlibSys.generateUserList(20,10,10,10,10);
         vlibSys.listOfStreetBikes = new ArrayList<>();

@@ -5,7 +5,7 @@ import fr.cs.Group13.myVelib.Cards.*;
 import fr.cs.Group13.myVelib.DockingStation.ParkingSlot;
 import fr.cs.Group13.myVelib.Planing.RideType;
 import fr.cs.Group13.myVelib.Planing.RidesPlaning;
-import fr.cs.Group13.myVelib.System.VlibSystem;
+import fr.cs.Group13.myVelib.System.VelibSystem;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -23,7 +23,7 @@ public class User {
     private Card card; // user's bike rental card
     private CreditCard creditCard; // user's credit card
     private Bicycle currentBicycle; // the bike currently rented by the user
-    private VlibSystem vlibSys; // the Vlib System in which the user is registered
+    private VelibSystem vlibSys; // the Vlib System in which the user is registered
     private double totalCharges; // total amount charged to the user
     private int numberOfRides; // total number of bike rides by the user
     private double totalTime; // total time spent on bike rides by the user
@@ -47,7 +47,7 @@ public class User {
         this.card = card;
         this.creditCard = creditCard;
     }
-    public User(VlibSystem vlibSys, double[] gpsCord) {
+    public User(VelibSystem vlibSys, double[] gpsCord) {
         User.count ++;
         this.gpsCord = gpsCord;
         this.id = User.count;

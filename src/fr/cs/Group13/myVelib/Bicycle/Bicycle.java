@@ -87,6 +87,10 @@ public abstract class Bicycle{
         return slot;
     }
 
+    public int getId() {
+        return id;
+    }
+
     /**
      * Adds the bicycle to a parking slot.
      * @param slot the parking slot to add the bicycle to.
@@ -124,4 +128,6 @@ public abstract class Bicycle{
      * @param slot The ParkingSlot to which the bicycle is being added.
      */
     public abstract void setBikeCountFill(ParkingSlot slot);
+
+
 }

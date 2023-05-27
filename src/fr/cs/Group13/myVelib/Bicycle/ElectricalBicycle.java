@@ -38,6 +38,8 @@ public class ElectricalBicycle extends Bicycle{
         super(gpsCord, fromAStation, slot);
     }
 
+
+
     /**
      * Method to accept a PricingVisitor, allowing for implementation of the Visitor pattern for pricing.
      *
@@ -69,4 +71,13 @@ public class ElectricalBicycle extends Bicycle{
         slot.getStation().setNumberOfVacantSlots(slot.getStation().getNumberOfVacantSlots()-1);
         slot.getStation().setNumberOfElectricalBikes(slot.getStation().getNumberOfElectricalBikes()+1);
     }
+
+    @Override
+    public boolean equals(Object obj){
+        if(obj == this) return true;
+        if(obj instanceof ElectricalBicycle)
+            return ((ElectricalBicycle)obj).getId()==this.getId();
+        return false;
+    }
+
 }

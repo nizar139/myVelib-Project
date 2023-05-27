@@ -111,4 +111,12 @@ public class Vlibre implements Card, PricingVisitor {
         this.owner.setTotalTimeCredit(this.owner.getTotalTimeCredit()+bonus);
     }
 
+    @Override
+    public boolean equals(Object obj){
+        if(obj == this) return true;
+        if(obj instanceof Vlibre)
+            return ((Vlibre)obj).getId()==this.getId();
+        return false;
+    }
+
 }

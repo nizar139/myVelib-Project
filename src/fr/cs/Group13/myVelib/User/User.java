@@ -393,4 +393,13 @@ public class User {
                 "\r\n\t total charge : " + this.totalCharges +
                 "\r\n\t total time credit earned : "+ this.totalTimeCredit);
     }
+
+    @Override
+    public boolean equals(Object obj){
+        if(obj == this) return true;
+        if(obj instanceof User)
+            return ((User)obj).getId()==this.id;
+        return false;
+    }
+
 }

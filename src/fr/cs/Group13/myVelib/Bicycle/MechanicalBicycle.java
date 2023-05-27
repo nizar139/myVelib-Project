@@ -64,5 +64,13 @@ public class MechanicalBicycle extends Bicycle{
     public void setBikeCountFill(ParkingSlot slot) {
         slot.getStation().setNumberOfVacantSlots(slot.getStation().getNumberOfVacantSlots()-1);
     }
+
+    @Override
+    public boolean equals(Object obj){
+        if(obj == this) return true;
+        if(obj instanceof MechanicalBicycle)
+            return ((MechanicalBicycle)obj).getId()==this.getId();
+        return false;
+    }
 }
 

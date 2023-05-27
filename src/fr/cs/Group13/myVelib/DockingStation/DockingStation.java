@@ -42,6 +42,14 @@ public abstract class DockingStation {
         return id;
     }
 
+    public int getTotalRents() {
+        return totalRents;
+    }
+
+    public int getTotalReturns() {
+        return totalReturns;
+    }
+
     /**
      * Returns the number of electrical bikes in the docking station.
      *

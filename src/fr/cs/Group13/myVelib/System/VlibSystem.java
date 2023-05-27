@@ -101,7 +101,7 @@ public class VlibSystem {
     }
     public static VlibSystem createUseCaseSys(){
         VlibSystem vlibSys = new VlibSystem();
-        vlibSys.generateStationMap(10, 10,10,0.7,0.3,10,10);
+        vlibSys.generateStationMap(10, 10,10,0.4,0.3,10,10);
         vlibSys.generateUserList(20,10,10,10,10);
         vlibSys.listOfStreetBikes = new ArrayList<>();
         return vlibSys;

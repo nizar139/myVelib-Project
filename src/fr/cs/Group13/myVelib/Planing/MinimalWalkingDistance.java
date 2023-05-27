@@ -31,11 +31,13 @@ public class MinimalWalkingDistance extends RidesPlaning{
 
         for (DockingStation station : stations) {
             if (station.getStatus() == StationStatus.ONSERVICE) {
-                double startDistance = computeDistance(startingGPS, station.getGpsCord());
+                if (station.getNumberOfSlots()>station.getNumberOfVacantSlots()) {
+                    double startDistance = computeDistance(startingGPS, station.getGpsCord());
 
-                if (startDistance < minStartingDistance) {
-                    minStartingDistance = startDistance;
-                    nearestStartingStation = station;
+                    if (startDistance < minStartingDistance) {
+                        minStartingDistance = startDistance;
+                        nearestStartingStation = station;
+                    }
                 }
 
                 if (station.getNumberOfVacantSlots() > 0) {

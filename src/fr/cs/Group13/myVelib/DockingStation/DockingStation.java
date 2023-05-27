@@ -102,7 +102,7 @@ public abstract class DockingStation {
         this.id = instance.getNextStationID();
         this.vlibSys = vlibSys;
         this.numberOfSlots = numberOfSlots;
-        this.numberOfVacantSlots = numberOfSlots;
+        this.numberOfVacantSlots = numberOfVacantSlots;
         this.numberOfElectricalBikes = numberOfElectricalBikes;
         this.gpsCord = gpsCord;
         this.parkingSlotArraylist = new ArrayList<ParkingSlot>(numberOfSlots);
@@ -172,7 +172,10 @@ public abstract class DockingStation {
         this.gpsCord = gpsCord;
     }
 
-    
+
+    public void setStatus(StationStatus status) {
+        this.status = status;
+    }
 
     @Override
     public String toString() {

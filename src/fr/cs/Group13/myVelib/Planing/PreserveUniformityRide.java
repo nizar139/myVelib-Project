@@ -34,11 +34,13 @@ public class PreserveUniformityRide extends RidesPlaning{
 
         for (DockingStation station : stations) {
             if (station.getStatus() == StationStatus.ONSERVICE) {
-                double startDistance = computeDistance(startingGPS, station.getGpsCord());
+                if (station.getNumberOfSlots()>station.getNumberOfVacantSlots()) {
+                    double startDistance = computeDistance(startingGPS, station.getGpsCord());
 
-                if (startDistance < minStartingDistance) {
-                    minStartingDistance = startDistance;
-                    nearestStartingStation = station;
+                    if (startDistance < minStartingDistance) {
+                        minStartingDistance = startDistance;
+                        nearestStartingStation = station;
+                    }
                 }
 
                 if (station.getNumberOfVacantSlots() > 0) {
@@ -55,19 +57,19 @@ public class PreserveUniformityRide extends RidesPlaning{
                 double startDistance = computeDistance(startingGPS, station.getGpsCord());
                 double endDistance = computeDistance(endingGPS, station.getGpsCord());
 
-                if (startDistance < 1.05 * minStartingDistance && (station.getNumberOfSlots() -
+                if (startDistance <= 1.05 * minStartingDistance && (station.getNumberOfSlots() -
                         station.getNumberOfVacantSlots() > nearestStartingStation.getNumberOfSlots() -
                         nearestEndingStation.getNumberOfVacantSlots())) {
                     bestStartingStation = station;
                 }
-
-                if (endDistance < 1.05 * minEndingDistance && (station.getNumberOfVacantSlots() >
+                if (endDistance <= 1.05 * minEndingDistance && (station.getNumberOfVacantSlots() >
                         nearestEndingStation.getNumberOfVacantSlots())) {
                     bestEndingStation = station;
                 }
             }
         }
 
-        return "Nearest starting station: " + bestStartingStation + ", Nearest ending station: " + bestEndingStation;
+        return "Nearest starting station : " + (bestStartingStation != null ? bestStartingStation : nearestStartingStation) + ", Nearest ending station: " + (bestEndingStation != null ? bestEndingStation : nearestEndingStation);
+
     }
 }

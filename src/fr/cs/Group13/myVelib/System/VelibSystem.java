@@ -55,6 +55,18 @@ public class VelibSystem {
         return name;
     }
 
+    public ArrayList<DockingStation> getListOfStations() {
+        return listOfStations;
+    }
+
+    public ArrayList<Bicycle> getListOfStreetBikes() {
+        return listOfStreetBikes;
+    }
+
+    public ArrayList<User> getListOfUsers() {
+        return listOfUsers;
+    }
+
     public void resetSystem(){
 
         this.listOfStations = null;

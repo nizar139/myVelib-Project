@@ -9,6 +9,7 @@ package fr.cs.Group13.myVelib.DockingStation;
 
 import fr.cs.Group13.myVelib.Bicycle.ElectricalBicycle;
 import fr.cs.Group13.myVelib.Cards.PricingVisitor;
+import fr.cs.Group13.myVelib.System.VlibSystem;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,6 +17,7 @@ import java.util.Arrays;
 public abstract class DockingStation {
     private int id;
     private double[] gpsCord;
+    private VlibSystem vlibSys; // Vlib system in which the station is registered
     private StationStatus status = StationStatus.ONSERVICE;
     private ArrayList<ParkingSlot> parkingSlotArraylist;
     private int numberOfSlots;
@@ -94,10 +96,11 @@ public abstract class DockingStation {
      * @param numberOfVacantSlots    The number of initially vacant slots in the docking station.
      * @param numberOfElectricalBikes The number of initially available electrical bikes in the docking station.
      */
-    public DockingStation(double[] gpsCord, int numberOfSlots, int numberOfVacantSlots, int numberOfElectricalBikes) {
+    public DockingStation(VlibSystem vlibSys,double[] gpsCord, int numberOfSlots, int numberOfVacantSlots, int numberOfElectricalBikes) {
         //create station, generate slots, and bikes
         StationIdGenerator instance = StationIdGenerator.getInstance();
         this.id = instance.getNextStationID();
+        this.vlibSys = vlibSys;
         this.numberOfSlots = numberOfSlots;
         this.numberOfVacantSlots = numberOfSlots;
         this.numberOfElectricalBikes = numberOfElectricalBikes;
@@ -161,6 +164,6 @@ public abstract class DockingStation {
 
     @Override
     public String toString() {
-        return "Station " + id + ", situated" + Arrays.toString(gpsCord);
+        return "{Station " + id + ", situated at" + Arrays.toString(gpsCord)+"}";
     }
 }

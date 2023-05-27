@@ -146,4 +146,14 @@ public abstract class DockingStation {
         return gpsCord;
     }
 
+    /**
+     * Sets the gpsCoordinate the docking station.
+     *
+     * @param gpsCord The gps coordinate of the docking station.
+     */
+    public void setGpsCord(double[] gpsCord) {
+        this.gpsCord = gpsCord;
+    }
+
+    
 }

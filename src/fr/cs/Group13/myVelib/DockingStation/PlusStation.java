@@ -10,6 +10,7 @@ package fr.cs.Group13.myVelib.DockingStation;
 
 
 import fr.cs.Group13.myVelib.Cards.PricingVisitor;
+import fr.cs.Group13.myVelib.System.VlibSystem;
 
 
 public class PlusStation extends DockingStation {
@@ -27,8 +28,8 @@ public class PlusStation extends DockingStation {
      * @param numberOfVacantSlots The number of vacant parking slots in the station.
      * @param numberOfElectricalBikes The number of electrical bikes in the station.
      */
-    public PlusStation(double[] gpsCord, int numberOfSlots, int numberOfVacantSlots, int numberOfElectricalBikes) {
-        super(gpsCord, numberOfSlots, numberOfVacantSlots, numberOfElectricalBikes);
+    public PlusStation(VlibSystem vlibSys, double[] gpsCord, int numberOfSlots, int numberOfVacantSlots, int numberOfElectricalBikes) {
+        super(vlibSys, gpsCord, numberOfSlots, numberOfVacantSlots, numberOfElectricalBikes);
     }
 
     /**

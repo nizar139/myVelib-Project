@@ -16,51 +16,50 @@ public class VlibSystem {
     private ArrayList<Bicycle> listOfStreetBikes;
     private ArrayList<User> listOfUsers;
 
-    public static VlibSystem instance;
-    private VlibSystem() {
+    private VlibSystem() {}
+
+    public VlibSystem(ArrayList<DockingStation> listOfStations, ArrayList<Bicycle> listOfStreetBikes, ArrayList<User> listOfUsers) {
+        this.listOfStations = listOfStations;
+        this.listOfStreetBikes = listOfStreetBikes;
+        this.listOfUsers = listOfUsers;
     }
-    public static VlibSystem getInstance(){
-        if (instance==null) {
-            instance = new VlibSystem();
-            instance.listOfStations = new ArrayList<>();
-            instance.listOfStreetBikes = new ArrayList<>();
-            instance.listOfUsers = new ArrayList<>();
-        }
-        return instance;
-    }
-    public static void DestroyInstance(){
-        instance = null;
+
+    public void resetSystem(){
+
+        this.listOfStations = null;
+        this.listOfUsers = null;
+        this.listOfStreetBikes = null;
     }
 
     public void assignNewRegularStation(double[] gpsCord,int nSlots, double percentOfVacant, double percentOfElectrical){
         double v = nSlots * percentOfVacant;
         double w = nSlots*percentOfElectrical;
-        RegularStation station = new RegularStation(gpsCord, nSlots,(int) v,(int) w);
-        instance.listOfStations.add(station);
+        RegularStation station = new RegularStation(this, gpsCord, nSlots,(int) v,(int) w);
+        this.listOfStations.add(station);
     }
     public void assignNewPlusStation(double[] gpsCord,int nSlots, double percentOfVacant, double percentOfElectrical){
         double v = nSlots * percentOfVacant;
         double w = nSlots*percentOfElectrical;
-        PlusStation station = new PlusStation(gpsCord, nSlots,(int) v,(int) w);
-        instance.listOfStations.add(station);
+        PlusStation station = new PlusStation(this, gpsCord, nSlots,(int) v,(int) w);
+        this.listOfStations.add(station);
     }
     public void addNonSub(double[] gpsCord){
-        User user = new User(gpsCord);
+        User user = new User(this, gpsCord);
         NoCard card = new NoCard(user);
         user.setCard(card);
-        instance.listOfUsers.add(user);
+        this.listOfUsers.add(user);
     }
     public void addVlibreUser(double[] gpsCord){
-        User user = new User(gpsCord);
+        User user = new User(this, gpsCord);
         Vlibre card = new Vlibre(user);
         user.setCard(card);
-        instance.listOfUsers.add(user);
+        this.listOfUsers.add(user);
     }
     public void addVmaxUser(double[] gpsCord) {
-        User user = new User(gpsCord);
+        User user = new User(this, gpsCord);
         Vmax card = new Vmax(user);
         user.setCard(card);
-        instance.listOfUsers.add(user);
+        this.listOfUsers.add(user);
     }
     public double[] getRandomCord(double maxX, double maxY){
         Random random = new Random();
@@ -69,7 +68,7 @@ public class VlibSystem {
         return new double[]{x, y};
     }
     public void generateStationMap(int nRegularStations,int nPlusStations, int nSlotsPerStation, double percentOfVacant, double percentOfElectrical, double maxX, double maxY){
-        instance.listOfStations = new ArrayList<>();
+        this.listOfStations = new ArrayList<>();
         for (int i=0; i<nRegularStations; i++){
             double[] gps = getRandomCord(maxX, maxY);
             assignNewRegularStation(gps, nSlotsPerStation, percentOfVacant, percentOfElectrical);
@@ -95,9 +94,17 @@ public class VlibSystem {
         }
     }
     public void addStreetBike (Bicycle b){
-        instance.listOfStreetBikes.add(b);
+        this.listOfStreetBikes.add(b);
     }
     public void removeStreetBike (Bicycle b){
-        instance.listOfStreetBikes.remove(b);
+        this.listOfStreetBikes.remove(b);
     }
+    public static VlibSystem createUseCaseSys(){
+        VlibSystem vlibSys = new VlibSystem();
+        vlibSys.generateStationMap(10, 10,10,0.7,0.3,10,10);
+        vlibSys.generateUserList(20,10,10,10,10);
+        vlibSys.listOfStreetBikes = new ArrayList<>();
+        return vlibSys;
+    }
+
 }

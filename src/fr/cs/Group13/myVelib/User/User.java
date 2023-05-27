@@ -23,6 +23,7 @@ public class User {
     private Card card; // user's bike rental card
     private CreditCard creditCard; // user's credit card
     private Bicycle currentBicycle; // the bike currently rented by the user
+    private VlibSystem vlibSys; // the Vlib System in which the user is registered
     private double totalCharges; // total amount charged to the user
     private int numberOfRides; // total number of bike rides by the user
     private double totalTime; // total time spent on bike rides by the user
@@ -46,10 +47,11 @@ public class User {
         this.card = card;
         this.creditCard = creditCard;
     }
-    public User(double[] gpsCord) {
+    public User(VlibSystem vlibSys, double[] gpsCord) {
         User.count ++;
         this.gpsCord = gpsCord;
         this.id = User.count;
+        this.vlibSys = vlibSys;
     }
 
     public User(String firstName) {
@@ -139,11 +141,12 @@ public class User {
     public void rentBicycle(Bicycle b){
 
         if (this.currentBicycle == null) {
-            VlibSystem instance = VlibSystem.getInstance();
-            instance.removeStreetBike(b);
+            this.vlibSys.removeStreetBike(b);
             this.startTime = Instant.now();
             this.currentBicycle = b;
-            this.currentBicycle.getSlot().freeSlot();
+            if (this.currentBicycle.getSlot()!=null)
+            {this.currentBicycle.getSlot().getStation().incrementRents();
+            this.currentBicycle.getSlot().freeSlot();}
 //            this.currentBicycle.removeFromSlot();
         }else{
             throw new IllegalStateException("You cannot rent more than one bicycle!");
@@ -158,9 +161,8 @@ public class User {
         if (this.currentBicycle == null) {
             throw new IllegalStateException("you don't have a bicycle!");
         }else {
-            VlibSystem instance = VlibSystem.getInstance();
             this.currentBicycle.setGpsCord(this.gpsCord);
-            instance.addStreetBike(this.currentBicycle);
+            this.vlibSys.addStreetBike(this.currentBicycle);
             this.endTime = Instant.now();
             double duration = Duration.between(startTime, endTime).getSeconds() / 60;
             double charge = card.computeCharge(this.currentBicycle, 0, duration);
@@ -184,6 +186,7 @@ public class User {
             throw new IllegalStateException("you don't have a bicycle!");
         }else{
             slot.putBicycle(this.currentBicycle);
+            slot.getStation().incrementReturns();
             this.endTime = Instant.now();
             double duration = Duration.between(startTime, endTime).getSeconds() / 60;
             double charge = card.computeCharge(this.currentBicycle, 1, duration);

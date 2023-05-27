@@ -11,7 +11,7 @@ class PlusStationTest {
     void testAccept() {
         PlusStation plusStation = new PlusStation();
         PricingVisitor pricingVisitor = new TestPricingVisitor();
-
+        System.out.println(plusStation);
         double result = plusStation.accept(pricingVisitor);
 
         assertEquals(0, result);

@@ -37,6 +37,20 @@ public abstract class Bicycle{
     }
 
     /**
+     * Constructor that takes all the attributes other than ID, which is automatically generated
+     * @param gpsCord
+     * @param fromAStation
+     * @param slot
+     */
+    public Bicycle(double[] gpsCord, int fromAStation, ParkingSlot slot) {
+        BicycleIdGenerator instance = BicycleIdGenerator.getInstance();
+        this.id = instance.getNextBicycleID();
+        this.gpsCord = gpsCord;
+        this.fromAStation = fromAStation;
+        this.slot = slot;
+    }
+
+    /**
      * Gets the fromAStation attribute.
      * @return the value of fromAStation.
      */

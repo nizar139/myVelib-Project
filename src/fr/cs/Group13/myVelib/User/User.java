@@ -141,7 +141,7 @@ public class User {
     public void rentBicycle(Bicycle b){
 
         if (this.currentBicycle == null) {
-            this.vlibSys.removeStreetBike(b);
+            if (this.vlibSys!=null) {this.vlibSys.removeStreetBike(b);}
             this.startTime = Instant.now();
             this.currentBicycle = b;
             if (this.currentBicycle.getSlot()!=null)
@@ -162,7 +162,7 @@ public class User {
             throw new IllegalStateException("you don't have a bicycle!");
         }else {
             this.currentBicycle.setGpsCord(this.gpsCord);
-            this.vlibSys.addStreetBike(this.currentBicycle);
+            if (this.vlibSys!=null) {this.vlibSys.addStreetBike(this.currentBicycle);}
             this.endTime = Instant.now();
             double duration = Duration.between(startTime, endTime).getSeconds() / 60;
             double charge = card.computeCharge(this.currentBicycle, 0, duration);
@@ -181,7 +181,6 @@ public class User {
      * @throws IllegalStateException if the user isn't currently renting a bike
      */
     public void returnBicycle(ParkingSlot slot){
-        // update totaltimecredit in card
         if (this.currentBicycle == null) {
             throw new IllegalStateException("you don't have a bicycle!");
         }else{
@@ -190,6 +189,50 @@ public class User {
             this.endTime = Instant.now();
             double duration = Duration.between(startTime, endTime).getSeconds() / 60;
             double charge = card.computeCharge(this.currentBicycle, 1, duration);
+            this.card.applyBonus(slot.getStation());
+            this.totalTime += duration;
+            this.totalCharges += charge;
+            this.numberOfRides ++;
+//            this.currentBicycle.addToSlot(slot);
+            this.startTime = null;
+            this.endTime = null;
+            this.currentBicycle = null;
+        }
+
+    }
+    /**
+     * This method allows the user to return a bike to a random place which is not a slot.
+     * @throws IllegalStateException if the user isn't currently renting a bike
+     */
+    public void returnBicycle(double duration){
+        if (this.currentBicycle == null) {
+            throw new IllegalStateException("you don't have a bicycle!");
+        }else {
+            this.currentBicycle.setGpsCord(this.gpsCord);
+            if (this.vlibSys!=null) {this.vlibSys.addStreetBike(this.currentBicycle);}
+            double charge = card.computeCharge(this.currentBicycle, 0, duration);
+            this.totalTime += duration;
+            this.totalCharges += charge;
+            this.numberOfRides++;
+            this.currentBicycle.setFromAStation(0);
+            this.startTime = null;
+            this.endTime = null;
+            this.currentBicycle = null;
+        }
+    }
+    /**
+     * This method allows the user to return a bike to a specific slot.
+     * @param slot the slot where the bike will be returned
+     * @throws IllegalStateException if the user isn't currently renting a bike
+     */
+    public void returnBicycle(ParkingSlot slot, double duration){
+        if (this.currentBicycle == null) {
+            throw new IllegalStateException("you don't have a bicycle!");
+        }else{
+            slot.putBicycle(this.currentBicycle);
+            slot.getStation().incrementReturns();
+            double charge = card.computeCharge(this.currentBicycle, 1, duration);
+            this.card.applyBonus(slot.getStation());
             this.totalTime += duration;
             this.totalCharges += charge;
             this.numberOfRides ++;
@@ -211,5 +254,11 @@ public class User {
         RidesPlaning plan = ride.getYourStrat(strategy);
         return "";
     }
-
+    public void userBalance(){
+        System.out.println("User" + this.id+"balance :" +
+                "\r\n\t number of rides : " + this.numberOfRides +
+                "\r\n\t total time spent on a bike : "+ this.totalTime +
+                "\r\n\t total charge : " + this.totalCharges +
+                "\r\n\t total time credit earned : "+ this.totalTimeCredit);
+    }
 }

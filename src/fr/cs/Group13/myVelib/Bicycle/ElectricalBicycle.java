@@ -28,6 +28,17 @@ public class ElectricalBicycle extends Bicycle{
     }
 
     /**
+     * Constructor for the ElectricalBicycle with all the parameters except id
+     *
+     * @param gpsCord
+     * @param fromAStation
+     * @param slot
+     */
+    public ElectricalBicycle(double[] gpsCord, int fromAStation, ParkingSlot slot) {
+        super(gpsCord, fromAStation, slot);
+    }
+
+    /**
      * Method to accept a PricingVisitor, allowing for implementation of the Visitor pattern for pricing.
      *
      * @param visitor The PricingVisitor visiting this instance of ElectricalBicycle.

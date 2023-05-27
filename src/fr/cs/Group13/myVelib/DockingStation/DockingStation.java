@@ -33,6 +33,14 @@ public abstract class DockingStation {
         this.totalReturns ++;
     }
 
+    /**
+     * returns the unique identifier of a station
+     *
+     * @return int
+     */
+    public int getId() {
+        return id;
+    }
 
     /**
      * Returns the number of electrical bikes in the docking station.
@@ -89,7 +97,7 @@ public abstract class DockingStation {
     }
 
     /**
-     * Constructs a DockingStation object with the specified parameters.
+     * Constructs a DockingStation object with the specified parameters, automatically creates ParkinSlot and Bicycle objects
      *
      * @param gpsCord                The GPS coordinates of the docking station.
      * @param numberOfSlots          The total number of slots in the docking station.
@@ -158,12 +166,23 @@ public abstract class DockingStation {
     public double[] getGpsCord() {
         return gpsCord;
     }
+
+    /**
+     * returns the list of all the Parking Slots in the station
+     *
+     * @return
+     */
+    public ArrayList<ParkingSlot> getParkingSlotArraylist() {
+        return parkingSlotArraylist;
+    }
+
     public void getBalance() {
         System.out.println("Station " + this.id +": \r\n\t total number of rent operations : "+this.totalRents+" \r\n\t total number of return operation : "+this.totalReturns);
     }
 
     @Override
     public String toString() {
-        return "{Station " + id + ", situated at" + Arrays.toString(gpsCord)+"}";
+        String s = "{" + this.getStatus() + " Station " + id + ", situated at" + Arrays.toString(gpsCord) + "}";
+        return s;
     }
 }

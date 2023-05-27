@@ -5,6 +5,7 @@ import fr.cs.Group13.myVelib.Cards.NoCard;
 import fr.cs.Group13.myVelib.Cards.Vlibre;
 import fr.cs.Group13.myVelib.Cards.Vmax;
 import fr.cs.Group13.myVelib.DockingStation.DockingStation;
+import fr.cs.Group13.myVelib.DockingStation.ParkingSlot;
 import fr.cs.Group13.myVelib.DockingStation.PlusStation;
 import fr.cs.Group13.myVelib.DockingStation.RegularStation;
 import fr.cs.Group13.myVelib.User.User;
@@ -101,10 +102,48 @@ public class VlibSystem {
     }
     public static VlibSystem createUseCaseSys(){
         VlibSystem vlibSys = new VlibSystem();
-        vlibSys.generateStationMap(10, 10,10,0.7,0.3,10,10);
+        vlibSys.generateStationMap(10, 10,10,0.4,0.3,10,10);
         vlibSys.generateUserList(20,10,10,10,10);
         vlibSys.listOfStreetBikes = new ArrayList<>();
         return vlibSys;
     }
 
+    public User searchUserById(int id){
+        for (User user:this.listOfUsers){
+            if (user.getId()==id){return user;}
+        }
+        throw new IllegalStateException("no user Matching this id was found");
+    }
+    public DockingStation searchStationById(int id){
+        for (DockingStation station:this.listOfStations){
+            if (station.getId()==id){return station;}
+        }
+        throw new IllegalStateException("no user Matching this id was found");
+    }
+    public Bicycle searchBicycleByGPS(double[] gpsCord){
+        for (Bicycle bike:this.listOfStreetBikes){
+            if (gpsCord==bike.getGpsCord()){return bike;}
+        }
+        for (DockingStation station:this.listOfStations){
+            if (gpsCord == station.getGpsCord()){
+                System.out.println("station found at these gps coordinates");
+                for (ParkingSlot slot: station.getParkingSlotArraylist()){
+                    if (slot.isOccupied()){return slot.getBicycle();}
+                }
+            }
+        }
+        throw new IllegalStateException("no bicycles found at the given coordinates");
+    }
+
+    @Override
+    public String toString() {
+        return "VlibSystem{" +
+                "listOfStations=" + listOfStations +
+                ", listOfStreetBikes=" + listOfStreetBikes +
+                ", listOfUsers=" + listOfUsers +
+                '}';
+    }
+    public void systemSummary(){
+        System.out.println(this);
+    }
 }

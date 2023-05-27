@@ -7,7 +7,8 @@
 package fr.cs.Group13.myVelib.DockingStation;
 
 public enum StationStatus {
-    ONSERVICE,   // The docking station is in service
-    OFFLINE      // The docking station is offline
+    ONSERVICE,
+    OFFLINE
+
 }
 

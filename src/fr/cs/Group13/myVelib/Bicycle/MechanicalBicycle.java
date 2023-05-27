@@ -27,6 +27,17 @@ public class MechanicalBicycle extends Bicycle{
     }
 
     /**
+     * Constructor that takes all the attributes other than ID, which is automatically generated
+     *
+     * @param gpsCord
+     * @param fromAStation
+     * @param slot
+     */
+    public MechanicalBicycle(double[] gpsCord, int fromAStation, ParkingSlot slot) {
+        super(gpsCord, fromAStation, slot);
+    }
+
+    /**
      * Method to accept a PricingVisitor, allowing for implementation of the Visitor pattern for pricing.
      *
      * @param visitor The PricingVisitor visiting this instance of MechanicalBicycle.

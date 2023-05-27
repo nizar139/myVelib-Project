@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 
-public class VlibSystem {
+public class VelibSystem {
     private ArrayList<DockingStation> listOfStations;
     private ArrayList<Bicycle> listOfStreetBikes;
     private ArrayList<User> listOfUsers;
@@ -29,7 +29,7 @@ public class VlibSystem {
     /**
      * Private constructor to prevent direct instantiation of the VlibSystem class.
      */
-    private VlibSystem() {}
+    public VelibSystem() {}
 
     /**
      * Constructor for VlibSystem with initial lists of stations, street bikes, and users.
@@ -38,10 +38,37 @@ public class VlibSystem {
      * @param listOfStreetBikes List of street bikes in the system.
      * @param listOfUsers      List of users in the system.
      */
-    public VlibSystem(ArrayList<DockingStation> listOfStations, ArrayList<Bicycle> listOfStreetBikes, ArrayList<User> listOfUsers) {
+    public VelibSystem(ArrayList<DockingStation> listOfStations, ArrayList<Bicycle> listOfStreetBikes, ArrayList<User> listOfUsers) {
         this.listOfStations = listOfStations;
         this.listOfStreetBikes = listOfStreetBikes;
         this.listOfUsers = listOfUsers;
+    }
+
+    /**
+     * Returns the list of docking stations in the Vlib system.
+     *
+     * @return The list of docking stations.
+     */
+    public ArrayList<DockingStation> getListOfStations() {
+        return listOfStations;
+    }
+
+    /**
+     * Returns the list of street bikes in the Vlib system.
+     *
+     * @return The list of street bikes.
+     */
+    public ArrayList<Bicycle> getListOfStreetBikes() {
+        return listOfStreetBikes;
+    }
+
+    /**
+     * Returns the list of users in the Vlib system.
+     *
+     * @return The list of users.
+     */
+    public ArrayList<User> getListOfUsers() {
+        return listOfUsers;
     }
 
     /**
@@ -205,8 +232,8 @@ public class VlibSystem {
      *
      * @return The created VlibSystem object.
      */
-    public static VlibSystem createUseCaseSys(){
-        VlibSystem vlibSys = new VlibSystem();
+    public static VelibSystem createUseCaseSys(){
+        VelibSystem vlibSys = new VelibSystem();
         vlibSys.generateStationMap(10, 10,10,0.4,0.3,10,10);
         vlibSys.generateUserList(20,10,10,10,10);
         vlibSys.listOfStreetBikes = new ArrayList<>();

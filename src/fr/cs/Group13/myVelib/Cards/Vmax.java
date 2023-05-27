@@ -22,6 +22,11 @@ public class Vmax implements Card, PricingVisitor {
     private final int id;
     private double creditBalance;
 
+    public Vmax() {
+        CardIdGenerator instance = CardIdGenerator.getInstance();
+        this.id = instance.getNextCardId();
+    }
+
     /**
      * Constructor for Vmax card, it also generates a unique ID for each new card.
      */
@@ -36,6 +41,10 @@ public class Vmax implements Card, PricingVisitor {
 
     public double getCreditBalance() {
         return this.creditBalance;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 
     public void setCreditBalance(double creditBalance) {

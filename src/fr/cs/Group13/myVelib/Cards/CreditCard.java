@@ -17,6 +17,12 @@ public class CreditCard {
 
     /**
      * Creates a new CreditCard object with the provided parameters.
+     */
+    public CreditCard() {
+    }
+
+    /**
+     * Creates a new CreditCard object with the provided parameters.
      *
      * @param serialNumber the serial number of the card.
      * @param expirationDate the expiration date of the card.

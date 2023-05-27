@@ -16,6 +16,12 @@ public class ParkingSlot {
 
     /**
      * Constructor for a parking slot with an associated bicycle.
+     */
+    public ParkingSlot() {
+    }
+
+    /**
+     * Constructor for a parking slot with an associated bicycle.
      *
      * @param station  The docking station to which the slot belongs.
      * @param bicycle  The bicycle occupying the slot.

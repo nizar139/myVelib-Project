@@ -1,11 +1,9 @@
 package fr.cs.Group13.myVelib.VelibCLUI;
 
-import fr.cs.Group13.myVelib.Cards.NoCard;
 import fr.cs.Group13.myVelib.System.VelibGlobal;
 import fr.cs.Group13.myVelib.System.VelibSystem;
-import fr.cs.Group13.myVelib.User.User;
 
-public class HandleSetup {
+public class HandleSetupCommand {
     public static VelibSystem handleSetup(String[] args){
         VelibGlobal instance = VelibGlobal.getInstance();
         VelibSystem velibSys;

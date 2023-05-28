@@ -10,6 +10,7 @@
 package fr.cs.Group13.myVelib.Bicycle;
 
 import fr.cs.Group13.myVelib.Cards.PricingVisitor;
+import fr.cs.Group13.myVelib.DockingStation.DockingStation;
 import fr.cs.Group13.myVelib.DockingStation.ParkingSlot;
 
 public abstract class Bicycle{
@@ -129,5 +130,12 @@ public abstract class Bicycle{
      */
     public abstract void setBikeCountFill(ParkingSlot slot);
 
-
+    public static Bicycle findBikeAtStation(DockingStation station){
+        for (ParkingSlot slot: station.getParkingSlotArraylist()){
+            if (slot.isOccupied()){
+                return slot.getBicycle();
+            }
+        }
+        throw new RuntimeException("No Bicycle found at the given station");
+    }
 }

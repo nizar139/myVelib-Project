@@ -254,7 +254,6 @@ public class User {
     /**
      * This method allows the user to rent a bike.
      *
-     * @param b the bike to be rented
      * @throws IllegalStateException if the user is already renting a bike
      */
     public void rentBicycle(Bicycle b){

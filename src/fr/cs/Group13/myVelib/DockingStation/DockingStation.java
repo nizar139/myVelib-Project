@@ -7,6 +7,7 @@
  */
 package fr.cs.Group13.myVelib.DockingStation;
 
+import fr.cs.Group13.myVelib.Bicycle.Bicycle;
 import fr.cs.Group13.myVelib.Bicycle.ElectricalBicycle;
 import fr.cs.Group13.myVelib.Cards.PricingVisitor;
 import fr.cs.Group13.myVelib.System.VelibSystem;
@@ -206,6 +207,7 @@ public abstract class DockingStation {
     public void setStatus(StationStatus status) {
         this.status = status;
     }
+
 
     @Override
     public String toString() {

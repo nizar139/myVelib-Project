@@ -7,6 +7,7 @@
 package fr.cs.Group13.myVelib.Bicycle;
 
 import fr.cs.Group13.myVelib.Cards.PricingVisitor;
+import fr.cs.Group13.myVelib.DockingStation.DockingStation;
 import fr.cs.Group13.myVelib.DockingStation.ParkingSlot;
 
 public class MechanicalBicycle extends Bicycle{
@@ -71,6 +72,14 @@ public class MechanicalBicycle extends Bicycle{
         if(obj instanceof MechanicalBicycle)
             return ((MechanicalBicycle)obj).getId()==this.getId();
         return false;
+    }
+    public static Bicycle findBikeAtStation(DockingStation station){
+        for (ParkingSlot slot: station.getParkingSlotArraylist()){
+            if (slot.isOccupied() && slot.getBicycle() instanceof MechanicalBicycle){
+                return slot.getBicycle();
+            }
+        }
+        throw new RuntimeException("No Mechanical Bicycle found at the given station");
     }
 }
 

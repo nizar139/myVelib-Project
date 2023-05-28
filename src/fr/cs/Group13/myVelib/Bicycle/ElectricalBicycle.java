@@ -80,4 +80,12 @@ public class ElectricalBicycle extends Bicycle{
         return false;
     }
 
+    public static Bicycle findBikeAtStation(DockingStation station){
+        for (ParkingSlot slot: station.getParkingSlotArraylist()){
+            if (slot.isOccupied() && slot.getBicycle() instanceof ElectricalBicycle){
+                return slot.getBicycle();
+            }
+        }
+        throw new RuntimeException("No Electrical Bicycle found at the given station");
+    }
 }

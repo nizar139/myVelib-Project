@@ -10,8 +10,6 @@ import fr.cs.Group13.myVelib.User.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class UserTest {
@@ -46,7 +44,7 @@ public class UserTest {
 
         user.rentBicycle(bicycle);
 
-        assertThrows(IllegalStateException.class, () -> user.rentBicycle(new ElectricalBicycle()));
+        assertThrows(IllegalStateException.class, () -> user.rentBicycle(bicycle));
     }
 
     @Test

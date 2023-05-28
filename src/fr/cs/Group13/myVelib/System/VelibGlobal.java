@@ -33,7 +33,7 @@ public class VelibGlobal {
         }
         throw new RuntimeException("No Velib Network matching the given name was found");
     }
-    public Object[] searchSystemByUserId(int userId, int stationId){
+    public Object[] searchSystemByUserId(int userId){
         VelibSystem velibSystem = null;
         User user = null;
         int i = 0;

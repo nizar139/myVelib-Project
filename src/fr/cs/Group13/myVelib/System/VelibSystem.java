@@ -10,7 +10,6 @@ import fr.cs.Group13.myVelib.DockingStation.PlusStation;
 import fr.cs.Group13.myVelib.DockingStation.RegularStation;
 import fr.cs.Group13.myVelib.User.User;
 
-import javax.print.Doc;
 import java.util.ArrayList;
 import java.util.Random;
 public class VelibSystem {
@@ -31,6 +30,9 @@ public class VelibSystem {
     public VelibSystem(String name) {
         this.id = getNextId();
         this.name = name;
+        this.listOfUsers = new ArrayList<>();
+        this.listOfStations = new ArrayList<>();
+        this.listOfStreetBikes = new ArrayList<>();
     }
 
     public VelibSystem(ArrayList<DockingStation> listOfStations, ArrayList<Bicycle> listOfStreetBikes, ArrayList<User> listOfUsers) {
@@ -53,6 +55,18 @@ public class VelibSystem {
 
     public String getName() {
         return name;
+    }
+
+    public ArrayList<DockingStation> getListOfStations() {
+        return listOfStations;
+    }
+
+    public ArrayList<Bicycle> getListOfStreetBikes() {
+        return listOfStreetBikes;
+    }
+
+    public ArrayList<User> getListOfUsers() {
+        return listOfUsers;
     }
 
     public void resetSystem(){

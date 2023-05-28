@@ -25,7 +25,7 @@ public class VelibGlobal {
         }
         return instance;
     }
-    public static VelibSystem searchSystemByName(String name){
+    public VelibSystem searchSystemByName(String name){
         for (VelibSystem velibSys: instance.listOfVelibSystems){
             if (name.equalsIgnoreCase(velibSys.getName())){
                 return velibSys;

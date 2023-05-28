@@ -1,6 +1,6 @@
 import jline.console.ConsoleReader;
 import fr.cs.Group13.myVelib.System.VelibSystem;
-import fr.cs.Group13.myVelib.VelibCLUI.HandleSetup;
+import fr.cs.Group13.myVelib.VelibCLUI.HandleSetupCommand;
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -36,7 +36,7 @@ public class VelibTerminal {
                         break;
                     case "setup":
                         try {
-                            VelibSystem system = HandleSetup.handleSetup(commandArgs);
+                            VelibSystem system = HandleSetupCommand.handleSetup(commandArgs);
                         } catch (Exception e) {
                             System.out.println(e);
                         }

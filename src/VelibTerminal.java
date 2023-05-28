@@ -59,35 +59,35 @@ public class VelibTerminal {
                         System.out.println(e);
                     }
                     break;
-                case "rentBike":
+                case "rentbike":
                     try{
                         System.out.println("rentBike");
                     }catch(Exception e){
                         System.out.println(e);
                     }
                     break;
-                case "returnBike":
+                case "returnbike":
                     try{
                         System.out.println("returnBike");
                     }catch(Exception e){
                         System.out.println(e);
                     }
                     break;
-                case "displayStation":
+                case "displaystation":
                     try{
                         System.out.println("displayStation");
                     }catch(Exception e){
                         System.out.println(e);
                     }
                     break;
-                case "displayUser":
+                case "displayuser":
                     try{
                         System.out.println("displayUser");
                     }catch(Exception e){
                         System.out.println(e);
                     }
                     break;
-                case "SortStation":
+                case "Sortstation":
                     try{
                         System.out.println("SortStation");
                     }catch(Exception e){

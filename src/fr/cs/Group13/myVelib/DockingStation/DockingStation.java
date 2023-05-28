@@ -7,7 +7,6 @@
  */
 package fr.cs.Group13.myVelib.DockingStation;
 
-import fr.cs.Group13.myVelib.Bicycle.Bicycle;
 import fr.cs.Group13.myVelib.Bicycle.ElectricalBicycle;
 import fr.cs.Group13.myVelib.Cards.PricingVisitor;
 import fr.cs.Group13.myVelib.System.VelibSystem;
@@ -220,8 +219,20 @@ public abstract class DockingStation {
 
     @Override
     public String toString() {
-        String s = "{" + this.getStatus() + " Station " + id + ", situated at" + Arrays.toString(gpsCord) + "}";
+        String s = "{" + this.getStatus() + " "+this.getClass().getSimpleName()+" " + id + ", situated at " + Arrays.toString(gpsCord) + "}";
         return s;
+    }
+
+
+    public  String displayInfos(){
+        return "DockingStation{" +
+                "id=" + id +
+                ", gpsCord=" + Arrays.toString(gpsCord) +
+                ", status=" + status +
+                ", numberOfSlots=" + numberOfSlots +
+                ", numberOfElectricalBikes=" + numberOfElectricalBikes +
+                ", numberOfMechanicalBikes=" + (numberOfSlots-numberOfElectricalBikes-numberOfVacantSlots) +
+                '}';
     }
 
 }

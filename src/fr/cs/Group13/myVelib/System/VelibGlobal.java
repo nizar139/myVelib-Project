@@ -4,6 +4,7 @@ import fr.cs.Group13.myVelib.Cards.NoCard;
 import fr.cs.Group13.myVelib.Cards.Vlibre;
 import fr.cs.Group13.myVelib.Cards.Vmax;
 import fr.cs.Group13.myVelib.DockingStation.DockingStation;
+import fr.cs.Group13.myVelib.DockingStation.PlusStation;
 import fr.cs.Group13.myVelib.DockingStation.RegularStation;
 import fr.cs.Group13.myVelib.DockingStation.StationStatus;
 import fr.cs.Group13.myVelib.User.User;
@@ -106,7 +107,7 @@ public class VelibGlobal {
             double[] gpsCord = VelibSystem.getRandomCord(s, s);
             int stationNbrOfBikes = nbikesVector.get(i);
             int stationNbrOfElectrical = random.nextInt(stationNbrOfBikes + 1);
-            RegularStation station = new RegularStation(velibSys, gpsCord, nslots, nslots - stationNbrOfBikes, stationNbrOfElectrical);
+            PlusStation station = new PlusStation(velibSys, gpsCord, nslots, nslots - stationNbrOfBikes, stationNbrOfElectrical);
             velibSys.addStation(station);
         }
         this.listOfVelibSystems.add(velibSys);

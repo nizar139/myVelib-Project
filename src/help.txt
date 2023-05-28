@@ -4,11 +4,14 @@ Description:
 	Displays help on Velib Terminal commands.
 Commands: 
 	setup <name> or <name> <nstations> <nslots> <s> <nbikes>;
+	displaysystems;
+	displayStations <velibnetworkName>;
 	addUser <userName> <cardType> <velibnetworkName>;
 	offline <velibnetworkName> <stationID>;
 	online <velibnetworkName> <stationID>;
 	rentBike <userID> <stationID> or <userID> <GPS_x> <GPS_y>; 
-	returnBike <userID> <stationID> <duration> <userID> <GPS_Position> <duration>;
+	returnBike <userID> <duration> <stationID> or <userID> <duration> <GPS_x> <GPS_y>;
+	displaystationinfo <stationID>;
 	displayStation <velibnetworkName> <stationID>; 
 	displayUser <velibnetworkName> <userID>;
 	sortStation<velibnetworkName> <sortpolicy>;

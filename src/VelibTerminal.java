@@ -45,6 +45,13 @@ public class VelibTerminal {
                         System.out.println(e);
                     }
                     break;
+                case "displaystations":
+                    try {
+                        HandleDisplayStationsCommand.handleDisplayStations(args);
+                    }catch (Exception e){
+                        System.out.println(e);
+                    }
+                    break;
                 case "adduser":
                     try{
                         HandleAddUserCommand.handleAddUser(args);

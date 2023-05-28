@@ -38,6 +38,13 @@ public class VelibTerminal {
                         System.out.println(e);
                     }
                     break;
+                case "displaysystems":
+                    try {
+                        HandleDisplaySystemsCommand.handleDisplaySystems();
+                    }catch (Exception e){
+                        System.out.println(e);
+                    }
+                    break;
                 case "adduser":
                     try{
                         HandleAddUserCommand.handleAddUser(args);
@@ -61,7 +68,7 @@ public class VelibTerminal {
                     break;
                 case "rentbike":
                     try{
-                        HandleRentBikeCommand()
+                        HandleRentBikeCommand.HandleRent(args,0);
                     }catch(Exception e){
                         System.out.println(e);
                     }

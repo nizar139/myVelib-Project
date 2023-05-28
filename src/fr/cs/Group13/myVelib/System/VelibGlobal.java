@@ -45,7 +45,7 @@ public class VelibGlobal {
         }
         throw new RuntimeException("No Velib Network matching the given name was found");
     }
-    public Object[] searchSystemByUserId(int userId, int stationId){
+    public Object[] searchSystemByUserId(int userId){
         VelibSystem velibSystem = null;
         User user = null;
         int i = 0;
@@ -132,17 +132,20 @@ public class VelibGlobal {
         User user = new User(name);
         NoCard card = new NoCard(user);
         user.setCard(card);
+        velibSys.addUser(user);
     }
     public void addUserVlibre(String name, String networkName){
         VelibSystem velibSys = searchSystemByName(networkName);
         User user = new User(name);
         Vlibre card = new Vlibre(user);
         user.setCard(card);
+        velibSys.addUser(user);
     }
     public void addUserVmax(String name, String networkName){
         VelibSystem velibSys = searchSystemByName(networkName);
         User user = new User(name);
         Vmax card = new Vmax(user);
         user.setCard(card);
+        velibSys.addUser(user);
     }
 }

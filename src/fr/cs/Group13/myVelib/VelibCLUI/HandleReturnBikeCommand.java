@@ -9,11 +9,9 @@ import fr.cs.Group13.myVelib.User.User;
 public class HandleReturnBikeCommand {
     public static void handleReturnBike(String[] args){
         VelibGlobal instance = VelibGlobal.getInstance();
-        if ()
         if (args.length == 3) {
             int userID = Integer.parseInt(args[0]);
             double gps_x = Double.parseDouble(args[1]);
-            double gps_y = Double.parseDouble(args[2]);
             double gps_y = Double.parseDouble(args[2]);
             VelibSystem system = instance.getListOfVelibSystems().get(instance.getListOfVelibSystems().size()-1);
             Bicycle b = system.searchBicycleByGPS(new double[]{gps_x, gps_y});

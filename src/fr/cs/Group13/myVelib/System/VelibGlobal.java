@@ -9,6 +9,7 @@ import fr.cs.Group13.myVelib.DockingStation.StationStatus;
 import fr.cs.Group13.myVelib.User.User;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class VelibGlobal {
@@ -80,26 +81,27 @@ public class VelibGlobal {
 //        return velibSys;
 //    }
     public VelibSystem setupVelib(String name, int nstations, int nslots, double s, int nbikes){
-        int totalBikes = nbikes;
+        if (nstations*nslots<nbikes){
+            throw new RuntimeException("The total number of bicycle is higher than the total number of parking slots!");
+        }
+        List<Integer> nbikesVector = RandomVectorGenerator.generateVector(nstations, nslots, nbikes);
         VelibSystem velibSys = new VelibSystem(name);
         Random random = new Random();
         int nregular = random.nextInt(nstations+1);
         int nplus = nstations - nregular;
         for (int i=0; i<nregular; i++) {
             double[] gpsCord = VelibSystem.getRandomCord(s, s);
-            int stationNbrOfBikes = random.nextInt(totalBikes + 1);
+            int stationNbrOfBikes = nbikesVector.get(i);
             int stationNbrOfElectrical = random.nextInt(stationNbrOfBikes + 1);
             RegularStation station = new RegularStation(velibSys, gpsCord, nslots, nslots - stationNbrOfBikes, stationNbrOfElectrical);
             velibSys.addStation(station);
-            totalBikes = totalBikes - stationNbrOfBikes;
         }
-        for (int i=0; i<nplus; i++) {
+        for (int i=nregular; i<nregular+nplus; i++) {
             double[] gpsCord = VelibSystem.getRandomCord(s, s);
-            int stationNbrOfBikes = random.nextInt(totalBikes + 1);
+            int stationNbrOfBikes = nbikesVector.get(i);
             int stationNbrOfElectrical = random.nextInt(stationNbrOfBikes + 1);
             RegularStation station = new RegularStation(velibSys, gpsCord, nslots, nslots - stationNbrOfBikes, stationNbrOfElectrical);
             velibSys.addStation(station);
-            totalBikes = totalBikes - stationNbrOfBikes;
         }
         this.listOfVelibSystems.add(velibSys);
         return velibSys;

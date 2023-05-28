@@ -1,5 +1,5 @@
 import fr.cs.Group13.myVelib.System.VelibSystem;
-import fr.cs.Group13.myVelib.VelibCLUI.HandleSetup;
+import fr.cs.Group13.myVelib.VelibCLUI.HandleSetupCommand;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -33,7 +33,7 @@ public class VelibTerminal {
                     break;
                 case "setup":
                     try {
-                        VelibSystem system = HandleSetup.handleSetup(args);
+                        VelibSystem system = HandleSetupCommand.handleSetup(args);
                     } catch(Exception e){
                         System.out.println(e);
                     }
@@ -59,35 +59,35 @@ public class VelibTerminal {
                         System.out.println(e);
                     }
                     break;
-                case "rentBike":
+                case "rentbike":
                     try{
                         System.out.println("rentBike");
                     }catch(Exception e){
                         System.out.println(e);
                     }
                     break;
-                case "returnBike":
+                case "returnbike":
                     try{
                         System.out.println("returnBike");
                     }catch(Exception e){
                         System.out.println(e);
                     }
                     break;
-                case "displayStation":
+                case "displaystation":
                     try{
                         System.out.println("displayStation");
                     }catch(Exception e){
                         System.out.println(e);
                     }
                     break;
-                case "displayUser":
+                case "displayuser":
                     try{
                         System.out.println("displayUser");
                     }catch(Exception e){
                         System.out.println(e);
                     }
                     break;
-                case "SortStation":
+                case "Sortstation":
                     try{
                         System.out.println("SortStation");
                     }catch(Exception e){

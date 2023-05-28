@@ -68,6 +68,8 @@ public class User {
      * @param firstName   The user's first name.
      */
     public User(String firstName) {
+        User.count ++;
+        this.id = User.count;
         this.firstName = firstName;
     }
 

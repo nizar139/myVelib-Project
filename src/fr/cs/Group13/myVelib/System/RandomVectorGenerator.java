@@ -27,7 +27,7 @@ public class RandomVectorGenerator {
 
     public static void main(String[] args) {
         int n = 5;  // Number of integers in the vector
-        int maxValue = 10;  // Maximum value for each integer
+        int maxValue = 10;  // Maximum value for each integerr
         int totalSum = 40;  // Desired sum of the numbers
 
         List<Integer> randomVector = generateVector(n, maxValue, totalSum);

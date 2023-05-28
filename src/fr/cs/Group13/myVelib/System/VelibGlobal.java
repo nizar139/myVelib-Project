@@ -19,6 +19,18 @@ public class VelibGlobal {
         this.listOfVelibSystems = new ArrayList<>();
     }
 
+    public ArrayList<VelibSystem> getListOfVelibSystems() {
+        return listOfVelibSystems;
+    }
+    public VelibSystem getSystemById(int id){
+        for (VelibSystem s:this.listOfVelibSystems){
+            if (id == s.getId()){
+                return s;
+            }
+        }
+        throw new RuntimeException("there is no Velib System with this id");
+    }
+
     public static VelibGlobal getInstance(){
         if (instance == null){
             instance = new VelibGlobal();
@@ -40,46 +52,40 @@ public class VelibGlobal {
         int i = 0;
         int max_i = this.listOfVelibSystems.size();
         while (i<max_i && user==null){
-            velibSystem = this.listOfVelibSystems.get(i);
-            user = velibSystem.searchUserById(userId);
-            max_i ++ ;
+            try {
+                velibSystem = this.listOfVelibSystems.get(i);
+                user = velibSystem.searchUserById(userId);
+                max_i++;
+            }
+            catch (Exception e){
+                max_i ++;
+            }
         }
         if (user == null){
             throw new RuntimeException("no user matching this Id was found in any velibNetwork");
         }
         return new Object[]{velibSystem, user};
     }
-//    public void rentBike(int userId, int stationId){
-//        VelibSystem velibSystem = null;
-//        User user = null;
-//        int i = 0;
-//        int max_i = this.listOfVelibSystems.size();
-//        while (i<max_i && user==null){
-//            velibSystem = this.listOfVelibSystems.get(i);
-//            user = velibSystem.searchUserById(userId);
-//            max_i ++ ;
-//        }
-//        if (user == null){
-//            System.out.println("no user matching this Id was found in any velibNetwork");
-//            return;
-//        }
-//        DockingStation station = velibSystem.searchStationById(stationId);
-//        if (station.getStatus()==StationStatus.OFFLINE){
-//            System.out.println("Station is offline");
-//            return;
-//        }
-//        Bicycle bike = Bicycle.findBikeAtStation(station);
-//        if (bike==null){
-//            System.out.println("There is no available bike at the station");
-//            return;
-//        }
-//        user.rentBicycle(bike);
-//    }
-//    public VelibSystem setupVelib(String name){
-//        VelibSystem velibSys = new VelibSystem(name);
-//        velibSys.generateStationMap(5,5,10, 0.25, 0.375,4,4);
-//        return velibSys;
-//    }
+    public Object[] searchSystembyStationId(int stationId){
+        VelibSystem velibSystem = null;
+        DockingStation station = null;
+        int i = 0;
+        int max_i = this.listOfVelibSystems.size();
+        while (i<max_i && station==null){
+            try {
+                velibSystem = this.listOfVelibSystems.get(i);
+                station = velibSystem.searchStationById(stationId);
+                max_i++;
+            }
+            catch (Exception e){
+                max_i++;
+            }
+        }
+        if (station == null){
+            throw new RuntimeException("no user matching this Id was found in any velibNetwork");
+        }
+        return new Object[]{velibSystem, station};
+    }
     public VelibSystem setupVelib(String name, int nstations, int nslots, double s, int nbikes){
         if (nstations*nslots<nbikes){
             throw new RuntimeException("The total number of bicycle is higher than the total number of parking slots!");
@@ -122,17 +128,20 @@ public class VelibGlobal {
         User user = new User(name);
         NoCard card = new NoCard(user);
         user.setCard(card);
+        velibSys.addUser(user);
     }
     public void addUserVlibre(String name, String networkName){
         VelibSystem velibSys = searchSystemByName(networkName);
         User user = new User(name);
         Vlibre card = new Vlibre(user);
         user.setCard(card);
+        velibSys.addUser(user);
     }
     public void addUserVmax(String name, String networkName){
         VelibSystem velibSys = searchSystemByName(networkName);
         User user = new User(name);
         Vmax card = new Vmax(user);
         user.setCard(card);
+        velibSys.addUser(user);
     }
 }

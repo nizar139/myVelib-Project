@@ -207,7 +207,16 @@ public abstract class DockingStation {
     public void setStatus(StationStatus status) {
         this.status = status;
     }
-
+    public ParkingSlot getEmptySlot(){
+        if (this.numberOfVacantSlots>0){
+            for (ParkingSlot slot:this.parkingSlotArraylist){
+                if (!(slot.isOccupied())){
+                    return slot;
+                }
+            }
+        }
+        throw new RuntimeException("No slot found at the station");
+    }
 
     @Override
     public String toString() {

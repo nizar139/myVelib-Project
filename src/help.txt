@@ -7,7 +7,7 @@ Commands:
 	addUser <userName> <cardType> <velibnetworkName>;
 	offline <velibnetworkName> <stationID>;
 	online <velibnetworkName> <stationID>;
-	rentBike <userID> <stationID> or <userID> <GPS_Position>; 
+	rentBike <userID> <stationID> or <userID> <GPS_x> <GPS_y>; 
 	returnBike <userID> <stationID> <duration> <userID> <GPS_Position> <duration>;
 	displayStation <velibnetworkName> <stationID>; 
 	displayUser <velibnetworkName> <userID>;

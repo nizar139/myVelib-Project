@@ -1,8 +1,5 @@
 import fr.cs.Group13.myVelib.System.VelibSystem;
-import fr.cs.Group13.myVelib.VelibCLUI.HandleAddUserCommand;
-import fr.cs.Group13.myVelib.VelibCLUI.HandleOfflineCommand;
-import fr.cs.Group13.myVelib.VelibCLUI.HandleOnlineCommand;
-import fr.cs.Group13.myVelib.VelibCLUI.HandleSetupCommand;
+import fr.cs.Group13.myVelib.VelibCLUI.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -41,6 +38,13 @@ public class VelibTerminal {
                         System.out.println(e);
                     }
                     break;
+                case "displaysystems":
+                    try {
+                        HandleDisplaySystemsCommand.handleDisplaySystems();
+                    }catch (Exception e){
+                        System.out.println(e);
+                    }
+                    break;
                 case "adduser":
                     try{
                         HandleAddUserCommand.handleAddUser(args);
@@ -64,7 +68,7 @@ public class VelibTerminal {
                     break;
                 case "rentbike":
                     try{
-                        System.out.println("rentBike");
+                        HandleRentBikeCommand.HandleRent(args,0);
                     }catch(Exception e){
                         System.out.println(e);
                     }

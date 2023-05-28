@@ -9,7 +9,7 @@ import fr.cs.Group13.myVelib.System.VelibGlobal;
 import fr.cs.Group13.myVelib.System.VelibSystem;
 import fr.cs.Group13.myVelib.User.User;
 
-public class HandleCommandRent {
+public class HandleRentBikeCommand {
     public static void HandleRent(String[] args, int bikeType){
         VelibGlobal instance = VelibGlobal.getInstance();
         if (args.length!=2){
@@ -17,7 +17,7 @@ public class HandleCommandRent {
             return;
         }
         int userId = Integer.parseInt(args[0]);
-        int stationId = Integer.parseInt(args[0]);
+        int stationId = Integer.parseInt(args[1]);
         Object[] temp = instance.searchSystemByUserId(userId, stationId);
         VelibSystem velibSystem = (VelibSystem) temp[0];
         User user = (User) temp[1];

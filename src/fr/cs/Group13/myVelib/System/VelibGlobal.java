@@ -18,6 +18,18 @@ public class VelibGlobal {
         this.listOfVelibSystems = new ArrayList<>();
     }
 
+    public ArrayList<VelibSystem> getListOfVelibSystems() {
+        return listOfVelibSystems;
+    }
+    public VelibSystem getSystemById(int id){
+        for (VelibSystem s:this.listOfVelibSystems){
+            if (id == s.getId()){
+                return s;
+            }
+        }
+        throw new RuntimeException("there is no Velib System with this id");
+    }
+
     public static VelibGlobal getInstance(){
         if (instance == null){
             instance = new VelibGlobal();

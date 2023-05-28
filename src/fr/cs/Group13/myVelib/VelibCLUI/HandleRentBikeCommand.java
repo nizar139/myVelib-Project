@@ -9,7 +9,7 @@ import fr.cs.Group13.myVelib.System.VelibGlobal;
 import fr.cs.Group13.myVelib.System.VelibSystem;
 import fr.cs.Group13.myVelib.User.User;
 
-public class HandleCommandRent {
+public class HandleRentBikeCommand {
     public static void HandleRent(String[] args, int bikeType){
         VelibGlobal instance = VelibGlobal.getInstance();
         if (args.length!=2 && args.length!=3){

@@ -5,29 +5,34 @@ import java.util.List;
 import java.util.Random;
 
 public class RandomVectorGenerator {
-    public static List<Integer> generateVector(int n, int minValue, int totalSum) {
+    public static List<Integer> generateVector(int n, int maxValue, int totalSum) {
         List<Integer> vector = new ArrayList<>();
         int sumToDistribute = totalSum;
         Random random = new Random();
 
-        for (int i = 0; i < n - 1; i++) {
-            int bound = Math.min(minValue,sumToDistribute);
+        for (int i = 0; i < n; i++) {
+            int bound = Math.min(maxValue,sumToDistribute);
             int num = random.nextInt(bound+1);
             vector.add(num);
             sumToDistribute -= num;
         }
         System.out.println(sumToDistribute);
-//        System.out.print(maxLastNum);
-//        int lastNum = random.nextInt(maxLastNum + 1);
-//        vector.add(lastNum);
-
         return vector;
+    }
+    public void distributeSum(List<Integer> vector, int sumToDistribute, int maxValue){
+        int i = 0;
+        int length = vector.size();
+        Random random = new Random();
+        while (sumToDistribute>0){
+            if vector.get(i)<
+        }
+
     }
 
     public static void main(String[] args) {
         int n = 5;  // Number of integers in the vector
         int min = 10;  // Maximum value for each integer
-        int totalSum = 20;  // Desired sum of the numbers
+        int totalSum = 40;  // Desired sum of the numbers
 
         List<Integer> randomVector = generateVector(n, min, totalSum);
         System.out.println(randomVector);

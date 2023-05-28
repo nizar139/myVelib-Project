@@ -1,55 +1,114 @@
-import jline.console.ConsoleReader;
 import fr.cs.Group13.myVelib.System.VelibSystem;
-import fr.cs.Group13.myVelib.VelibCLUI.HandleSetupCommand;
-import java.io.IOException;
+import fr.cs.Group13.myVelib.VelibCLUI.HandleSetup;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
 
 public class VelibTerminal {
-    public static void main(String[] args) {
-        try {
-            ConsoleReader console = new ConsoleReader();
+    public static void main(String[] arguments) {
 
-            String line;
-            while ((line = console.readLine("$ ")) != null) {
-                // Ctrl+C was pressed
-                if (line.isEmpty()) {
-                    System.out.println("Ctrl+C was clicked. Terminal is shutting down...");
-                    System.exit(0);
-                }
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> System.out.println("Ctrl+C was clicked. Terminal is shutting down...")));
 
-                // Read the user input
-                String[] args_int = line.trim().split(" ");
-                String command = args_int[0];
-                String[] commandArgs = new String[args_int.length - 1];
-                System.arraycopy(args_int, 1, commandArgs, 0, commandArgs.length);
-                String lowercaseCommand = command.toLowerCase();
+        Scanner scanner = new Scanner(System.in);
+        boolean running = true;
 
-                // Handle the command
-                switch (lowercaseCommand) {
-                    case "help":
-                        displayHelp();
-                        break;
-                    case "quit":
-                    case "exit":
-                        System.exit(0);
-                        break;
-                    case "setup":
-                        try {
-                            VelibSystem system = HandleSetupCommand.handleSetup(commandArgs);
-                        } catch (Exception e) {
-                            System.out.println(e);
-                        }
-                        break;
-                    // Add cases for other commands
-                    default:
-                        System.out.println("Invalid command. Type 'help' to see available commands.");
-                        break;
-                }
+        while (running) {
+            System.out.print("$ "); // Display the prompt symbol
+            String command = scanner.nextLine().trim();
+            String[] args_int = command.split(" ");// Read the user input
+            command = args_int[0];
+            String[] args = new String[args_int.length -1];
+            System.arraycopy(args_int, 1, args, 0, args.length);
+            String lowercaseCommand = command.toLowerCase();
+
+            // Handle the command
+            switch (lowercaseCommand) {
+                case "help":
+                    displayHelp();
+                    break;
+                case "quit", "exit":
+                    running = false;
+                    break;
+                case "setup":
+                    try {
+                        VelibSystem system = HandleSetup.handleSetup(args);
+                    } catch(Exception e){
+                        System.out.println(e);
+                    }
+                    break;
+                case "addUser":
+                    try{
+                        System.out.println("working");
+                    }catch(Exception e){
+                        System.out.println(e);
+                    }
+                    break;
+                case "offline":
+                    try{
+                        System.out.println("offline");
+                    }catch(Exception e){
+                        System.out.println(e);
+                    }
+                    break;
+                case "online":
+                    try{
+                        System.out.println("online");
+                    }catch(Exception e){
+                        System.out.println(e);
+                    }
+                    break;
+                case "rentBike":
+                    try{
+                        System.out.println("rentBike");
+                    }catch(Exception e){
+                        System.out.println(e);
+                    }
+                    break;
+                case "returnBike":
+                    try{
+                        System.out.println("returnBike");
+                    }catch(Exception e){
+                        System.out.println(e);
+                    }
+                    break;
+                case "displayStation":
+                    try{
+                        System.out.println("displayStation");
+                    }catch(Exception e){
+                        System.out.println(e);
+                    }
+                    break;
+                case "displayUser":
+                    try{
+                        System.out.println("displayUser");
+                    }catch(Exception e){
+                        System.out.println(e);
+                    }
+                    break;
+                case "SortStation":
+                    try{
+                        System.out.println("SortStation");
+                    }catch(Exception e){
+                        System.out.println(e);
+                    }
+                    break;
+                case "display":
+                    try{
+                        System.out.println("display");
+                    }catch(Exception e){
+                        System.out.println(e);
+                    }
+                    break;
+                default:
+                    System.out.println("Invalid command. Type 'help' to see available commands.");
+                    break;
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
+
+        scanner.close();
+        System.out.println("Terminal closed. Goodbye!");
     }
 
     private static void displayHelp() {

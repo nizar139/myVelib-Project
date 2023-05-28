@@ -1,4 +1,7 @@
 import fr.cs.Group13.myVelib.System.VelibSystem;
+import fr.cs.Group13.myVelib.VelibCLUI.HandleAddUserCommand;
+import fr.cs.Group13.myVelib.VelibCLUI.HandleOfflineCommand;
+import fr.cs.Group13.myVelib.VelibCLUI.HandleOnlineCommand;
 import fr.cs.Group13.myVelib.VelibCLUI.HandleSetupCommand;
 
 import java.io.BufferedReader;
@@ -38,23 +41,23 @@ public class VelibTerminal {
                         System.out.println(e);
                     }
                     break;
-                case "addUser":
+                case "adduser":
                     try{
-                        System.out.println("working");
+                        HandleAddUserCommand.handleAddUser(args);
                     }catch(Exception e){
                         System.out.println(e);
                     }
                     break;
                 case "offline":
                     try{
-                        System.out.println("offline");
+                        HandleOfflineCommand.handleOffline(args);
                     }catch(Exception e){
                         System.out.println(e);
                     }
                     break;
                 case "online":
                     try{
-                        System.out.println("online");
+                        HandleOnlineCommand.handleOnline(args);
                     }catch(Exception e){
                         System.out.println(e);
                     }

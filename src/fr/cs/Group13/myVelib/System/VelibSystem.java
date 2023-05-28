@@ -168,7 +168,7 @@ public class VelibSystem {
         for (DockingStation station:this.listOfStations){
             if (station.getId()==id){return station;}
         }
-        throw new IllegalStateException("no user Matching this id was found");
+        throw new IllegalStateException("no Station Matching this id was found");
     }
     public Bicycle searchBicycleByGPS(double[] gpsCord){
         for (Bicycle bike:this.listOfStreetBikes){

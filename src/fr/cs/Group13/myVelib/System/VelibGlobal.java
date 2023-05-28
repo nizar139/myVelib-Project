@@ -1,6 +1,5 @@
 package fr.cs.Group13.myVelib.System;
 
-import fr.cs.Group13.myVelib.Bicycle.Bicycle;
 import fr.cs.Group13.myVelib.Cards.NoCard;
 import fr.cs.Group13.myVelib.Cards.Vlibre;
 import fr.cs.Group13.myVelib.Cards.Vmax;
@@ -32,7 +31,7 @@ public class VelibGlobal {
                 return velibSys;
             }
         }
-        throw new RuntimeException("No station matching the given name was found");
+        throw new RuntimeException("No Velib Network matching the given name was found");
     }
     public Object[] searchSystemByUserId(int userId, int stationId){
         VelibSystem velibSystem = null;

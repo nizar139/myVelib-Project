@@ -1,8 +1,5 @@
 package fr.cs.Group13.myVelib.VelibCLUI;
 
-import fr.cs.Group13.myVelib.Bicycle.Bicycle;
-import fr.cs.Group13.myVelib.Bicycle.ElectricalBicycle;
-import fr.cs.Group13.myVelib.Bicycle.MechanicalBicycle;
 import fr.cs.Group13.myVelib.DockingStation.DockingStation;
 import fr.cs.Group13.myVelib.DockingStation.ParkingSlot;
 import fr.cs.Group13.myVelib.DockingStation.StationStatus;

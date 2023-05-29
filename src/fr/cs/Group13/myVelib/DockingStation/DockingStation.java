@@ -278,4 +278,10 @@ public abstract class DockingStation {
                 "\n\tnumberOfMechanicalBikes = " + (numberOfSlots-numberOfElectricalBikes-numberOfVacantSlots) ;
     }
 
+    public void display() {
+        System.out.println(this.getId()+" Station statistics :");
+        System.out.println("\tTotal Number of rents Operations   : "+this.totalRents);
+        System.out.println("\tTotal Number of returns Operations : "+this.totalReturns);
+    }
+
 }

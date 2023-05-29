@@ -4,8 +4,6 @@ import fr.cs.Group13.myVelib.System.VelibGlobal;
 import fr.cs.Group13.myVelib.System.VelibSystem;
 import fr.cs.Group13.myVelib.User.User;
 
-import java.util.ArrayList;
-
 public class HandleDisplayUserCommand {
     public static void handleDisplayUser(String[] args){
         if (args.length !=2){
@@ -15,7 +13,6 @@ public class HandleDisplayUserCommand {
         String VelibNetworkName = args[0];
         int userId = Integer.parseInt(args[1]);
         VelibSystem system = instance.searchSystemByName(VelibNetworkName);
-        ArrayList<User> users = system.getListOfUsers();
         User user = system.searchUserById(userId);
         user.display();
     }

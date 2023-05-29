@@ -96,14 +96,14 @@ public class VelibTerminal {
                     break;
                 case "returnbike":
                     try{
-                        System.out.println("returnBike");
+                        HandleReturnBikeCommand.HandleReturn(args);
                     }catch(Exception e){
                         System.out.println(e);
                     }
                     break;
                 case "displaystation":
                     try{
-                        System.out.println("displayStation");
+                        HandleDisplayStationCommand.handleDisplayStation(args);
                     }catch(Exception e){
                         System.out.println(e);
                     }
@@ -124,7 +124,8 @@ public class VelibTerminal {
                     break;
                 case "display":
                     try{
-                        System.out.println("display");
+                        HandleDisplayUsersCommand.handleDisplayUsers(args);
+                        HandleDisplayStationsCommand.handleDisplayStations(args);
                     }catch(Exception e){
                         System.out.println(e);
                     }

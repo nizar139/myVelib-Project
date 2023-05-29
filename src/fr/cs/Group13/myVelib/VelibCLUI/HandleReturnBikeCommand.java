@@ -29,7 +29,7 @@ public class HandleReturnBikeCommand {
         VelibSystem velibSystem = (VelibSystem) temp[0];
         User user = (User) temp[1];
         if (args.length==3){
-            int stationId = Integer.parseInt(args[1]);
+            int stationId = Integer.parseInt(args[2]);
             DockingStation station = velibSystem.searchStationById(stationId);
             if (station.getStatus()== StationStatus.OFFLINE){
                 throw new RuntimeException("Station is offline, cannot return Here");

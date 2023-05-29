@@ -416,13 +416,11 @@ public class User {
 
     @Override
     public String toString() {
-        return  "\n\tid             = " + id +
-                "\n\tfirstName      = " + firstName +
-                "\n\tgpsCord        = " + Arrays.toString(gpsCord) +
-                "\n\tcard           = " + card.getClass().getSimpleName() +
-                "\n\thasBicycle     = " + (currentBicycle == null? "no": "yes") +
-                "\n\ttotalCharges   = " + totalCharges +
-                "\n\tnumberOfRides  = " + numberOfRides;
+        return  "User"+"\n\tid             = " + id +
+                "\n\tFull Name       = " + firstName + " " + lastName +
+                "\n\tgps Coordinates = " + Arrays.toString(gpsCord) +
+                "\n\tcard            = " + card.getClass().getSimpleName() +
+                "\n\thasBicycle      = " + (currentBicycle == null? "no": "yes");
     }
     public void display() {
         System.out.println(this.getFirstName()+" statistics :");
@@ -430,5 +428,6 @@ public class User {
         System.out.println("\tTotal time spent on bike : "+this.totalTime);
         System.out.println("\tTotal charges : "+this.totalCharges);
         System.out.println("\tTime credit : "+this.card.getCreditBalance());
+        System.out.println("\tTotal earned time credit : "+this.totalTimeCredit);
     }
 }

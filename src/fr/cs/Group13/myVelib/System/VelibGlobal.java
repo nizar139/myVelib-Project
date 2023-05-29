@@ -118,19 +118,19 @@ public class VelibGlobal {
         VelibSystem velibSystem = null;
         DockingStation station = null;
         int i = 0;
-        int max_i = this.listOfVelibSystems.size();
-        while (i<max_i && station==null){
+        int maxI = this.listOfVelibSystems.size();
+        while (i<maxI && station==null){
             try {
                 velibSystem = this.listOfVelibSystems.get(i);
                 station = velibSystem.searchStationById(stationId);
-                max_i++;
+                i++;
             }
             catch (Exception e){
-                max_i++;
+                i++;
             }
         }
         if (station == null){
-            throw new RuntimeException("no user matching this Id was found in any velibNetwork");
+            throw new RuntimeException("no station matching this Id was found in any velibNetwork");
         }
         return new Object[]{velibSystem, station};
     }

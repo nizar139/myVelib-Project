@@ -38,14 +38,14 @@ public class VelibTerminal {
                         System.out.println(e);
                     }
                     break;
-                case "displaysystems":
+                case "displaynetworks":
                     try {
                         HandleDisplaySystemsCommand.handleDisplaySystems();
                     }catch (Exception e){
                         System.out.println(e);
                     }
                     break;
-                case "displaynetworks":
+                case "displaystations":
                     try {
                         HandleDisplayStationsCommand.handleDisplayStations(args);
                     }catch (Exception e){
@@ -62,6 +62,13 @@ public class VelibTerminal {
                 case "displaystationinfo":
                     try {
                         HandleDisplayStationInfoCommand.handleDisplayStationInfo(args);
+                    }catch (Exception e){
+                        System.out.println(e);
+                    }
+                    break;
+                case "displayuserinfo":
+                    try {
+                        HandleDisplayUserInfoCommand.handleDisplayUserInfo(args);
                     }catch (Exception e){
                         System.out.println(e);
                     }

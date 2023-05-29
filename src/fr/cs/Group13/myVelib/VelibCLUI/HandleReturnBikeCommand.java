@@ -39,14 +39,16 @@ public class HandleReturnBikeCommand {
                 throw new RuntimeException("Station is offline, cannot return Here");
             }
             ParkingSlot slot = station.getEmptySlot();
-            user.returnBicycle(slot, duration);
+            double charge = user.returnBicycle(slot, duration);
+            System.out.println("Return Operation done.\r\nYour total charge is : "+charge+"\r\nThank you for using our service");
 
         } else {
             double gpsX = Double.parseDouble(args[2]);
             double gpsY = Double.parseDouble(args[3]);
             double[] gpsCord = {gpsX,gpsY};
             user.setGpsCord(gpsCord);
-            user.returnBicycle(duration);
+            double charge = user.returnBicycle(duration);
+            System.out.println("Return Operation done.\r\nYour total charge is : "+charge+"\r\nThank you for using our service");
         }
     }
 }

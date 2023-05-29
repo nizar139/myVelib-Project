@@ -225,14 +225,14 @@ public abstract class DockingStation {
 
 
     public  String displayInfos(){
-        return "DockingStation{" +
-                "id=" + id +
-                ", gpsCord=" + Arrays.toString(gpsCord) +
-                ", status=" + status +
-                ", numberOfSlots=" + numberOfSlots +
-                ", numberOfElectricalBikes=" + numberOfElectricalBikes +
-                ", numberOfMechanicalBikes=" + (numberOfSlots-numberOfElectricalBikes-numberOfVacantSlots) +
-                '}';
+        return "DockingStation:\n" +
+                "\tStation Type =            " + this.getClass().getSimpleName()+
+                "\n\tid =                      " + id +
+                "\n\tgpsCord =                 " + Arrays.toString(gpsCord) +
+                "\n\tstatus =                  " + status +
+                "\n\tnumberOfSlots =           " + numberOfSlots +
+                "\n\tnumberOfElectricalBikes = " + numberOfElectricalBikes +
+                "\n\tnumberOfMechanicalBikes = " + (numberOfSlots-numberOfElectricalBikes-numberOfVacantSlots) ;
     }
 
 }

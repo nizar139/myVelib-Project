@@ -9,6 +9,7 @@ import fr.cs.Group13.myVelib.System.VelibSystem;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.Arrays;
 
 /**
  * The User class represents a user of the bike rental system.
@@ -403,4 +404,21 @@ public class User {
         return false;
     }
 
+    @Override
+    public String toString() {
+        return  "\n\tid             = " + id +
+                "\n\tfirstName      = " + firstName +
+                "\n\tgpsCord        = " + Arrays.toString(gpsCord) +
+                "\n\tcard           = " + card.getClass().getSimpleName() +
+                "\n\thasBicycle     = " + (currentBicycle == null? "no": "yes") +
+                "\n\ttotalCharges   = " + totalCharges +
+                "\n\tnumberOfRides  = " + numberOfRides;
+    }
+    public void display() {
+        System.out.println(this.getFirstName()+" statistics :");
+        System.out.println("\tNumber of rides : "+this.numberOfRides);
+        System.out.println("\tTotal time spent on bike : "+this.totalTime);
+        System.out.println("\tTotal charges : "+this.totalCharges);
+        System.out.println("\tTime credit : "+this.card.getCreditBalance());
+    }
 }

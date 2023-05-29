@@ -16,7 +16,6 @@ public class RandomVectorGenerator {
             vector.add(num);
             sumToDistribute -= num;
         }
-        System.out.println(sumToDistribute);
         return vector;
     }
     public static void main(String[] args) {

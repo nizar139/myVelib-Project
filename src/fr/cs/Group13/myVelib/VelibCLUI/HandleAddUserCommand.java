@@ -1,7 +1,6 @@
 package fr.cs.Group13.myVelib.VelibCLUI;
 
 import fr.cs.Group13.myVelib.System.VelibGlobal;
-import fr.cs.Group13.myVelib.System.VelibSystem;
 
 public class HandleAddUserCommand {
     public static void handleAddUser(String[] args){
@@ -15,14 +14,17 @@ public class HandleAddUserCommand {
         String networkName = args[2];
         if (cardType.equalsIgnoreCase("none")){
             instance.addUserNoCard(userName, networkName);
+            System.out.println(userName+ " user with "+cardType+" membership has been successfully added to the "+networkName+" Velib Network");
             return;
         }
         if (cardType.equalsIgnoreCase("vlibre")){
             instance.addUserVlibre(userName, networkName);
+            System.out.println(userName+ " user with "+cardType+" membership has been successfully added to the "+networkName+" Velib Network");
             return;
         }
         if (cardType.equalsIgnoreCase("vmax")){
             instance.addUserVmax(userName, networkName);
+            System.out.println(userName+ " user with "+cardType+" membership has been successfully added to the "+networkName+" Velib Network");
             return;
         }
         System.out.println("Invalid choice of cardtype. Please choose one of the following : None, Vlibre, Vmax");

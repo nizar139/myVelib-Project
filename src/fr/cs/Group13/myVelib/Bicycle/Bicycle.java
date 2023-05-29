@@ -13,6 +13,8 @@ import fr.cs.Group13.myVelib.Cards.PricingVisitor;
 import fr.cs.Group13.myVelib.DockingStation.DockingStation;
 import fr.cs.Group13.myVelib.DockingStation.ParkingSlot;
 
+import java.util.Arrays;
+
 public abstract class Bicycle{
     private int id;
     private double[] gpsCord;
@@ -137,5 +139,14 @@ public abstract class Bicycle{
             }
         }
         throw new RuntimeException("No Bicycle found at the given station");
+    }
+
+    @Override
+    public String toString() {
+        return "Bicycle{" +
+                "id=" + id +
+                ", gpsCord=" + Arrays.toString(gpsCord) +
+                ", fromAStation=" + fromAStation +
+                '}';
     }
 }

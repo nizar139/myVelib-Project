@@ -4,8 +4,9 @@ Description:
 	Displays help on Velib Terminal commands.
 Commands: 
 	setup <name> or <name> <nstations> <nslots> <s> <nbikes>;
-	displaysystems;
+	displayNetworks;
 	displayStations <velibnetworkName>;
+	displayUsers <velibnetworkName>
 	addUser <userName> <cardType> <velibnetworkName>;
 	offline <velibnetworkName> <stationID>;
 	online <velibnetworkName> <stationID>;

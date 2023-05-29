@@ -84,5 +84,15 @@ public class NoCard implements Card, PricingVisitor {
     @Override
     public void applyBonus(DockingStation station) {
     }
+
+    /**
+     * No card user doesn't earn credit.
+     *
+     * @return credit of the user
+     */
+    @Override
+    public double getCreditBalance() {
+        return 0;
+    }
 }
 

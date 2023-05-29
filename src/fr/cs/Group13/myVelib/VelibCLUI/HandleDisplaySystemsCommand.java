@@ -9,9 +9,9 @@ public class HandleDisplaySystemsCommand {
     public static void handleDisplaySystems(){
         VelibGlobal instance = VelibGlobal.getInstance();
         ArrayList<VelibSystem> systems = instance.getListOfVelibSystems();
-        System.out.println("There are "+systems.size()+" systems");
+        System.out.println("There are "+systems.size()+" Velib networks");
         for (VelibSystem s:systems){
-            System.out.println(s.getName());
+            System.out.println("\t"+s.getName());
         }
     }
 }

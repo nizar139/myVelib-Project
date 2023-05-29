@@ -29,4 +29,6 @@ public interface Card {
      * @return The bonus granted.
      */
     void applyBonus(DockingStation station);
+
+    double getCreditBalance();
 }

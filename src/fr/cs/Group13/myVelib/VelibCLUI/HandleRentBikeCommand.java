@@ -49,5 +49,6 @@ public class HandleRentBikeCommand {
 
 
         user.rentBicycle(bike);
+        System.out.println("Bike Successfully rented by "+user.getFirstName());
     }
 }

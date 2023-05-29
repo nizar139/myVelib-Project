@@ -10,6 +10,7 @@ public class HandleSetupCommand {
         if (args.length == 1){
             String name = args[0];
             velibSys = instance.setupVelib(name,10,10,4,75);
+            System.out.println(name+" Velib Network successfully generated .");
         }
         else if (args.length==5){
             String name = args[0];
@@ -18,6 +19,7 @@ public class HandleSetupCommand {
             double s = Double.parseDouble(args[3]);
             int nBikes = Integer.parseInt(args[4]);
             velibSys = instance.setupVelib(name, nStations, nSlots, s, nBikes);
+            System.out.println(name+" Velib Network successfully generated .");
         }
         else {
             System.out.println("Invalid number of arguments. Usage: setup <name> or setup <name><nstations><nslots><s><nbikes>");

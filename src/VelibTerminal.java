@@ -17,10 +17,10 @@ public class VelibTerminal {
         while (running) {
             System.out.print("$ "); // Display the prompt symbol
             String command = scanner.nextLine().trim();
-            String[] args_int = command.split(" ");// Read the user input
-            command = args_int[0];
-            String[] args = new String[args_int.length -1];
-            System.arraycopy(args_int, 1, args, 0, args.length);
+            String[] argsInt = command.split(" ");// Read the user input
+            command = argsInt[0];
+            String[] args = new String[argsInt.length -1];
+            System.arraycopy(argsInt, 1, args, 0, args.length);
             String lowercaseCommand = command.toLowerCase();
 
             // Handle the command
@@ -45,9 +45,23 @@ public class VelibTerminal {
                         System.out.println(e);
                     }
                     break;
-                case "displaystations":
+                case "displaynetworks":
                     try {
                         HandleDisplayStationsCommand.handleDisplayStations(args);
+                    }catch (Exception e){
+                        System.out.println(e);
+                    }
+                    break;
+                case "displayusers":
+                    try {
+                        HandleDisplayUsersCommand.handleDisplayUsers(args);
+                    }catch (Exception e){
+                        System.out.println(e);
+                    }
+                    break;
+                case "displaystationinfo":
+                    try {
+                        HandleDisplayStationInfoCommand.handleDisplayStationInfo(args);
                     }catch (Exception e){
                         System.out.println(e);
                     }
@@ -96,14 +110,14 @@ public class VelibTerminal {
                     break;
                 case "displayuser":
                     try{
-                        System.out.println("displayUser");
+                        HandleDisplayUserCommand.handleDisplayUser(args);
                     }catch(Exception e){
                         System.out.println(e);
                     }
                     break;
                 case "Sortstation":
                     try{
-                        System.out.println("SortStation");
+                        HandleSortStationCommand.handleSortStation(args);
                     }catch(Exception e){
                         System.out.println(e);
                     }

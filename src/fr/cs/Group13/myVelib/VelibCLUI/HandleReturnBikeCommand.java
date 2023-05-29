@@ -19,9 +19,8 @@ public class HandleReturnBikeCommand {
      * Handles the "return" command for returning a bike.
      *
      * @param args     An array of strings containing the command arguments.
-     * @param bikeType The type of bike being returned (0 for station return, 1 for on-street return).
      */
-    public static void HandleReturn(String[] args, int bikeType){
+    public static void HandleReturn(String[] args){
         VelibGlobal instance = VelibGlobal.getInstance();
         if (args.length!=3 && args.length!=4){
             System.out.println("Invalid number of arguments. Usage : ");

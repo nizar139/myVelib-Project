@@ -26,9 +26,15 @@ public abstract class DockingStation {
     private int totalRents;
     private int totalReturns;
 
+    /**
+     * Increments the total number of rents for the station.
+     */
     public void incrementRents(){
         this.totalRents ++;
     }
+    /**
+     * Increments the total number of returns for the station.
+     */
     public void incrementReturns(){
         this.totalReturns ++;
     }
@@ -42,10 +48,20 @@ public abstract class DockingStation {
         return id;
     }
 
+    /**
+     * Returns the total number of rent operations for the station.
+     *
+     * @return The total number of rent operations.
+     */
     public int getTotalRents() {
         return totalRents;
     }
 
+    /**
+     * Returns the total number of return operations for the station.
+     *
+     * @return The total number of return operations.
+     */
     public int getTotalReturns() {
         return totalReturns;
     }
@@ -105,7 +121,7 @@ public abstract class DockingStation {
     }
 
     /**
-     * Constructs a DockingStation object with the specified parameters, automatically creates ParkinSlot and Bicycle objects
+     * Constructs a DockingStation object with the specified parameters, automatically creates ParkingSlot and Bicycle objects
      *
      * @param gpsCord                The GPS coordinates of the docking station.
      * @param numberOfSlots          The total number of slots in the docking station.
@@ -184,14 +200,14 @@ public abstract class DockingStation {
         return parkingSlotArraylist;
     }
 
+    /**
+     * Sets the list of parking slots for the station.
+     *
+     * @param parkingSlotArraylist the list of parking slots to set
+     */
     public void setParkingSlotArraylist(ArrayList<ParkingSlot> parkingSlotArraylist) {
         this.parkingSlotArraylist = parkingSlotArraylist;
     }
-
-    public void getBalance() {
-        System.out.println("Station " + this.id +": \r\n\t total number of rent operations : "+this.totalRents+" \r\n\t total number of return operation : "+this.totalReturns);
-    }
-
 
     /**
      * Sets the gpsCoordinate the docking station.
@@ -202,10 +218,21 @@ public abstract class DockingStation {
         this.gpsCord = gpsCord;
     }
 
-
+    /**
+     * Sets the status of the station.
+     *
+     * @param status to set
+     */
     public void setStatus(StationStatus status) {
         this.status = status;
     }
+
+    /**
+     * Returns an empty parking slot at the station.
+     *
+     * @return an empty parking slot
+     * @throws RuntimeException if no empty slot is found at the station
+     */
     public ParkingSlot getEmptySlot(){
         if (this.numberOfVacantSlots>0){
             for (ParkingSlot slot:this.parkingSlotArraylist){
@@ -217,13 +244,29 @@ public abstract class DockingStation {
         throw new RuntimeException("No slot found at the station");
     }
 
+    /**
+     * Returns a string representation of the object.
+     *
+     * @return a string representation of the object
+     */
     @Override
     public String toString() {
         String s = "{" + this.getStatus() + " "+this.getClass().getSimpleName()+" " + id + ", situated at " + Arrays.toString(gpsCord) + "}";
         return s;
     }
 
+    /**
+     * Prints the balance information of the station.
+     */
+    public void getBalance() {
+        System.out.println("Station " + this.id +": \r\n\t total number of rent operations : "+this.totalRents+" \r\n\t total number of return operation : "+this.totalReturns);
+    }
 
+    /**
+     * Returns a string representation of the docking station's information.
+     *
+     * @return a string containing the docking station's details
+     */
     public  String displayInfos(){
         return "DockingStation:\n" +
                 "\tStation Type =            " + this.getClass().getSimpleName()+

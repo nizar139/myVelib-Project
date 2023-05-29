@@ -13,10 +13,39 @@ import fr.cs.Group13.myVelib.Bicycle.ElectricalBicycle;
 import fr.cs.Group13.myVelib.Bicycle.MechanicalBicycle;
 import fr.cs.Group13.myVelib.DockingStation.PlusStation;
 import fr.cs.Group13.myVelib.DockingStation.RegularStation;
-
+/**
+ * Represents a visitor for pricing calculations based on different bicycle types and station types.
+ */
 public interface PricingVisitor {
+    /**
+     * Calculates the price for an electrical bicycle.
+     *
+     * @param bicycle the electrical bicycle to calculate the price for
+     * @return an array of doubles representing the price breakdown
+     */
     double[] visit(ElectricalBicycle bicycle);
+
+    /**
+     * Calculates the price for a mechanical bicycle.
+     *
+     * @param bicycle the mechanical bicycle to calculate the price for
+     * @return an array of doubles representing the price breakdown
+     */
     double[] visit(MechanicalBicycle bicycle);
+
+    /**
+     * Calculates the price for a regular station.
+     *
+     * @param station the regular station to calculate the price for
+     * @return the calculated price
+     */
     double visit(RegularStation station);
+
+    /**
+     * Calculates the price for a plus station.
+     *
+     * @param station the plus station to calculate the price for
+     * @return the calculated price
+     */
     double visit(PlusStation station);
 }

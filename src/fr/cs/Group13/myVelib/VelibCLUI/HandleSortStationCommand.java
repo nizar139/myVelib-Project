@@ -17,7 +17,7 @@ public class HandleSortStationCommand {
         } else if (sortingPolicy.equalsIgnoreCase("mostusedstation")) {
             system.mostUsedSort();
         }else{
-            throw new RuntimeException("There is no such sorting policy.")
+            throw new RuntimeException("There is no such sorting policy.");
         }
     }
 }

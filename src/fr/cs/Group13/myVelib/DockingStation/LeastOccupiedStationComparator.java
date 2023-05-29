@@ -2,7 +2,11 @@ package fr.cs.Group13.myVelib.DockingStation;
 
 import java.util.Comparator;
 
-public class leastOccupiedStationComparator implements Comparator<DockingStation> {
+/**
+ * Comparator class for comparing DockingStation objects based on their occupancy.
+ * The least occupied station will be prioritized.
+ */
+public class LeastOccupiedStationComparator implements Comparator<DockingStation> {
 
     @Override
     public int compare(DockingStation s1, DockingStation s2) {

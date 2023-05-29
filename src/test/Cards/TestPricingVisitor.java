@@ -1,7 +1,8 @@
-package fr.cs.Group13.myVelib.Cards;
+package test.Cards;
 
 import fr.cs.Group13.myVelib.Bicycle.ElectricalBicycle;
 import fr.cs.Group13.myVelib.Bicycle.MechanicalBicycle;
+import fr.cs.Group13.myVelib.Cards.PricingVisitor;
 import fr.cs.Group13.myVelib.DockingStation.PlusStation;
 import fr.cs.Group13.myVelib.DockingStation.RegularStation;
 

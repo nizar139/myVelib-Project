@@ -10,7 +10,17 @@ import fr.cs.Group13.myVelib.System.VelibGlobal;
 import fr.cs.Group13.myVelib.System.VelibSystem;
 import fr.cs.Group13.myVelib.User.User;
 
+/**
+ * The HandleReturnBikeCommand class provides a static method to handle the "return" command for returning a bike.
+ * It performs the necessary operations to return a bike based on the specified arguments.
+ */
 public class HandleReturnBikeCommand {
+    /**
+     * Handles the "return" command for returning a bike.
+     *
+     * @param args     An array of strings containing the command arguments.
+     * @param bikeType The type of bike being returned (0 for station return, 1 for on-street return).
+     */
     public static void HandleReturn(String[] args, int bikeType){
         VelibGlobal instance = VelibGlobal.getInstance();
         if (args.length!=3 && args.length!=4){
@@ -29,14 +39,16 @@ public class HandleReturnBikeCommand {
                 throw new RuntimeException("Station is offline, cannot return Here");
             }
             ParkingSlot slot = station.getEmptySlot();
-            user.returnBicycle(slot, duration);
+            double charge = user.returnBicycle(slot, duration);
+            System.out.println("Return Operation done.\r\nYour total charge is : "+charge+"\r\nThank you for using our service");
 
         } else {
             double gpsX = Double.parseDouble(args[2]);
             double gpsY = Double.parseDouble(args[3]);
             double[] gpsCord = {gpsX,gpsY};
             user.setGpsCord(gpsCord);
-            user.returnBicycle(duration);
+            double charge = user.returnBicycle(duration);
+            System.out.println("Return Operation done.\r\nYour total charge is : "+charge+"\r\nThank you for using our service");
         }
     }
 }

@@ -66,6 +66,12 @@ public class MechanicalBicycle extends Bicycle{
         slot.getStation().setNumberOfVacantSlots(slot.getStation().getNumberOfVacantSlots()-1);
     }
 
+    /**
+     * Checks if this MechanicalBicycle is equal to the specified object.
+     *
+     * @param obj the object to compare with this MechanicalBicycle
+     * @return {@code true} if the specified object is a MechanicalBicycle with the same ID as this MechanicalBicycle, {@code false} otherwise
+     */
     @Override
     public boolean equals(Object obj){
         if(obj == this) return true;
@@ -73,6 +79,13 @@ public class MechanicalBicycle extends Bicycle{
             return ((MechanicalBicycle)obj).getId()==this.getId();
         return false;
     }
+    /**
+     * Finds a MechanicalBicycle at the specified DockingStation.
+     *
+     * @param station the DockingStation to search for a MechanicalBicycle
+     * @return the found MechanicalBicycle
+     * @throws RuntimeException if no Mechanical Bicycle is found at the given station
+     */
     public static Bicycle findBikeAtStation(DockingStation station){
         for (ParkingSlot slot: station.getParkingSlotArraylist()){
             if (slot.isOccupied() && slot.getBicycle() instanceof MechanicalBicycle){

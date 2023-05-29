@@ -2,7 +2,16 @@ package fr.cs.Group13.myVelib.VelibCLUI;
 
 import fr.cs.Group13.myVelib.System.VelibGlobal;
 
+/**
+ * The HandleAddUserCommand class provides a static method to handle the "addUser" command.
+ * It adds a user to the Velib system based on the specified arguments.
+ */
 public class HandleAddUserCommand {
+    /**
+     * Handles the "addUser" command.
+     *
+     * @param args An array of strings containing the command arguments.
+     */
     public static void handleAddUser(String[] args){
         VelibGlobal instance = VelibGlobal.getInstance();
         if (args.length!=3) {

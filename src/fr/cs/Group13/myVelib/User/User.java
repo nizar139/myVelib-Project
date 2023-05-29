@@ -260,7 +260,6 @@ public class User {
      * @throws IllegalStateException if the user is already renting a bike
      */
     public void rentBicycle(Bicycle b){
-
         if (this.currentBicycle == null) {
             if (this.vlibSys!=null) {this.vlibSys.removeStreetBike(b);}
             this.startTime = Instant.now();
@@ -268,18 +267,19 @@ public class User {
             if (this.currentBicycle.getSlot()!=null)
             {this.currentBicycle.getSlot().getStation().incrementRents();
             this.currentBicycle.getSlot().freeSlot();}
-//            this.currentBicycle.removeFromSlot();
         }else{
             throw new IllegalStateException("You cannot rent more than one bicycle!");
         }
     }
+
     /**
-     * This method allows the user to return a bike to a random place which is not a slot.
+     * Returns the bicycle to a location outside of any docking station (on the street).
+     * The GPS coordinates of the bicycle are assigned as the current coordinates of the user.
      *
-     * @throws IllegalStateException if the user isn't currently renting a bike
+     * @return The charge for the rental.
+     * @throws IllegalStateException if the user doesn't have a bicycle.
      */
-    public void returnBicycle(){
-        // update totaltimecredit
+    public double returnBicycle(){
         if (this.currentBicycle == null) {
             throw new IllegalStateException("you don't have a bicycle!");
         }else {
@@ -295,15 +295,17 @@ public class User {
             this.startTime = null;
             this.endTime = null;
             this.currentBicycle = null;
+            return charge;
         }
     }
     /**
-     * This method allows the user to return a bike to a specific slot.
+     * Returns the bicycle to the specified parking slot.
      *
-     * @param slot the slot where the bike will be returned
-     * @throws IllegalStateException if the user isn't currently renting a bike
+     * @param slot The parking slot where the bicycle is being returned.
+     * @return The charge for the rental.
+     * @throws IllegalStateException if the user doesn't have a bicycle.
      */
-    public void returnBicycle(ParkingSlot slot){
+    public double returnBicycle(ParkingSlot slot){
         if (this.currentBicycle == null) {
             throw new IllegalStateException("you don't have a bicycle!");
         }else{
@@ -316,20 +318,20 @@ public class User {
             this.totalTime += duration;
             this.totalCharges += charge;
             this.numberOfRides ++;
-//            this.currentBicycle.addToSlot(slot);
             this.startTime = null;
             this.endTime = null;
             this.currentBicycle = null;
+            return charge;
         }
-
     }
     /**
      * This method allows the user to return a bike to a random place which is not a slot.
      *
      * @param duration The duration of the bike ride in minutes.
+     * @return The charge for the rental.
      * @throws IllegalStateException if the user isn't currently renting a bike
      */
-    public void returnBicycle(double duration){
+    public double returnBicycle(double duration){
         if (this.currentBicycle == null) {
             throw new IllegalStateException("you don't have a bicycle!");
         }else {
@@ -343,6 +345,7 @@ public class User {
             this.startTime = null;
             this.endTime = null;
             this.currentBicycle = null;
+            return charge;
         }
     }
 
@@ -351,9 +354,10 @@ public class User {
      *
      * @param slot     The slot where the bike will be returned.
      * @param duration The duration of the bike ride in minutes.
+     * @return The charge for the rental.
      * @throws IllegalStateException if the user isn't currently renting a bike.
      */
-    public void returnBicycle(ParkingSlot slot, double duration){
+    public double returnBicycle(ParkingSlot slot, double duration){
         if (this.currentBicycle == null) {
             throw new IllegalStateException("you don't have a bicycle!");
         }else{
@@ -368,8 +372,8 @@ public class User {
             this.startTime = null;
             this.endTime = null;
             this.currentBicycle = null;
+            return charge;
         }
-
     }
 
     /**
@@ -396,6 +400,12 @@ public class User {
                 "\r\n\t total time credit earned : "+ this.totalTimeCredit);
     }
 
+    /**
+     * Checks if this User object is equal to another object.
+     *
+     * @param obj the object to compare with
+     * @return true if the objects are equal, false otherwise
+     */
     @Override
     public boolean equals(Object obj){
         if(obj == this) return true;

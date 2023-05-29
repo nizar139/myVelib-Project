@@ -9,6 +9,7 @@ import fr.cs.Group13.myVelib.DockingStation.DockingStation;
 import fr.cs.Group13.myVelib.DockingStation.ParkingSlot;
 import fr.cs.Group13.myVelib.DockingStation.PlusStation;
 import fr.cs.Group13.myVelib.DockingStation.RegularStation;
+import fr.cs.Group13.myVelib.System.RandomVectorGenerator;
 import fr.cs.Group13.myVelib.System.VelibSystem;
 import fr.cs.Group13.myVelib.User.User;
 import org.junit.jupiter.api.BeforeEach;
@@ -120,7 +121,7 @@ class VelibSystemTest {
     void getRandomCord() {
         double maxX = 10.0;
         double maxY = 10.0;
-        double[] cord = velibSystem.getRandomCord(maxX, maxY);
+        double[] cord = RandomVectorGenerator.getRandomCord(maxX, maxY);
         assertNotNull(cord);
         assertTrue(cord[0] >= 0 && cord[0] <= maxX);
         assertTrue(cord[1] >= 0 && cord[1] <= maxY);
@@ -176,7 +177,7 @@ class VelibSystemTest {
 
     @Test
     void createUseCaseSys() {
-        VelibSystem velibSys = VelibSystem.createUseCaseSys();
+        VelibSystem velibSys = VelibSystem.createUseCaseSystem();
         assertNotNull(velibSys.getListOfStations());
         assertNotNull(velibSys.getListOfStreetBikes());
         assertNotNull(velibSys.getListOfUsers());

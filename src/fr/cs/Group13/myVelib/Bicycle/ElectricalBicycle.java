@@ -72,6 +72,13 @@ public class ElectricalBicycle extends Bicycle{
         slot.getStation().setNumberOfElectricalBikes(slot.getStation().getNumberOfElectricalBikes()+1);
     }
 
+    /**
+     * Compares this ElectricalBicycle with the specified object for equality.
+     * Two ElectricalBicycles are considered equal if they have the same ID.
+     *
+     * @param obj the object to compare to
+     * @return true if the specified object is equal to this ElectricalBicycle, false otherwise
+     */
     @Override
     public boolean equals(Object obj){
         if(obj == this) return true;
@@ -80,6 +87,13 @@ public class ElectricalBicycle extends Bicycle{
         return false;
     }
 
+    /**
+     * Finds an ElectricalBicycle at the specified DockingStation.
+     *
+     * @param station the DockingStation to search for an ElectricalBicycle
+     * @return the found ElectricalBicycle
+     * @throws RuntimeException if no Electrical Bicycle is found at the given station
+     */
     public static Bicycle findBikeAtStation(DockingStation station){
         for (ParkingSlot slot: station.getParkingSlotArraylist()){
             if (slot.isOccupied() && slot.getBicycle() instanceof ElectricalBicycle){

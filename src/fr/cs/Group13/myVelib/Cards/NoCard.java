@@ -28,6 +28,15 @@ public class NoCard implements Card, PricingVisitor {
     }
 
     /**
+     * Sets the owner of this card.
+     *
+     * @param owner the user who owns this card
+     */
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
+    /**
      * Method to provide the cost parameters for visiting an ElectricalBicycle.
      * @param bicycle the ElectricalBicycle being visited.
      * @return an array of double values representing the base cost and the cost per hour.

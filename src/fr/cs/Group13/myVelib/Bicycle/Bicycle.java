@@ -16,9 +16,24 @@ import fr.cs.Group13.myVelib.DockingStation.ParkingSlot;
 import java.util.Arrays;
 
 public abstract class Bicycle{
+    /**
+     * The unique identifier for the user.
+     */
     private int id;
+
+    /**
+     * The GPS coordinates of the user.
+     */
     private double[] gpsCord;
+
+    /**
+     * Indicator whether the user originated from a station (1) or not (0).
+     */
     private int fromAStation = 1;
+
+    /**
+     * The parking slot associated with the user (if any).
+     */
     private ParkingSlot slot;
 
     /**
@@ -69,6 +84,11 @@ public abstract class Bicycle{
         this.fromAStation = fromAStation;
     }
 
+    /**
+     * Sets the GPS coordinates for the user.
+     *
+     * @param gpsCord the GPS coordinates to set
+     */
     public void setGpsCord(double[] gpsCord) {
         this.gpsCord = gpsCord;
     }
@@ -90,6 +110,11 @@ public abstract class Bicycle{
         return slot;
     }
 
+    /**
+     * Retrieves the ID of the user.
+     *
+     * @return the ID of the user
+     */
     public int getId() {
         return id;
     }
@@ -109,6 +134,21 @@ public abstract class Bicycle{
      */
     public void removeFromSlot() {
         this.slot = null;
+    }
+    /**
+     * Finds a bicycle at the given docking station.
+     *
+     * @param station the docking station to search for a bicycle
+     * @return the found bicycle
+     * @throws RuntimeException if no bicycle is found at the given station
+     */
+    public static Bicycle findBikeAtStation(DockingStation station){
+        for (ParkingSlot slot: station.getParkingSlotArraylist()){
+            if (slot.isOccupied()){
+                return slot.getBicycle();
+            }
+        }
+        throw new RuntimeException("No Bicycle found at the given station");
     }
 
     /**
@@ -131,16 +171,6 @@ public abstract class Bicycle{
      * @param slot The ParkingSlot to which the bicycle is being added.
      */
     public abstract void setBikeCountFill(ParkingSlot slot);
-
-    public static Bicycle findBikeAtStation(DockingStation station){
-        for (ParkingSlot slot: station.getParkingSlotArraylist()){
-            if (slot.isOccupied()){
-                return slot.getBicycle();
-            }
-        }
-        throw new RuntimeException("No Bicycle found at the given station");
-    }
-
     @Override
     public String toString() {
         return "Bicycle{" +

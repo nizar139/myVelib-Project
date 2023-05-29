@@ -2,7 +2,7 @@ package test.Bicycle;
 
 import fr.cs.Group13.myVelib.Bicycle.ElectricalBicycle;
 import fr.cs.Group13.myVelib.Cards.PricingVisitor;
-import fr.cs.Group13.myVelib.Cards.TestPricingVisitor;
+import test.Cards.TestPricingVisitor;
 import fr.cs.Group13.myVelib.DockingStation.DockingStation;
 import fr.cs.Group13.myVelib.DockingStation.ParkingSlot;
 import fr.cs.Group13.myVelib.DockingStation.RegularStation;

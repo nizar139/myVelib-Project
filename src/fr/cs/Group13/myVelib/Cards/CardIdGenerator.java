@@ -7,7 +7,9 @@
 package fr.cs.Group13.myVelib.Cards;
 
 
-
+/**
+ * A class responsible for generating unique card IDs.
+ */
 public class CardIdGenerator {
     private static CardIdGenerator instance = null;
     private int num;

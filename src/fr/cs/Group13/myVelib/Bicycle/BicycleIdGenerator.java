@@ -7,9 +7,14 @@
 package fr.cs.Group13.myVelib.Bicycle;
 
 public class BicycleIdGenerator {
-    // Singleton instance of the BicycleIdGenerator
+    /**
+     * Singleton instance of the BicycleIdGenerator
+      */
     private static BicycleIdGenerator instance = null;
-    // Counter for the current unique bicycle ID
+
+    /**
+     * Counter for the current unique bicycle ID
+     */
     private int num;
 
     /**

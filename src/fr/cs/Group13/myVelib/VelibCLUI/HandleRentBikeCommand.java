@@ -9,7 +9,17 @@ import fr.cs.Group13.myVelib.System.VelibGlobal;
 import fr.cs.Group13.myVelib.System.VelibSystem;
 import fr.cs.Group13.myVelib.User.User;
 
+/**
+ * The HandleRentBikeCommand class provides a static method to handle the "rentBike" command for renting a bike.
+ * It performs the necessary operations to rent a bike for the specified user from the given station.
+ */
 public class HandleRentBikeCommand {
+    /**
+     * Handles the "rentBike" command for renting a bike.
+     *
+     * @param args     An array of strings containing the command arguments.
+     * @param bikeType The type of bike to rent (0 for any bike, 1 for mechanical bike, 2 for electrical bike).
+     */
     public static void HandleRent(String[] args, int bikeType){
         VelibGlobal instance = VelibGlobal.getInstance();
         if (args.length!=2 && args.length!=3){
@@ -46,8 +56,6 @@ public class HandleRentBikeCommand {
             double[] gpsCord = {gpsX,gpsY};
             bike = velibSystem.searchBicycleByGPS(gpsCord);
         }
-
-
         user.rentBicycle(bike);
     }
 }

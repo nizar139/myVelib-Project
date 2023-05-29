@@ -35,18 +35,39 @@ public class Vmax implements Card, PricingVisitor {
         this.id = instance.getNextCardId();
         this.owner = owner;
     }
+
+    /**
+     * Returns the ID of the card.
+     *
+     * @return the ID of the card
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Returns the credit balance of the user.
+     *
+     * @return the credit balance of the user
+     */
     public double getCreditBalance() {
         return this.creditBalance;
     }
 
+    /**
+     * Sets the owner of this card.
+     *
+     * @param owner the user who owns this card
+     */
     public void setOwner(User owner) {
         this.owner = owner;
     }
 
+    /**
+     * Sets the credit balance of the user.
+     *
+     * @param creditBalance the new credit balance of the user
+     */
     public void setCreditBalance(double creditBalance) {
         this.creditBalance = creditBalance;
     }
@@ -117,6 +138,12 @@ public class Vmax implements Card, PricingVisitor {
         this.owner.setTotalTimeCredit(this.owner.getTotalTimeCredit()+bonus);
     }
 
+    /**
+     * Checks if this Vmax card is equal to the specified object.
+     *
+     * @param obj the object to compare this Vmax card to
+     * @return true if the specified object is equal to this Vmax card, false otherwise
+     */
     @Override
     public boolean equals(Object obj){
         if(obj == this) return true;

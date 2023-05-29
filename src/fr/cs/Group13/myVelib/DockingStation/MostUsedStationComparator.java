@@ -2,8 +2,12 @@ package fr.cs.Group13.myVelib.DockingStation;
 
 import java.util.Comparator;
 import fr.cs.Group13.myVelib.DockingStation.DockingStation;
-class MostUsedStationComparator implements Comparator<DockingStation>{
 
+/**
+ * Comparator class for comparing DockingStation objects based on their usage.
+ * The most used station will be prioritized.
+ */
+public class MostUsedStationComparator implements Comparator<DockingStation>{
     @Override
     public int compare(DockingStation s1, DockingStation s2) {
         int s2total = s2.getTotalRents()+s2.getTotalReturns();

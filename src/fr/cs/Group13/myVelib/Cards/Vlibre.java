@@ -31,15 +31,39 @@ public class Vlibre implements Card, PricingVisitor {
         this.owner = owner;
     }
 
-
+    /**
+     * Returns the ID of the card.
+     *
+     * @return the ID of the card
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Sets the owner of this card.
+     *
+     * @param owner the user who owns this card
+     */
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
+
+    /**
+     * Returns the credit balance of the user.
+     *
+     * @return the credit balance of the user
+     */
     public double getCreditBalance() {
         return creditBalance;
     }
 
+    /**
+     * Sets the credit balance of the user.
+     *
+     * @param creditBalance the new credit balance of the user
+     */
     public void setCreditBalance(double creditBalance) {
         this.creditBalance = creditBalance;
     }
@@ -111,6 +135,12 @@ public class Vlibre implements Card, PricingVisitor {
         this.owner.setTotalTimeCredit(this.owner.getTotalTimeCredit()+bonus);
     }
 
+    /**
+     * Checks if this Vlibre card is equal to the specified object.
+     *
+     * @param obj the object to compare this Vlibre card to
+     * @return true if the specified object is equal to this Vlibre card, false otherwise
+     */
     @Override
     public boolean equals(Object obj){
         if(obj == this) return true;

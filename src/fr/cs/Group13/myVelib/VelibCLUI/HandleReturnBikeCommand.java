@@ -10,7 +10,17 @@ import fr.cs.Group13.myVelib.System.VelibGlobal;
 import fr.cs.Group13.myVelib.System.VelibSystem;
 import fr.cs.Group13.myVelib.User.User;
 
+/**
+ * The HandleReturnBikeCommand class provides a static method to handle the "return" command for returning a bike.
+ * It performs the necessary operations to return a bike based on the specified arguments.
+ */
 public class HandleReturnBikeCommand {
+    /**
+     * Handles the "return" command for returning a bike.
+     *
+     * @param args     An array of strings containing the command arguments.
+     * @param bikeType The type of bike being returned (0 for station return, 1 for on-street return).
+     */
     public static void HandleReturn(String[] args, int bikeType){
         VelibGlobal instance = VelibGlobal.getInstance();
         if (args.length!=3 && args.length!=4){

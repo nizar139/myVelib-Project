@@ -1,7 +1,7 @@
 package test.DockingStation;
 
 import fr.cs.Group13.myVelib.Cards.PricingVisitor;
-import fr.cs.Group13.myVelib.Cards.TestPricingVisitor;
+import test.Cards.TestPricingVisitor;
 import fr.cs.Group13.myVelib.DockingStation.PlusStation;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

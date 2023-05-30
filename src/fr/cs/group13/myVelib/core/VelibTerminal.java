@@ -1,5 +1,6 @@
 package fr.cs.group13.myVelib.core;
 
+import fr.cs.group13.myVelib.core.system.VelibGlobal;
 import fr.cs.group13.myVelib.core.system.VelibSystem;
 import fr.cs.group13.myVelib.core.usecasescenario.ConfigReader;
 import fr.cs.group13.myVelib.core.velibclui.*;
@@ -51,6 +52,8 @@ public class VelibTerminal {
 
     private static void runTestCommands(String testFile) {
         try {
+            VelibGlobal instance = VelibGlobal.getInstance();
+            instance.resetVelibGlobal();
             ConfigReader.Configuration();
             BufferedReader reader = new BufferedReader(new FileReader(testFile));
             String line;

@@ -33,6 +33,13 @@ public class VelibGlobal {
     }
 
     /**
+     * resets the velibGlobal instance by removing all the networks
+     */
+    public void resetVelibGlobal(){
+        instance.listOfVelibSystems = new ArrayList<>();
+    }
+
+    /**
      * method to add Velib System to the list of systems in VelibGlobal.
      *
      * @param system Velib system to be add

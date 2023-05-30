@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/myVelib.iml" filepath="$PROJECT_DIR$/myVelib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fr.cs.group13.myVelib.iml" filepath="$PROJECT_DIR$/fr.cs.group13.myVelib.iml" />
     </modules>
   </component>
 </project>

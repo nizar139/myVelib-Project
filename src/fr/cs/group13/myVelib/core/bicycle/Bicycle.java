@@ -27,7 +27,7 @@ public abstract class Bicycle{
     private double[] gpsCord;
 
     /**
-     * Indicator whether the user originated from a station (1) or not (0).
+     * Indicator whether the bicycle originated from a station (1) or not (0).
      */
     private int fromAStation = 1;
 

@@ -1,0 +1,12 @@
+fr.cs.group13.myVelib.core
+fr.cs.group13.myVelib.core.bicycle
+fr.cs.group13.myVelib.core.cards
+fr.cs.group13.myVelib.core.dockingstation
+fr.cs.group13.myVelib.core.planing
+fr.cs.group13.myVelib.core.system
+fr.cs.group13.myVelib.core.usecasescenario
+fr.cs.group13.myVelib.core.user
+fr.cs.group13.myVelib.core.velibclui
+fr.cs.group13.myVelib.test.bicycle
+fr.cs.group13.myVelib.test.cards
+fr.cs.group13.myVelib.test.user

@@ -1,20 +1,54 @@
-Velib System Terminal help.
+Velib System Terminal Help
 
 Description: 
-	Displays help on Velib Terminal commands.
-Commands: 
-	setup <name> or <name> <nstations> <nslots> <s> <nbikes>;
-	displayNetworks;
-	displayStations <velibnetworkName>;
-	displayUsers <velibnetworkName>;
-	addUser <userName> <cardType> <velibnetworkName>;
-	offline <velibnetworkName> <stationID>;
-	online <velibnetworkName> <stationID>;
-	rentBike <userID> <biketype (0 for anytype, 1 for Mechanical, 2 for Electrical)> <stationID> or <userID> <biketype (0 for anytype, 1 for Mechanical, 2 for Electrical)> <GPS_x> <GPS_y>; 
-	returnBike <userID> <duration> <stationID> or <userID> <duration> <GPS_x> <GPS_y>;
-	displaystationinfo <stationID>;
-	displayStation <velibnetworkName> <stationID>; 
-	displayUser <velibnetworkName> <userID>;
-	sortStation <velibnetworkName> <sortpolicy>;
-	display <velibnetworkName>;
-	
+  This help document provides information about the available commands in the Velib Terminal.
+
+Commands:
+  setup <name> or <name> <nstations> <nslots> <s> <nbikes>:
+    - Set up a Velib network with the given name and optional parameters.
+      If no optional parameters are provided, default values will be used.
+
+  displayNetworks:
+    - Display the list of available Velib networks.
+
+  displayStations <velibnetworkName>:
+    - Display the stations in the specified Velib network.
+
+  displayUsers <velibnetworkName>:
+    - Display the users in the specified Velib network.
+
+  addUser <userName> <cardType> <velibnetworkName>:
+    - Add a user with the given name and card type to the specified Velib network.
+
+  offline <velibnetworkName> <stationID>:
+    - Set a docking station in the specified Velib network to offline status.
+
+  online <velibnetworkName> <stationID>:
+    - Set a docking station in the specified Velib network to online status.
+
+  rentBike <userID> <biketype (0 for anytype, 1 for Mechanical, 2 for Electrical)> <stationID> or <userID> <biketype (0 for anytype, 1 for Mechanical, 2 for Electrical)> <GPS_x> <GPS_y>:
+    - Rent a bike of the specified type from the given station for the specified user.
+
+  returnBike <userID> <duration> <stationID> or <userID> <duration> <GPS_x> <GPS_y>:
+    - Return a bike rented by the user to the specified station after the given duration.
+
+  displayStationInfo <stationID>:
+    - Display detailed information about the specified docking station.
+
+  displayStation <velibnetworkName> <stationID>:
+    - Display information about the specified docking station in the given Velib network.
+
+  displayUser <velibnetworkName> <userID>:
+    - Display information about the specified user in the given Velib network.
+
+  sortStation <velibnetworkName> <sortpolicy>:
+    - Sort the stations in the specified Velib network based on the specified policy.
+
+  display <velibnetworkName>:
+    - Display both the stations and users in the specified Velib network.
+
+  planRide <userID> <planningstrategy> <startingGPS_x> <startingGPS_y> <endingGPS_x> <endingGPS_y>:
+    - Plan a ride for the specified user using the given planning strategy and GPS coordinates.
+
+  runtest <testFile = eval/testNinput.txt>:
+    - Run a series of commands from the specified test file.

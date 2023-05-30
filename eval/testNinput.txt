@@ -1,0 +1,23 @@
+addUser Luffy Vlibre MyVelib
+addUser Zoro Vmax MyVelib
+addUser Sanji None MyVelib
+rentBike 1 0 1
+rentBike 2 1 2
+returnBike 2 120 4
+rentBike 3 2 3
+returnBike 1 240 5
+returnBike 3 360 6
+displayUserInfo 1
+rentBike 2 2 3
+returnBike 2 180 9
+displayUser MyVelib 2
+displayStationInfo 1
+displayStation MyVelib 3
+displayNetworks
+displayStations MyVelib
+sortStation MyVelib leastOccupiedStation
+displayStations MyVelib
+sortStation Myvelib mostusedstation
+displayStations MyVelib
+planride 1 preferplusstation 1 2.5 9 7.5
+planride 2 minimalwalkingdistance 1 2.5 9 7.5

@@ -11,12 +11,12 @@ public class HandleOnlineCommand {
      * Handles the "online" command for setting a station online.
      *
      * @param args An array of strings containing the command arguments.
+     * @throws InvalidArgumentSizeException if the number of arguments is invalid.
      */
     public static void handleOnline(String[] args){
         VelibGlobal instance = VelibGlobal.getInstance();
         if (args.length != 2){
-            System.out.print("Invalid number of arguments. Usage : online <velibNetworkName> <stationId>");
-            return;
+            throw new InvalidArgumentSizeException("Invalid number of arguments. Usage : online <velibNetworkName> <stationId>");
         }
         String velibNetworkName = args[0];
         int stationId = Integer.parseInt(args[1]);

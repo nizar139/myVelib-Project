@@ -18,21 +18,21 @@ public class HandleRentBikeCommand {
      * Handles the "rentBike" command for renting a bike.
      *
      * @param args     An array of strings containing the command arguments.
-     * @param bikeType The type of bike to rent (0 for any bike, 1 for mechanical bike, 2 for electrical bike).
+     * @throws InvalidArgumentSizeException if the number of arguments is invalid.
      */
-    public static void HandleRent(String[] args, int bikeType){
+    public static void HandleRent(String[] args){
         VelibGlobal instance = VelibGlobal.getInstance();
-        if (args.length!=2 && args.length!=3){
-            System.out.println("Invalid number of arguments. Usage : rentBike <userId> <stationId>");
-            return;
+        if (args.length!=3 && args.length!=4){
+            throw new InvalidArgumentSizeException("Invalid number of arguments. Usage : <userID> <biketype> <stationID> or <userID> <biketype> <GPS_x> <GPS_y>");
         }
+        int bikeType = Integer.parseInt(args[1]);
         int userId = Integer.parseInt(args[0]);
         Object[] temp = instance.searchSystemByUserId(userId);
         VelibSystem velibSystem = (VelibSystem) temp[0];
         User user = (User) temp[1];
         Bicycle bike;
-        if (args.length==2){
-            int stationId = Integer.parseInt(args[1]);
+        if (args.length==3){
+            int stationId = Integer.parseInt(args[2]);
             DockingStation station = velibSystem.searchStationById(stationId);
             if (station.getStatus()== StationStatus.OFFLINE){
                 throw new RuntimeException("Station is offline");
@@ -44,15 +44,15 @@ public class HandleRentBikeCommand {
                 case 1:
                     bike = MechanicalBicycle.findBikeAtStation(station);
                     break;
-                case 3:
+                case 2:
                     bike = ElectricalBicycle.findBikeAtStation(station);
                     break;
                 default:
                     throw new RuntimeException("invalid number for bikeType");
             }
         } else {
-            double gpsX = Double.parseDouble(args[1]);
-            double gpsY = Double.parseDouble(args[2]);
+            double gpsX = Double.parseDouble(args[2]);
+            double gpsY = Double.parseDouble(args[3]);
             double[] gpsCord = {gpsX,gpsY};
             bike = velibSystem.searchBicycleByGPS(gpsCord);
         }

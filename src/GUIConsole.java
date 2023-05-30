@@ -123,7 +123,7 @@ public class GUIConsole {
                 break;
             case "rentbike":
                 try{
-                    HandleRentBikeCommand.HandleRent(args,0);
+                    HandleRentBikeCommand.HandleRent(args);
                 }catch(Exception e){
                     System.out.println(e);
                 }

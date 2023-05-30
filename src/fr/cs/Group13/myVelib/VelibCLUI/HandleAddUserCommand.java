@@ -11,12 +11,12 @@ public class HandleAddUserCommand {
      * Handles the "addUser" command.
      *
      * @param args An array of strings containing the command arguments.
+     * @throws InvalidArgumentSizeException if the number of arguments is invalid.
      */
     public static void handleAddUser(String[] args){
         VelibGlobal instance = VelibGlobal.getInstance();
         if (args.length!=3) {
-            System.out.println("Invalid number of arguments. Usage: addUser <userName> <cardType> <velibnetworkName>");
-            return;
+            throw  new InvalidArgumentSizeException("Invalid number of arguments. Usage: addUser <userName> <cardType> <velibnetworkName>");
         }
         String userName = args[0];
         String cardType = args[1];

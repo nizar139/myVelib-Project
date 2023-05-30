@@ -414,6 +414,11 @@ public class User {
         return false;
     }
 
+    /**
+     * Returns a string representation of the User.
+     *
+     * @return a string representation of the User
+     */
     @Override
     public String toString() {
         return  "User"+"\n\tid             = " + id +
@@ -422,6 +427,12 @@ public class User {
                 "\n\tcard            = " + card.getClass().getSimpleName() +
                 "\n\thasBicycle      = " + (currentBicycle == null? "no": "yes");
     }
+
+    /**
+     * Returns a string representation of the User's statistics.
+     *
+     * @return a string representation of the User's statistics
+     */
     public void display() {
         System.out.println(this.getFirstName()+" statistics :");
         System.out.println("\tNumber of rides : "+this.numberOfRides);

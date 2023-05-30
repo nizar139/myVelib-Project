@@ -13,6 +13,7 @@ public class HandleSetupCommand {
      *
      * @param args An array of strings containing the command arguments.
      * @return The created VelibSystem instance.
+     * @throws InvalidArgumentSizeException if the number of arguments is invalid.
      */
     public static VelibSystem handleSetup(String[] args){
         VelibGlobal instance = VelibGlobal.getInstance();
@@ -45,8 +46,7 @@ public class HandleSetupCommand {
             }
         }
         else {
-            System.out.println("Invalid number of arguments. Usage: setup <name> or setup <name> <nstations> <nslots> <s> <nbikes>");
-            velibSys = null;
+            throw new InvalidArgumentSizeException("Invalid number of arguments. Usage: setup <name> or setup <name> <nstations> <nslots> <s> <nbikes>");
         }
         return velibSys;
     }

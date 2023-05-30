@@ -365,14 +365,25 @@ public class VelibSystem {
         Collections.sort(this.listOfStations,comp);
     }
 
+    /**
+     * Returns a string representation of the Velib System.
+     *
+     * @return a string representation of the Velib System
+     */
     @Override
     public String toString() {
-        return "VlibSystem{" +
+        return "VelibSystem{" +
                 "listOfStations=" + listOfStations +
                 ", listOfStreetBikes=" + listOfStreetBikes +
                 ", listOfUsers=" + listOfUsers +
                 '}';
     }
+
+    /**
+     * Returns a summary of the Velib System.
+     *
+     * @return a summary of the Velib System
+     */
     public void systemSummary(){
         System.out.println(this);
     }

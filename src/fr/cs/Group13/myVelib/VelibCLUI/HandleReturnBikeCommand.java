@@ -16,12 +16,12 @@ public class HandleReturnBikeCommand {
      * Handles the "return" command for returning a bike.
      *
      * @param args     An array of strings containing the command arguments.
+     * @throws InvalidArgumentSizeException if the number of arguments is invalid.
      */
     public static void HandleReturn(String[] args){
         VelibGlobal instance = VelibGlobal.getInstance();
         if (args.length!=3 && args.length!=4){
-            System.out.println("Invalid number of arguments. Usage : ");
-            return;
+            throw new InvalidArgumentSizeException("Invalid number of arguments. Usage : returnBike <userID> <duration> <stationID> or <userID> <duration> <GPS_x> <GPS_y>");
         }
         int userId = Integer.parseInt(args[0]);
         double duration = Double.parseDouble(args[1]);

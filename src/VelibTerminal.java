@@ -35,98 +35,98 @@ public class VelibTerminal {
                     try {
                         VelibSystem system = HandleSetupCommand.handleSetup(args);
                     } catch(Exception e){
-                        System.out.println(e);
+                        System.out.println(e.getMessage());
                     }
                     break;
                 case "displaynetworks":
                     try {
                         HandleDisplaySystemsCommand.handleDisplaySystems();
                     }catch (Exception e){
-                        System.out.println(e);
+                        System.out.println(e.getMessage());
                     }
                     break;
                 case "displaystations":
                     try {
                         HandleDisplayStationsCommand.handleDisplayStations(args);
                     }catch (Exception e){
-                        System.out.println(e);
+                        System.out.println(e.getMessage());
                     }
                     break;
                 case "displayusers":
                     try {
                         HandleDisplayUsersCommand.handleDisplayUsers(args);
                     }catch (Exception e){
-                        System.out.println(e);
+                        System.out.println(e.getMessage());
                     }
                     break;
                 case "displaystationinfo":
                     try {
                         HandleDisplayStationInfoCommand.handleDisplayStationInfo(args);
                     }catch (Exception e){
-                        System.out.println(e);
+                        System.out.println(e.getMessage());
                     }
                     break;
                 case "displayuserinfo":
                     try {
                         HandleDisplayUserInfoCommand.handleDisplayUserInfo(args);
                     }catch (Exception e){
-                        System.out.println(e);
+                        System.out.println(e.getMessage());
                     }
                     break;
                 case "adduser":
                     try{
                         HandleAddUserCommand.handleAddUser(args);
                     }catch(Exception e){
-                        System.out.println(e);
+                        System.out.println(e.getMessage());
                     }
                     break;
                 case "offline":
                     try{
                         HandleOfflineCommand.handleOffline(args);
                     }catch(Exception e){
-                        System.out.println(e);
+                        System.out.println(e.getMessage());
                     }
                     break;
                 case "online":
                     try{
                         HandleOnlineCommand.handleOnline(args);
                     }catch(Exception e){
-                        System.out.println(e);
+                        System.out.println(e.getMessage());
                     }
                     break;
                 case "rentbike":
                     try{
-                        HandleRentBikeCommand.HandleRent(args,0);
+                        HandleRentBikeCommand.HandleRent(args);
                     }catch(Exception e){
-                        System.out.println(e);
+                        System.out.println(e.getMessage());
                     }
                     break;
                 case "returnbike":
                     try{
                         HandleReturnBikeCommand.HandleReturn(args);
                     }catch(Exception e){
-                        System.out.println(e);
+                        System.out.println(e.getMessage());
                     }
                     break;
                 case "displaystation":
                     try{
                         HandleDisplayStationCommand.handleDisplayStation(args);
                     }catch(Exception e){
-                        System.out.println(e);
+                        System.out.println(e.getMessage());
                     }
                     break;
                 case "displayuser":
                     try{
                         HandleDisplayUserCommand.handleDisplayUser(args);
                     }catch(Exception e){
-                        System.out.println(e);
+                        System.out.println(e.getMessage());
                     }
                     break;
-                case "Sortstation":
+                case "sortstation":
                     try{
                         HandleSortStationCommand.handleSortStation(args);
                     }catch(Exception e){
-                        System.out.println(e);
+                        System.out.println(e.getMessage());
                     }
                     break;
                 case "display":
@@ -134,7 +134,7 @@ public class VelibTerminal {
                         HandleDisplayUsersCommand.handleDisplayUsers(args);
                         HandleDisplayStationsCommand.handleDisplayStations(args);
                     }catch(Exception e){
-                        System.out.println(e);
+                        System.out.println(e.getMessage());
                     }
                     break;
                 default:

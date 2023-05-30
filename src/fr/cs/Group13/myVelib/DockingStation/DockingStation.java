@@ -278,6 +278,12 @@ public abstract class DockingStation {
                 "\n\tnumberOfMechanicalBikes = " + (numberOfSlots-numberOfElectricalBikes-numberOfVacantSlots) ;
     }
 
+    /**
+     * Returns a string representation of the docking station's statistics.
+     *
+     * @return a string containing the docking station's statistics
+     */
+
     public void display() {
         System.out.println(this.getId()+" Station statistics :");
         System.out.println("\tTotal Number of rents Operations   : "+this.totalRents);

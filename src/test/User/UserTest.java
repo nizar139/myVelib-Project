@@ -1,12 +1,12 @@
 package test.User;
 
-import fr.cs.Group13.myVelib.Bicycle.Bicycle;
-import fr.cs.Group13.myVelib.Bicycle.ElectricalBicycle;
-import fr.cs.Group13.myVelib.Cards.CreditCard;
-import fr.cs.Group13.myVelib.Cards.Vmax;
-import fr.cs.Group13.myVelib.DockingStation.PlusStation;
-import fr.cs.Group13.myVelib.System.VelibSystem;
-import fr.cs.Group13.myVelib.User.User;
+import core.Bicycle.Bicycle;
+import core.Bicycle.ElectricalBicycle;
+import core.Cards.CreditCard;
+import core.Cards.Vmax;
+import core.DockingStation.PlusStation;
+import core.System.VelibSystem;
+import core.User.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

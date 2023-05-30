@@ -1,17 +1,17 @@
 package test.System;
 
-import fr.cs.Group13.myVelib.Bicycle.Bicycle;
-import fr.cs.Group13.myVelib.Bicycle.ElectricalBicycle;
-import fr.cs.Group13.myVelib.Cards.NoCard;
-import fr.cs.Group13.myVelib.Cards.Vlibre;
-import fr.cs.Group13.myVelib.Cards.Vmax;
-import fr.cs.Group13.myVelib.DockingStation.DockingStation;
-import fr.cs.Group13.myVelib.DockingStation.ParkingSlot;
-import fr.cs.Group13.myVelib.DockingStation.PlusStation;
-import fr.cs.Group13.myVelib.DockingStation.RegularStation;
-import fr.cs.Group13.myVelib.System.RandomVectorGenerator;
-import fr.cs.Group13.myVelib.System.VelibSystem;
-import fr.cs.Group13.myVelib.User.User;
+import core.Bicycle.Bicycle;
+import core.Bicycle.ElectricalBicycle;
+import core.Cards.NoCard;
+import core.Cards.Vlibre;
+import core.Cards.Vmax;
+import core.DockingStation.DockingStation;
+import core.DockingStation.ParkingSlot;
+import core.DockingStation.PlusStation;
+import core.DockingStation.RegularStation;
+import core.System.RandomVectorGenerator;
+import core.System.VelibSystem;
+import core.User.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

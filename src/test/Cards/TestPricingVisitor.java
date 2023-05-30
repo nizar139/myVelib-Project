@@ -1,10 +1,10 @@
 package test.Cards;
 
-import fr.cs.Group13.myVelib.Bicycle.ElectricalBicycle;
-import fr.cs.Group13.myVelib.Bicycle.MechanicalBicycle;
-import fr.cs.Group13.myVelib.Cards.PricingVisitor;
-import fr.cs.Group13.myVelib.DockingStation.PlusStation;
-import fr.cs.Group13.myVelib.DockingStation.RegularStation;
+import core.Bicycle.ElectricalBicycle;
+import core.Bicycle.MechanicalBicycle;
+import core.Cards.PricingVisitor;
+import core.DockingStation.PlusStation;
+import core.DockingStation.RegularStation;
 
 public class TestPricingVisitor implements PricingVisitor {
 

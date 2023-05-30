@@ -1,5 +1,5 @@
-import fr.cs.Group13.myVelib.System.VelibSystem;
-import fr.cs.Group13.myVelib.VelibCLUI.*;
+import core.System.VelibSystem;
+import core.VelibCLUI.*;
 
 import javax.swing.*;
 import java.awt.*;

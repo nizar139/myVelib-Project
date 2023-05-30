@@ -1,6 +1,6 @@
 package test.DockingStation;
 
-import fr.cs.Group13.myVelib.DockingStation.StationIdGenerator;
+import core.DockingStation.StationIdGenerator;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

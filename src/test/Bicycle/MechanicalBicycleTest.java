@@ -1,10 +1,10 @@
 package test.Bicycle;
 
 
-import fr.cs.Group13.myVelib.Bicycle.MechanicalBicycle;
-import fr.cs.Group13.myVelib.DockingStation.DockingStation;
-import fr.cs.Group13.myVelib.DockingStation.ParkingSlot;
-import fr.cs.Group13.myVelib.DockingStation.RegularStation;
+import core.Bicycle.MechanicalBicycle;
+import core.DockingStation.DockingStation;
+import core.DockingStation.ParkingSlot;
+import core.DockingStation.RegularStation;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

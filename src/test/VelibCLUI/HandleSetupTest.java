@@ -1,7 +1,7 @@
 package test.VelibCLUI;
 
-import fr.cs.Group13.myVelib.System.VelibSystem;
-import fr.cs.Group13.myVelib.VelibCLUI.HandleSetupCommand;
+import core.System.VelibSystem;
+import core.VelibCLUI.HandleSetupCommand;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

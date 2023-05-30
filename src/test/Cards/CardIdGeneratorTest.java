@@ -1,6 +1,6 @@
 package test.Cards;
 
-import fr.cs.Group13.myVelib.Cards.CardIdGenerator;
+import core.Cards.CardIdGenerator;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

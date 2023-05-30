@@ -1,6 +1,6 @@
 package test.Bicycle;
 
-import fr.cs.Group13.myVelib.Bicycle.BicycleIdGenerator;
+import core.Bicycle.BicycleIdGenerator;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

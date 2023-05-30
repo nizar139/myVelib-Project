@@ -1,12 +1,12 @@
 package test.Cards;
 
 
-import fr.cs.Group13.myVelib.Bicycle.ElectricalBicycle;
-import fr.cs.Group13.myVelib.Bicycle.MechanicalBicycle;
-import fr.cs.Group13.myVelib.Cards.NoCard;
-import fr.cs.Group13.myVelib.DockingStation.PlusStation;
-import fr.cs.Group13.myVelib.DockingStation.RegularStation;
-import fr.cs.Group13.myVelib.User.User;
+import core.Bicycle.ElectricalBicycle;
+import core.Bicycle.MechanicalBicycle;
+import core.Cards.NoCard;
+import core.DockingStation.PlusStation;
+import core.DockingStation.RegularStation;
+import core.User.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;

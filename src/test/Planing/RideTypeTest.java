@@ -1,13 +1,13 @@
 package test.Planing;
 
 import static org.junit.jupiter.api.Assertions.*;
-import fr.cs.Group13.myVelib.Bicycle.Bicycle;
-import fr.cs.Group13.myVelib.DockingStation.DockingStation;
-import fr.cs.Group13.myVelib.DockingStation.PlusStation;
-import fr.cs.Group13.myVelib.DockingStation.RegularStation;
-import fr.cs.Group13.myVelib.DockingStation.StationStatus;
-import fr.cs.Group13.myVelib.Planing.RideType;
-import fr.cs.Group13.myVelib.Planing.RidesPlaning;
+import core.Bicycle.Bicycle;
+import core.DockingStation.DockingStation;
+import core.DockingStation.PlusStation;
+import core.DockingStation.RegularStation;
+import core.DockingStation.StationStatus;
+import core.Planing.RideType;
+import core.Planing.RidesPlaning;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
